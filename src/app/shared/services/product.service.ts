@@ -1,8 +1,13 @@
 import { IProduct } from '@/types/product-type';
 import { Injectable } from '@angular/core';
-import { of,Observable } from 'rxjs';
-import  product_data from '@/data/product-data';
+import { of, Observable } from 'rxjs';
+import product_data from '@/data/product-data';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { Product } from '@/types/product.interface';
+import { Page } from '@/types/page.interface';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { ProductFilter } from '@/types/produc-filter.interface';
 
 const all_products = product_data
 
@@ -10,6 +15,9 @@ const all_products = product_data
   providedIn: 'root'
 })
 export class ProductService {
+
+  API = environment.API.concat("/product")
+
   public filter_offcanvas: boolean = false;
 
   // Get Products
@@ -17,7 +25,7 @@ export class ProductService {
     return of(product_data);
   }
 
-  constructor() { }
+  constructor(private readonly httpClient: HttpClient) { }
 
   activeImg: string | undefined;
 
@@ -25,18 +33,30 @@ export class ProductService {
     this.activeImg = img;
   }
 
+  public getAllByfilter(params: ProductFilter): Observable<Page<IProduct>> {
+
+
+    let httpParams = Object.entries(params)
+      .filter(([_, value]) => value !== null && value !== undefined) // Filtra los valores definidos
+      .reduce((acc, [key, value]) => acc.append(key, value as string), new HttpParams()); // Crea HttpParams directamente
+
+    if (!params.size) httpParams = httpParams.append("size", 20)
+    if (!params.page) httpParams = httpParams.append("page", 0)
+
+    return this.httpClient.get<Page<IProduct>>(this.API.concat("/bandeja"), { params: httpParams })
+  }
+
   // Get Products By id
   public getProductById(id: string): Observable<IProduct | undefined> {
-    return this.products.pipe(map(items => {
-      const product = items.find(p => p.id === id);
-      if(product){
-        this.handleImageActive(product.img)
-      }
-      return product;
-    }));
+
+    return this.httpClient.get<IProduct>(this.API.concat("/").concat(id)).pipe(map(product => {
+      this.handleImageActive(product.imgurl ?? "")
+      return product
+    }))
+
   }
-   // Get related Products
-   public getRelatedProducts(productId: string,category:string): Observable<IProduct[]> {
+  // Get related Products
+  public getRelatedProducts(productId: string, category: string): Observable<IProduct[]> {
     return this.products.pipe(map(items => {
       return items.filter(
         (p) =>
@@ -52,7 +72,7 @@ export class ProductService {
     }, 0);
     return max_price
   }
-// shop filterSelect
+  // shop filterSelect
   public filterSelect = [
     { value: 'asc', text: 'Default Sorting' },
     { value: 'low', text: 'Low to Hight' },
@@ -60,28 +80,29 @@ export class ProductService {
     { value: 'on-sale', text: 'On Sale' },
   ];
 
-    // Get Product Filter
-    public filterProducts(filter: any= []): Observable<IProduct[]> {
-      return this.products.pipe(map(product =>
-        product.filter((item: IProduct) => {
-          if (!filter.length) return true
-          const Tags = filter.some((prev: any) => {
-            if (item.tags) {
-              if (item.tags.includes(prev)) {
-                return prev;
-              }
+  // Get Product Filter
+  public filterProducts(filter: any = []): Observable<IProduct[]> {
+    console.log("filters", filter)
+    return this.products.pipe(map(product =>
+      product.filter((item: IProduct) => {
+        if (!filter.length) return true
+        const Tags = filter.some((prev: any) => {
+          if (item.tags) {
+            if (item.tags.includes(prev)) {
+              return prev;
             }
-          });
-          return Tags
-        })
-      ));
-    }
+          }
+        });
+        return Tags
+      })
+    ));
+  }
 
 
-      // Sorting Filter
+  // Sorting Filter
   public sortProducts(products: IProduct[], payload: string): any {
 
-    if(payload === 'asc') {
+    if (payload === 'asc') {
       return products.sort((a, b) => {
         if (a.id < b.id) {
           return -1;
@@ -136,12 +157,12 @@ export class ProductService {
     if (totalPages <= 5) {
       startPage = 1;
       endPage = totalPages;
-    } else if(currentPage < paginateRange - 1){
+    } else if (currentPage < paginateRange - 1) {
       startPage = 1;
       endPage = startPage + paginateRange - 1;
     } else {
       startPage = currentPage - 1;
-      endPage =  currentPage + 1;
+      endPage = currentPage + 1;
     }
 
     // calculate start and end item indexes

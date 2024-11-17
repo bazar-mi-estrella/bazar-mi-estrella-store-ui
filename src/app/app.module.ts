@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShopComponent } from './shop/pages/shop/shop.component';
 import { ShopModule } from './shop/shop.module';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 
 @NgModule({
@@ -30,7 +31,10 @@ import { ShopModule } from './shop/shop.module';
   exports:[
     ShopComponent,
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi())
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

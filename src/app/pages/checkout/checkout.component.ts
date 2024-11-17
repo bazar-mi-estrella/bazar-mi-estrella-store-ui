@@ -77,7 +77,7 @@ export class CheckoutComponent {
       firstName:new FormControl(null,Validators.required),
       lastName:new FormControl(null,Validators.required),
       company:new FormControl(null),
-      country:new FormControl(null,Validators.required),
+      country:new FormControl('Perú',Validators.required),
       address:new FormControl(null,Validators.required),
       city:new FormControl(null,Validators.required),
       state:new FormControl(null,Validators.required),

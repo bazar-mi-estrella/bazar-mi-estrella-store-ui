@@ -26,7 +26,7 @@ export class CartService {
   addCartProduct(payload: IProduct) {
     const isExist = state.cart_products.some((i: IProduct) => i.id === payload.id);
     if (payload.status === 'out-of-stock' || payload.quantity === 0) {
-      this.toastrService.error(`Out of stock ${payload.title}`);
+      this.toastrService.error(`Out of stock ${payload.name}`);
     }
     else if (!isExist) {
       const newItem = {
@@ -34,7 +34,7 @@ export class CartService {
         orderQuantity: 1,
       };
       state.cart_products.push(newItem);
-      this.toastrService.success(`${payload.title} added to cart`);
+      this.toastrService.success(`${payload.name} added to cart`);
     } else {
       state.cart_products.map((item: IProduct) => {
         if (item.id === payload.id) {
@@ -44,7 +44,7 @@ export class CartService {
                 this.orderQuantity !== 1
                   ? this.orderQuantity + item.orderQuantity
                   : item.orderQuantity + 1;
-              this.toastrService.success(`${this.orderQuantity} ${item.title} added to cart`);
+              this.toastrService.success(`${this.orderQuantity} ${item.name} added to cart`);
             } else {
               this.toastrService.success(`No more quantity available for this product!`);
               this.orderQuantity = 1;
@@ -104,7 +104,7 @@ export class CartService {
         if (typeof item.orderQuantity !== "undefined") {
           if (item.orderQuantity > 1) {
             item.orderQuantity = item.orderQuantity - 1;
-            this.toastrService.info(`Decrement Quantity For ${item.title}`);
+            this.toastrService.info(`Decrement Quantity For ${item.name}`);
           }
         }
       }
@@ -118,7 +118,7 @@ export class CartService {
     state.cart_products = state.cart_products.filter(
       (p: IProduct) => p.id !== payload.id
     );
-    this.toastrService.error(`${payload.title} remove to cart`);
+    this.toastrService.error(`${payload.name} remove to cart`);
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
   };
 

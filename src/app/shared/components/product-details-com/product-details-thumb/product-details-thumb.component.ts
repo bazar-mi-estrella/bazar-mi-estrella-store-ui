@@ -18,7 +18,7 @@ export class ProductDetailsThumbComponent {
 
   ngOnInit() {
     if (this.product) {
-      this.productService.activeImg = this.product.img;
+      this.productService.activeImg = this.product.imgurl;
     }
   }
 }

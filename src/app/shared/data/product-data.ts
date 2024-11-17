@@ -8,7 +8,10 @@ const product_data: IProduct[] = [
     title: "Headphones Wireless.",
     slug: "headphones-wireless.",
     unit: "3pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Purply Blue",
@@ -123,7 +126,10 @@ const product_data: IProduct[] = [
     title: "Gaming Headphone",
     slug: "gaming-headphone",
     unit: "5pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Cyan",
@@ -226,7 +232,10 @@ const product_data: IProduct[] = [
     title: "Headphone with Mic",
     slug: "headphone-with-mic",
     unit: "4pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Tealish Blue",
@@ -335,7 +344,10 @@ const product_data: IProduct[] = [
     title: "Galaxy Android Tablet",
     slug: "galaxy-android-tablet",
     unit: "8pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Black",
@@ -441,7 +453,10 @@ const product_data: IProduct[] = [
     title: "iPhone 14 Pro",
     slug: "iPhone-14-pro",
     unit: "10pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Lunar Green",
@@ -547,7 +562,10 @@ const product_data: IProduct[] = [
     title: "Apple iPad Air",
     slug: "apple-iPad-air",
     unit: "12pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Gray",
@@ -646,7 +664,10 @@ const product_data: IProduct[] = [
     title: "DeepCool Air Cooler",
     slug: "deepCool-air-cooler",
     unit: "15pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Black",
@@ -752,7 +773,10 @@ const product_data: IProduct[] = [
     title: "Antec Air Cooler",
     slug: "antec-air-cooler",
     unit: "15pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Black",
@@ -862,7 +886,10 @@ const product_data: IProduct[] = [
     title: "Apple Watch Sport Band",
     slug: "apple-watch-sport-band",
     unit: "18pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Light Gray",
@@ -969,7 +996,10 @@ const product_data: IProduct[] = [
     title: "Sony Smart Watch",
     slug: "sony-smart-watch",
     unit: "12pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Grey Goose",
@@ -1075,7 +1105,10 @@ const product_data: IProduct[] = [
     title: "Sony Lady Fitness Watch",
     slug: "sony-lady-fitness-watch",
     unit: "10pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Black",
@@ -1176,7 +1209,10 @@ const product_data: IProduct[] = [
     title: "Lenovo Wireless Bluetooth",
     slug: "lenovo-wireless-bluetooth",
     unit: "7pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Red Wine",
@@ -1256,7 +1292,10 @@ const product_data: IProduct[] = [
     title: "Lenovo Sports Bluetooth",
     slug: "lenovo-sports-bluetooth",
     unit: "7pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Black",
@@ -1359,7 +1398,10 @@ const product_data: IProduct[] = [
     title: "Whitetails Women's Dress",
     slug: "whitetails-women's-dress",
     unit: "10pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Wine Berry",
@@ -1447,7 +1489,10 @@ const product_data: IProduct[] = [
     title: "Boys Graphic T-Shirt",
     slug: "boys-graphic-t-shirt",
     unit: "12pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Terra Cotta",
@@ -1534,7 +1579,10 @@ const product_data: IProduct[] = [
     title: "Milumia Blouse",
     slug: "milumia-blouse",
     unit: "17pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Cocoa Bean",
@@ -1622,7 +1670,10 @@ const product_data: IProduct[] = [
     title: "Tall Easy Tote-2",
     slug: "tall-easy-tote-2",
     unit: "5pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Donkey Brown",
@@ -1709,7 +1760,10 @@ const product_data: IProduct[] = [
     title: "Traveling Bag",
     slug: "traveling-bag",
     unit: "5pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Clay",
@@ -1797,7 +1851,10 @@ const product_data: IProduct[] = [
     title: "Nike Retro GTS-2",
     slug: "nike-retro-gts-2",
     unit: "4pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Merlot",
@@ -1884,7 +1941,10 @@ const product_data: IProduct[] = [
     title: "Jefferson Star Wars™",
     slug: "jefferson-star-wars™",
     unit: "4pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Mustard Green",
@@ -1972,7 +2032,10 @@ const product_data: IProduct[] = [
     title: "Baby Cotton Bodysuits",
     slug: "baby-cotton-bodysuits",
     unit: "12pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Cool Grey",
@@ -2059,7 +2122,10 @@ const product_data: IProduct[] = [
     title: "INIKA Mineral Sunkissed",
     slug: "inika-mineral-sunkissed",
     unit: "15pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Purple Brown",
@@ -2147,7 +2213,10 @@ const product_data: IProduct[] = [
     title: "Grand Plumping Highlighter",
     slug: "grand-plumping-highlighter",
     unit: "10pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Burning Sand",
@@ -2227,7 +2296,10 @@ const product_data: IProduct[] = [
     title: "Brand Cosmetic Product",
     slug: "brand-cosmetic-product",
     unit: "12pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Barney",
@@ -2308,7 +2380,10 @@ const product_data: IProduct[] = [
     title: "Wet Dewy Cream Beige",
     slug: "wet-dewy-cream-beige",
     unit: "12pcs",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Lion",
@@ -2395,7 +2470,10 @@ const product_data: IProduct[] = [
     title: "Tea Tree Lemon For Fine Hair",
     slug: "tea-tree-lemon-for-fine-hair",
     unit: "100ml",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Rangoon Green",
@@ -2475,7 +2553,10 @@ const product_data: IProduct[] = [
     title: "Mielle Rosemary Mint Scalp",
     slug: "mielle-rosemary-mint-scalp",
     unit: "200ml",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Iridium",
@@ -2555,7 +2636,10 @@ const product_data: IProduct[] = [
     title: "Innisfree Face Wash",
     slug: "innisfree face wash",
     unit: "150ml",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Faded Green",
@@ -2635,7 +2719,10 @@ const product_data: IProduct[] = [
     title: "Blue Rescue Face Mask",
     slug: "blue-rescue-face-mask",
     unit: "150ml",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         color: {
           name: "Flame",
@@ -2715,7 +2802,10 @@ const product_data: IProduct[] = [
     title: "Robert Lee Bangle Bracelet",
     slug: "robert-lee-bangle-bracelet",
     unit: "18 kt",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         img: "https://i.ibb.co/J7C8xSR/bracelet-1.png",
       },
@@ -2768,7 +2858,10 @@ const product_data: IProduct[] = [
     title: "Fortuna Creole Earring",
     slug: "fortuna-creole-earring",
     unit: "18 kt",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         img: "https://i.ibb.co/s2gB5tt/earring-1.png",
       },
@@ -2820,7 +2913,10 @@ const product_data: IProduct[] = [
     title: "asiyah necklace",
     slug: "asiyah-necklace",
     unit: "15 kt",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         img: "https://i.ibb.co/KsZ69S3/necklaces-1.png",
       },
@@ -2873,7 +2969,10 @@ const product_data: IProduct[] = [
     title: "Fortuna Bangle Three-row",
     slug: "fortuna-bangle-three-row",
     unit: "14 kt",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         img: "https://i.ibb.co/nnxXBTh/bracelet-4.png",
       },
@@ -2928,7 +3027,10 @@ const product_data: IProduct[] = [
     title: "Palm Ring",
     slug: "palm-ring",
     unit: "18 kt",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         img: "https://i.ibb.co/s12Fy6m/earring-4.png",
       },
@@ -2983,7 +3085,10 @@ const product_data: IProduct[] = [
     title: "Birthstone Necklace for Women",
     slug: "birthstone-necklace-for-women",
     unit: "14 kt",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         img: "https://i.ibb.co/cwzhf2G/necklaces-4.png",
       },
@@ -3035,7 +3140,10 @@ const product_data: IProduct[] = [
     title: "Asiyah Bangle Bracelet",
     slug: "asiyah-bangle-bracelet",
     unit: "10 kt",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         img: "https://i.ibb.co/SvdvsxT/bracelet-8.png",
       },
@@ -3087,7 +3195,10 @@ const product_data: IProduct[] = [
     title: "Fortuna Creole Hoop",
     slug: "fortuna-creole-hoop",
     unit: "12 kt",
-    imageURLs: [
+    images: [],
+    descripaditionals:[],
+    typeName:""
+    , imageURLs: [
       {
         img: "https://i.ibb.co/Bf0gXqY/earring-8.png",
       },

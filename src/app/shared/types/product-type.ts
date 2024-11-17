@@ -1,15 +1,43 @@
 type IReview = {
-  user?:string;
-  name:string;
-  email:string;
-  rating:number;
-  review:string;
-  date:string;
+  user?: string;
+  name: string;
+  email: string;
+  rating: number;
+  review: string;
+  date: string;
+}
+
+export interface ImagesProduc{
+  codecolor:string;
+  id:string;
+  namecolor:string;
+  urlimg:string;
+}
+
+export interface Descripaditionals{
+  id:string;
+  key:string;
+  value:string;
 }
 
 export interface IProduct {
   id: string;
-  sku: string;
+  marcaId?: string;
+  marcaName?: string;
+  modeloId?: string;
+  modeloName?: string;
+  name?: string;
+  statusId?: string;
+  stock?: number;
+  typeId?: string;
+  typeName: string;
+  descuent?: number;
+  imgurl?:string;
+  images:ImagesProduc[];
+  descripaditionals:Descripaditionals[];
+  sku:string;
+  code?:string;
+
   img: string;
   title: string;
   slug: string;
@@ -43,11 +71,11 @@ export interface IProduct {
   }[];
   featured?: boolean;
   sellCount: number;
-  offerDate?:{
-    startDate:string;
-    endDate:string;
+  offerDate?: {
+    startDate: string;
+    endDate: string;
   }
   tags?: string[];
-  videoId?:string;
-  sizes?:string[];
+  videoId?: string;
+  sizes?: string[];
 }

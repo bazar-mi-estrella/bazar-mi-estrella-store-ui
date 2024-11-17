@@ -21,7 +21,7 @@ const category_data:ICategory[] = [
   {
     id: "6419723bd7dc5155c04350d4",
     img: "https://i.ibb.co/xHFpQTV/product-cat-2.png",
-    parent: "Mobile Tablets",
+    parent: "Celulares",
     children: [
       "Samsung",
       "Apple"
@@ -39,7 +39,7 @@ const category_data:ICategory[] = [
     img: "https://i.ibb.co/S0GjZdp/product-cat-3.png",
     parent: "CPU Heat Pipes",
     children: [
-      "CPU Cooler",
+      "CPU",
       "Air CPU Cooler"
     ],
     productType: "electronics",
@@ -52,7 +52,7 @@ const category_data:ICategory[] = [
   {
     id: "6419723bd7dc5155c04350d6",
     img: "https://i.ibb.co/g3YK8H2/product-cat-4.png",
-    parent: "Smart Watch",
+    parent: "Reloj",
     children: [
       "Sports Smart Watch",
       "Apple Watch",

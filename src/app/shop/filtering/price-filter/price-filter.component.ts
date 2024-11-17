@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import {Component,Output,Input,EventEmitter,Inject,PLATFORM_ID} from '@angular/core';
+import { Component, Output, Input, EventEmitter, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Options } from '@angular-slider/ngx-slider';
+import { ChangeContext, Options } from '@angular-slider/ngx-slider';
 import { ViewportScroller } from '@angular/common';
 import { ProductService } from 'src/app/shared/services/product.service';
 
@@ -12,7 +12,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class PriceFilterComponent {
   // Using Output EventEmitter
-  @Output() priceFilter: EventEmitter<any> = new EventEmitter<any>();
+  @Output() priceFilter: EventEmitter<any> = new EventEmitter<number>();
 
   // define min, max and range
   @Input() min!: number;
@@ -21,9 +21,9 @@ export class PriceFilterComponent {
   public collapse: boolean = true;
   public isBrowser: boolean = false;
 
-  public price: { minPrice: number; maxPrice: number } = {
-    minPrice: 0,
-    maxPrice: this.productService.maxPrice,
+  public price: { pricemin: number; pricemax: number } = {
+    pricemin: 0,
+    pricemax: this.productService.maxPrice,
   };
 
   options: Options = {
@@ -44,16 +44,16 @@ export class PriceFilterComponent {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   // Range Changed
-  appliedFilter(event: any) {
-    this.price = { minPrice: event.value, maxPrice: event.highValue };
+  appliedFilter(event: ChangeContext) {
+    this.price = { pricemin: event.value, pricemax: event.highValue ?? 0 };
     this.priceFilter.emit(this.price);
   }
 
   // handle price filtering
-  handlePriceRoute () {
+  handlePriceRoute() {
     this.router
       .navigate([], {
         relativeTo: this.route,

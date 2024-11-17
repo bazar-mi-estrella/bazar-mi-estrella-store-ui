@@ -22,7 +22,7 @@
     <div class="offcanvas__category pb-40">
       <button (click)="toggleCategoryActive()" class="tp-offcanvas-category-toggle">
         <i class="fa-solid fa-bars"></i>
-        All Categories
+        Categorias
       </button>
       <div class="tp-category-mobile-menu">
         <nav [ngClass]="['tp-category-menu-content', isCategoryActive ? 'active' : '']">
@@ -59,7 +59,7 @@
           [ngClass]="['has-dropdown has-mega-menu',isActiveMenu === menu.title ? 'dropdown-opened' : '']"
         >
           <a [ngClass]="isActiveMenu === menu.title ? 'expanded' : '' ">
-            Home
+            Destacado
             <button
               (click)="handleOpenSubMenu(menu.title)"
               [ngClass]="['dropdown-toggle-btn',isActiveMenu === menu.title ? 'dropdown-opened' : '']"

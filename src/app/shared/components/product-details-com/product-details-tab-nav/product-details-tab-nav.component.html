@@ -1,11 +1,11 @@
 <div class="tp-product-details-tab-nav tp-tab">
   <nav>
      <div class="nav nav-tabs justify-content-center p-relative tp-product-tab" id="navPresentationTab" role="tablist">
-       <button (click)="handleActiveMarker($event)" class="nav-link" id="nav-description-tab" data-bs-toggle="tab" data-bs-target="#nav-description" type="button" role="tab" aria-controls="nav-description" aria-selected="true">Description</button>
+       <button (click)="handleActiveMarker($event)" class="nav-link" id="nav-description-tab" data-bs-toggle="tab" data-bs-target="#nav-description" type="button" role="tab" aria-controls="nav-description" aria-selected="true">Descripción</button>
 
-       <button (click)="handleActiveMarker($event)" class="nav-link active" id="nav-addInfo-tab" #navActive data-bs-toggle="tab" data-bs-target="#nav-addInfo" type="button" role="tab" aria-controls="nav-addInfo" aria-selected="false">Additional information</button>
+       <button (click)="handleActiveMarker($event)" class="nav-link active" id="nav-addInfo-tab" #navActive data-bs-toggle="tab" data-bs-target="#nav-addInfo" type="button" role="tab" aria-controls="nav-addInfo" aria-selected="false">Información adicional</button>
 
-       <button (click)="handleActiveMarker($event)" class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews ({{product.reviews?.length}})</button>
+       <button (click)="handleActiveMarker($event)" class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reseñas ({{product.reviews?.length}})</button>
 
        <span #productTabMarker id="productTabMarker" class="tp-product-details-tab-line"></span>
      </div>
@@ -19,8 +19,8 @@
                   <div class="row">
                     <div class="col-lg-12">
                         <div class="tp-product-details-desc-content pt-25">
-                          <span>{{product.category.name}}</span>
-                          <h3 class="tp-product-details-desc-title">{{product.title}}</h3>
+                          <span>{{product.typeName}}</span>
+                          <h3 class="tp-product-details-desc-title">{{product.name}}</h3>
                           <p>{{ product.description }}</p>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
               <div class="col-xl-10">
                  <table>
                    <tbody>
-                      <tr *ngFor="let info of product.additionalInformation">
+                      <tr *ngFor="let info of product.descripaditionals">
                           <td>{{info.key}}</td>
                           <td>{{info.value}}</td>
                       </tr>

@@ -19,7 +19,7 @@ export class ElectronicTrendingProductsComponent {
   }
   // tab
   public activeTab = 'New';
-  public tabs = ['New', 'Featured', 'Top Sellers'];
+  public tabs = ['Nuevo', 'Featured', 'Top Sellers'];
   // handleActiveTab
   handleActiveTab(tab: string): void {
     this.activeTab = tab;

@@ -4,7 +4,7 @@ export const menu_data:IMenuItem[] = [
   {
     id:1,
     link:'/home/electronic',
-    title:'Home',
+    title:'Destacado',
     mega_menu:true,
     home_pages:[
       {
@@ -33,56 +33,11 @@ export const menu_data:IMenuItem[] = [
       },
     ]
   },
-  {
-    id:2,
-    link:'/shop',
-    title:'Shop',
-    mega_menu:true,
-    shop_mega_menus:[
-      {
-        link:'/shop',
-        title:'Shop Pages',
-        list_menus:[
-          {title:'Grid Layout',link:'/shop'},
-          {title:'Shop Categories',link:'/shop/shop-category'},
-          {title:'List Layout',link:'/shop/shop-list'},
-          {title:'Full width Layout',link:'/shop/shop-full-width'},
-          {title:'1600px Layout',link:'/shop/shop-1600'},
-          {title:'Left Sidebar',link:'/shop'},
-          {title:'Right Sidebar',link:'/shop/shop-right-sidebar'},
-          {title:'Hidden Sidebar',link:'/shop/shop-no-sidebar'},
-        ]
-      },
-      {
-        link:'/shop',
-        title:'Features',
-        list_menus:[
-          {title:'Filter Dropdown',link:'/shop/shop-filter-dropdown'},
-          {title:'Filters Offcanvas',link:'/shop/shop-filter-offcanvas'},
-          {title:'Filters Sidebar',link:'/shop'},
-          {title:'Load More button',link:'/shop/shop-load-more'},
-          {title:'1600px Layout',link:'/shop/shop-1600'},
-          {title:'Collections list',link:'/shop/shop-list'},
-          {title:'Hidden search',link:'/shop'},
-          {title:'Search Full screen',link:'/shop'},
-        ]
-      },
-      {
-        link:'/shop',
-        title:'Hover Style',
-        list_menus:[
-          {title:'Hover Style 1',link:'/shop'},
-          {title:'Hover Style 2',link:'/shop'},
-          {title:'Hover Style 3',link:'/shop'},
-          {title:'Hover Style 4',link:'/shop'}
-        ]
-      },
-    ]
-  },
+ 
   {
     id:3,
     link:'/shop',
-    title:'Products',
+    title:'Productos',
     mega_menu:true,
     product_menus:[
       {
@@ -100,7 +55,7 @@ export const menu_data:IMenuItem[] = [
       },
       {
         id:2,
-        title:'Products',
+        title:'Productos',
         link:'/shop',
         dropdown_menus:[
           {title:'Product Simple',link:'/shop/shop-details'},
@@ -141,7 +96,7 @@ export const menu_data:IMenuItem[] = [
   {
     id:4,
     link:'/pages/coupons',
-    title:'Coupons',
+    title:'Cupones',
   },
   {
     id:5,
@@ -158,7 +113,7 @@ export const menu_data:IMenuItem[] = [
   {
     id:5,
     link:'/pages/contact',
-    title:'Contact',
+    title:'Contacto',
   },
 ]
 

@@ -265,7 +265,7 @@ li,
   --tp-text-4: #7D7F82;
   --tp-text-5: #888A8C;
   --tp-text-6: #90969B;
-  --tp-theme-primary: #0989FF;
+  --tp-theme-primary: #000000;
   --tp-theme-secondary: #821F40;
   --tp-theme-brown: #BD844C;
   --tp-theme-green: #678E61;
@@ -14226,7 +14226,7 @@ div.tp-author-info-avater img {
   width: 180px;
   height: 180px;
   background-color: var(--tp-grey-1);
-  background-image: radial-gradient(95.56% 95.56% at 50% 50%, #FFFFFF 0%, #BDDEFF 100%);
+  background-image: radial-gradient(95.56% 95.56% at 50% 50%, #D6D6D6 0%, #D6D6D6 100%);
   border-radius: 50%;
   text-align: center;
   display: flex;

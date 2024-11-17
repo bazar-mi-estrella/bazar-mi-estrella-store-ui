@@ -10,8 +10,9 @@
 <section class="tp-cart-area pb-120">
   <div class="container">
     <div *ngIf="cartService.getCartProducts().length === 0" class="text-center pt-50">
-      <h3>No Cart Items Found</h3>
-      <a routerLink="/shop" class="tp-cart-checkout-btn mt-20">Continue Shopping</a>
+      <h3>No se encontraron artículos en el carrito
+      </h3>
+      <a routerLink="/shop" class="tp-cart-checkout-btn mt-20">Continuar comprando</a>
     </div>
     <div *ngIf="cartService.getCartProducts().length > 0" class="row">
       <div class="col-xl-9 col-lg-8">
@@ -19,9 +20,9 @@
           <table>
             <thead>
               <tr>
-                <th colspan="2" class="tp-cart-header-product">Product</th>
-                <th class="tp-cart-header-price">Price</th>
-                <th class="tp-cart-header-quantity">Quantity</th>
+                <th colspan="2" class="tp-cart-header-product">Producto</th>
+                <th class="tp-cart-header-price">Precio</th>
+                <th class="tp-cart-header-quantity">Cantidad</th>
                 <th></th>
               </tr>
             </thead>
@@ -30,7 +31,7 @@
                 <!-- img -->
                 <td class="tp-cart-img">
                   <a [routerLink]="['/shop/shop-details', item.id]" style="background-color: #F2F3F5; display: block;">
-                    <img [src]="item.img" alt="">
+                    <img [src]="item.imgurl" alt="">
                   </a>
                 </td>
                 <!-- title -->

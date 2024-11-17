@@ -7,7 +7,7 @@
         <div class="tp-shop-sidebar mr-10">
           <!--price filter -->
           <div class="tp-shop-widget mb-35">
-            <h3 class="tp-shop-widget-title no-border">Price Filter</h3>
+            <h3 class="tp-shop-widget-title no-border">Rango de precios</h3>
             <app-price-filter [min]="minPrice" [max]="maxPrice" (priceFilter)="updateFilter($event)"></app-price-filter>
           </div>
           <!-- status -->
@@ -81,7 +81,7 @@
                     </ul>
                   </div>
                   <div class="tp-shop-top-result">
-                    <p>Showing 1–{{ products.length }} of {{ paginate.totalItems }} results</p>
+                    <p>Mostrando 1–{{ products.length }} de {{ paginate.totalItems }} resultados</p>
                   </div>
                 </div>
               </div>
@@ -100,9 +100,9 @@
             <!-- if no item in product  -->
             <div *ngIf="products.length === 0" class="cartmini__empty text-center">
               <img src="/assets/img/product/cartmini/empty-cart.png" alt="empty-cart-img" />
-              <h4>Sorry! Couldn't find the product you were looking For!!!</h4>
-              <p>Please check if you have misspelt something or try searching with other words.</p>
-              <a routerLink="/shop" class="tp-btn">Continue Shopping</a>
+              <h4>Lo sentimos, no pudimos encontrar el producto que buscabas. </h4>
+              <p>Comprueba si has escrito mal algo o intenta buscar con otras palabras. </p>
+              <a routerLink="/shop" class="tp-btn">Seguir comprando</a>
             </div>
 
             <div *ngIf="activeTab === 'grid'">

@@ -7,10 +7,10 @@
             <a
               [routerLink]="['/shop']"
               [queryParams]="{
-                category: item.parent.toLowerCase().split(' ').join('-')
+                type: item.name
               }"
             >
-              <img [src]="item.img" alt="product-category" />
+              <img [src]="item.image" alt="product-category" [alt]="item.image" width="76" />
             </a>
           </div>
           <div class="tp-product-category-content">
@@ -18,13 +18,13 @@
               <a
                 [routerLink]="['/shop']"
                 [queryParams]="{
-                  category: item.parent.toLowerCase().split(' ').join('-')
+                  type: item.name.toLowerCase().split(' ').join('-')
                 }"
                 >
-                {{ item.parent }}
+                {{ item.name }}
               </a>
             </h3>
-            <p>{{ item.products.length }} Product</p>
+            <p>{{30 }} Producto</p>
           </div>
         </div>
       </div>

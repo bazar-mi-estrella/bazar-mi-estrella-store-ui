@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { IProduct } from '@/types/product-type';
+import { ProductFilter } from '@/types/produc-filter.interface';
+import { Product } from '@/types/product.interface';
 
 @Component({
   selector: 'app-shop-area',
@@ -51,7 +53,7 @@ export class ShopAreaComponent {
   ) {
     // Get Query params..
     this.route.queryParams.subscribe((params) => {
-      // console.log('params', params);
+      console.log('params_shop_area', params);
       this.minPrice = params['minPrice'] ? params['minPrice'] : this.minPrice;
       this.maxPrice = params['maxPrice'] ? params['maxPrice'] : this.maxPrice;
       this.brand = params['brand']
@@ -66,12 +68,13 @@ export class ShopAreaComponent {
       this.pageNo = params['page'] ? params['page'] : this.pageNo;
       this.sortBy = params['sortBy'] ? params['sortBy'] : 'asc';
 
+    
       // Get Filtered Products..
-      this.productService.filterProducts().subscribe((response) => {
+      this.productService.getAllByfilter(params as ProductFilter).subscribe((response) => {
         // Sorting Filter
-        this.products = this.productService.sortProducts(response, this.sortBy);
+        this.products = this.productService.sortProducts(response.content, this.sortBy);
         // Category Filter
-        if (this.category){
+      /*   if (this.category){
           this.products = this.products.filter(
             (p) => p.parent.toLowerCase().split(' ').join('-') === this.category
           );
@@ -96,7 +99,7 @@ export class ShopAreaComponent {
         // brand filtering
         if (this.brand) {
           this.products = this.products.filter((p) => p.brand.name.toLowerCase() === this.brand);
-        }
+        } */
 
         // Price Filter
         this.products = this.products.filter(

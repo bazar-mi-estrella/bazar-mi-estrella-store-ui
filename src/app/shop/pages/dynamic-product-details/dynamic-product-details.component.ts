@@ -14,10 +14,10 @@ export class DynamicProductDetailsComponent implements OnInit {
   public product: IProduct | null | undefined;
 
   constructor(
-    private route: ActivatedRoute,
-    private productService: ProductService,
-    private router: Router
-  ) {}
+    private readonly route: ActivatedRoute,
+    private readonly productService: ProductService,
+    private readonly router: Router
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.pipe(
@@ -33,7 +33,7 @@ export class DynamicProductDetailsComponent implements OnInit {
         // Product not found, navigate to 404 page
         this.router.navigate(['/404']);
       } else {
-        this.product = product;
+        this.product = product
       }
     });
   }
