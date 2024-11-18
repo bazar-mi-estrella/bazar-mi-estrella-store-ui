@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { ShopComponent } from './shop/pages/shop/shop.component';
 import { ShopModule } from './shop/shop.module';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -27,12 +30,15 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
       enableHtml: true,
       positionClass:'toast-top-center'
     }),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth())
   ],
   exports:[
     ShopComponent,
   ],
   providers: [
-    provideHttpClient(withInterceptorsFromDi())
+    provideHttpClient(withInterceptorsFromDi()),
+ 
 
   ],
   bootstrap: [AppComponent]

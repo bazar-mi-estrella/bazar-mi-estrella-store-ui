@@ -48,13 +48,12 @@ export class ProductService {
 
   // Get Products By id
   public getProductById(id: string): Observable<IProduct | undefined> {
-
     return this.httpClient.get<IProduct>(this.API.concat("/").concat(id)).pipe(map(product => {
       this.handleImageActive(product.imgurl ?? "")
       return product
     }))
-
   }
+  
   // Get related Products
   public getRelatedProducts(productId: string, category: string): Observable<IProduct[]> {
     return this.products.pipe(map(items => {

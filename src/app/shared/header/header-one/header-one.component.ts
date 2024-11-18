@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CartService } from '@/shared/services/cart.service';
 import { IProduct } from '@/types/product-type';
 import { WishlistService } from '@/shared/services/wishlist.service';
@@ -16,12 +16,18 @@ export class HeaderOneComponent {
   public searchText: string = '';
   public productType: string = '';
 
+  isLoggin = sessionStorage.getItem('auth_id') ?? false;
+  fullname: string = sessionStorage.getItem('name') ?? "";
+  email: string = sessionStorage.getItem('email') ?? "";
+  photo_url = sessionStorage.getItem('photo_url');
+
   constructor(
     public cartService: CartService,
     public wishlistService: WishlistService,
     public utilsService: UtilsService,
-    private router: Router
+    private readonly router: Router,
   ) { }
+
 
   // select options for header category
   public niceSelectOptions = [
@@ -32,9 +38,17 @@ export class HeaderOneComponent {
     { value: 'jewelry', text: 'Jewelry' },
   ];
 
+
+
+
   changeHandler(selectedOption: { value: string; text: string }) {
     console.log('Selected option:', selectedOption);
     this.productType = selectedOption.value;
+  }
+
+  signIn() {
+    if (!this.isLoggin) this.router.navigate(['/pages/login'])
+    else this.router.navigate(['/pages/profile']);
   }
 
   headerSticky: boolean = false;
@@ -50,7 +64,7 @@ export class HeaderOneComponent {
 
   handleSearchSubmit() {
     const queryParams: { [key: string]: string | null } = {};
-    if(!this.searchText && !this.productType){
+    if (!this.searchText && !this.productType) {
       return
     }
     else {
