@@ -3,4 +3,5 @@ export interface Client{
     idfirebase:string;
     photo:string;
     email:string;
+    id:string;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { onAuthStateChanged, User } from 'firebase/auth';
+import { ClientService } from './shared/services/client.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { onAuthStateChanged, User } from 'firebase/auth';
 export class AppComponent implements OnInit {
   title = 'ng-shofy';
 
-  constructor(private readonly auth: Auth) {
+  constructor(private readonly auth: Auth, private readonly clientService: ClientService) {
+
 
   }
 
@@ -29,10 +31,18 @@ export class AppComponent implements OnInit {
         console.log('User logged in:', user);
         console.log('User ID:', user.uid);
         console.log('Email:', user.email);
+        this.findByEmail(user.email)
       } else {
         console.log('No user is signed in.');
         sessionStorage.clear();
       }
     });
+  }
+
+  findByEmail(email: string | null) {
+    if (!email) return sessionStorage.clear()
+    this.clientService.findByEmail(email).subscribe(res => {
+      sessionStorage.setItem('client_id', res.id)
+    })
   }
 }

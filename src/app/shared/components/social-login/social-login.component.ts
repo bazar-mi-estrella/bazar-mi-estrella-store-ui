@@ -36,6 +36,7 @@ export class SocialLoginComponent {
 
   saveCLient(response: UserCredential): void {
     let data: Client = {
+      id: "",
       idfirebase: response.user.uid,
       fullname: response.user.displayName ?? "",
       email: response.user.email ?? "",
@@ -43,6 +44,7 @@ export class SocialLoginComponent {
     }
     this.clientService.save(data).subscribe(res => {
       console.log(res);
+      sessionStorage.setItem("client_id", res.id)
     })
   }
 }

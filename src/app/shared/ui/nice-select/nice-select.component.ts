@@ -6,19 +6,18 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./nice-select.component.scss'],
 })
 export class NiceSelectComponent {
-  @Input() options!: { value: string; text: string }[];
+  @Input() options: any[] = [];
   @Input() defaultCurrent: number = 0;
   @Input() placeholder: string = '';
   @Input() className: string = '';
   @Input() name: string = '';
 
   open = false;
-  current: { value: string; text: string } | undefined;
+  current: { id: string; name: string } | undefined;
 
-  @Output() onChange: EventEmitter<{ value: string; text: string }> =
-    new EventEmitter();
+  @Output() onChange: EventEmitter<{ id: string; name: string } | any> =new EventEmitter();
 
-  constructor() {}
+  constructor() { }
 
   toggleOpen() {
     this.open = !this.open;
@@ -32,7 +31,7 @@ export class NiceSelectComponent {
     this.current = this.options[this.defaultCurrent];
   }
 
-  currentHandler(item: { value: string; text: string }, index: number) {
+  currentHandler(item: { id: string; name: string }, index: number) {
     this.current = this.options[index];
     this.onChange.emit(item); // Emitting the event
     this.onClose();

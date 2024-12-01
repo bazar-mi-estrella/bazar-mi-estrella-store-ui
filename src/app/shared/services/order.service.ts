@@ -7,9 +7,9 @@ import { environment } from "src/environments/environment";
 @Injectable({
     providedIn: 'root'
 })
-export class ClientService {
+export class OrderService {
 
-    API = environment.API.concat("/client")
+    API = environment.API.concat("/order")
 
     constructor(private readonly httpClient: HttpClient) { }
 

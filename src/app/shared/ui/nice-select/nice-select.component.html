@@ -4,16 +4,16 @@
   (click)="toggleOpen()"
   role="button"
 >
-  <span class="current">{{ current?.text || placeholder }}</span>
+  <span class="current">{{ current?.name || placeholder }}</span>
   <ul class="list" role="menubar" (click)="stopPropagation($event)">
     <li
       *ngFor="let item of options; let index = index"
       class="option"
-      [ngClass]="(item.value === current?.value ? 'selected focus' : '')"
+      [ngClass]="(item.id === current?.id ? 'selected focus' : '')"
       (click)="currentHandler(item, index)"
       role="menuitem"
     >
-      {{ item.text }}
+      {{ item.name }}
     </li>
   </ul>
 </div>

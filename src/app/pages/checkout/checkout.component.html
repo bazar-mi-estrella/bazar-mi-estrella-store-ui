@@ -32,9 +32,9 @@
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Nombre <span>*</span></label>
-                          <input type="text" placeholder="First Name" name="firstName" formControlName="firstName">
+                          <input type="text" placeholder="First Name" name="firstname" formControlName="firstname">
                           <!-- error msg start -->
-                          <span *ngIf="firstName?.hasError('required') && (firstName?.touched ||formSubmitted)"
+                          <span *ngIf="firstname?.hasError('required') && (firstname?.touched ||formSubmitted)"
                             class="text-danger">
                             First Name is required
                           </span>
@@ -44,9 +44,9 @@
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Apellido <span>*</span></label>
-                          <input type="text" placeholder="Last Name" name="lastName" formControlName="lastName">
+                          <input type="text" placeholder="Last Name" name="lastname" formControlName="lastname">
                           <!-- error msg start -->
-                          <span *ngIf="lastName?.hasError('required') && (lastName?.touched ||formSubmitted)"
+                          <span *ngIf="lastname?.hasError('required') && (lastname?.touched ||formSubmitted)"
                             class="text-danger">
                             Last Name is required
                           </span>
@@ -74,8 +74,8 @@
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Departamento </label>
-                          <app-nice-select [options]="countrySelectOptions" name="Select Country" [defaultCurrent]="0"
-                            (onChange)="changeHandler($event)" placeholder="Seleccionar Departamento">
+                          <app-nice-select [options]="departamentosList" name="Select Country" [defaultCurrent]="0"
+                            (onChange)="changeHandlerDepartamento($event)" placeholder="Seleccionar Departamento">
                           </app-nice-select>
                           <!-- error msg start -->
                           <span *ngIf="state?.hasError('required') && (state?.touched ||formSubmitted)"
@@ -89,8 +89,8 @@
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Provincia </label>
-                          <app-nice-select [options]="countrySelectOptions" name="Select Country" [defaultCurrent]="0"
-                            (onChange)="changeHandler($event)" placeholder="Seleccionar Departamento">
+                          <app-nice-select [options]="provinciaList" name="Select Country" [defaultCurrent]="0"
+                            (onChange)="changeHandlerProvincia($event)" placeholder="Seleccionar Provincia">
                           </app-nice-select>
                           <!-- error msg start -->
                           <span *ngIf="state?.hasError('required') && (state?.touched ||formSubmitted)"
@@ -104,8 +104,8 @@
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Distrito </label>
-                          <app-nice-select [options]="countrySelectOptions" name="Select Country" [defaultCurrent]="0"
-                            (onChange)="changeHandler($event)" placeholder="Seleccionar Departamento">
+                          <app-nice-select [options]="distritoList" name="Seleccionar Distrito" [defaultCurrent]="0"
+                            (onChange)="changeHandler($event)" placeholder="Seleccionar Distrito">
                           </app-nice-select>
                           <!-- error msg start -->
                           <span *ngIf="state?.hasError('required') && (state?.touched ||formSubmitted)"
@@ -120,7 +120,7 @@
                       <div class="col-md-12">
                         <div class="tp-checkout-input">
                           <label>Dirección <span>*</span></label>
-                          <input type="email" placeholder="Email" name="email" formControlName="email">
+                          <input type="text" placeholder="Ingresa tu dirección exacta" name="address" formControlName="address">
                          
                         </div>
                       </div>
@@ -145,7 +145,7 @@
                     </li>
 
                     <!-- item list -->
-                    <li *ngFor="let item of cartService.getCartProducts()" class="tp-order-info-list-desc">
+                    <li *ngFor="let item of produts" class="tp-order-info-list-desc">
                       <p>{{item.name}} <span> x {{item.orderQuantity}}</span></p>
                       <span *ngIf="item.discount > 0; else noDiscount">
                         S/{{ (item.price - (item.price * item.discount / 100)).toFixed(2) }}
