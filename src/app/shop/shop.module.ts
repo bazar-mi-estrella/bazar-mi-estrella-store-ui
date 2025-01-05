@@ -61,6 +61,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { CompareComponent } from './pages/compare/compare.component';
 import { OrderComponent } from './pages/order/order.component';
+import { ProductCardComponent } from './product/electronics/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +112,8 @@ import { OrderComponent } from './pages/order/order.component';
     WishlistComponent,
     CompareComponent,
     OrderComponent,
+
+    ProductCardComponent
   ],
   imports: [
     CommonModule,
@@ -148,6 +151,8 @@ import { OrderComponent } from './pages/order/order.component';
     ProductListItemComponent,
     ShopAreaComponent,
     RelatedProductsComponent,
+
+    ProductCardComponent
   ]
 })
 export class ShopModule { }

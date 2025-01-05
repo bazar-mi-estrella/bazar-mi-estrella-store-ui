@@ -33,26 +33,11 @@ export class ProductService {
     this.activeImg = img;
   }
 
-  public getAllByfilter(params: ProductFilter): Observable<Page<IProduct>> {
 
 
-    let httpParams = Object.entries(params)
-      .filter(([_, value]) => value !== null && value !== undefined) // Filtra los valores definidos
-      .reduce((acc, [key, value]) => acc.append(key, value as string), new HttpParams()); // Crea HttpParams directamente
 
-    if (!params.size) httpParams = httpParams.append("size", 20)
-    if (!params.page) httpParams = httpParams.append("page", 0)
 
-    return this.httpClient.get<Page<IProduct>>(this.API.concat("/bandeja"), { params: httpParams })
-  }
 
-  // Get Products By id
-  public getProductById(id: string): Observable<IProduct | undefined> {
-    return this.httpClient.get<IProduct>(this.API.concat("/").concat(id)).pipe(map(product => {
-      this.handleImageActive(product.imgurl ?? "")
-      return product
-    }))
-  }
   
   // Get related Products
   public getRelatedProducts(productId: string, category: string): Observable<IProduct[]> {
@@ -184,4 +169,46 @@ export class ProductService {
       pages: pages
     };
   }
+
+  //****************************** METODOS PROPIOS *****************************************/
+
+  public getAllByfilter(params: ProductFilter): Observable<Page<IProduct>> {
+    let httpParams = Object.entries(params)
+      .filter(([_, value]) => value !== null && value !== undefined) // Filtra los valores definidos
+      .reduce((acc, [key, value]) => acc.append(key, value as string), new HttpParams()); // Crea HttpParams directamente
+    if (!params.size) httpParams = httpParams.append("size", 20)
+    if (!params.page) httpParams = httpParams.append("page", 0)
+
+    return this.httpClient.get<Page<IProduct>>(this.API.concat("/bandeja"), { params: httpParams })
+  }
+
+  // Get Products By id
+  public getProductById(id: string): Observable<IProduct | undefined> {
+    return this.httpClient.get<IProduct>(this.API.concat("/").concat(id)).pipe(map(product => {
+      this.handleImageActive(product.imgurl ?? "")
+      return product
+    }))
+  }
+
+  public getProductsTrending(): Observable<IProduct[]> {
+     return this.httpClient.get<IProduct[]>(this.API.concat("/trendings"))
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
