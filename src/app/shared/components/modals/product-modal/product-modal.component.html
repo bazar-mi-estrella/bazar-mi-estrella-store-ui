@@ -18,12 +18,11 @@
           <i class="fa-regular fa-xmark"></i>
         </button>
 
-        <!-- product details thumb start -->
+        <!-- product details thumb start, aqui se muestran las imagenes del producto -->
         <app-product-details-thumb [product]="utilsService.product" class="modal-thumb"></app-product-details-thumb>
         <!-- product details thumb end -->
 
-
-        <!-- product details wrapper -->
+        <!-- product details wrapper, aqui se muestran los datos del producto -->
         <app-product-details-wrapper [product]="utilsService.product" [isShowBottom]="false" class="modal-wrapper" />
         <!-- product details wrapper -->
       </div>

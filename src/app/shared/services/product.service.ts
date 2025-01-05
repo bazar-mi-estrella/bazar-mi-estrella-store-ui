@@ -29,7 +29,7 @@ export class ProductService {
 
   activeImg: string | undefined;
 
-  handleImageActive(img: string) {
+  handleImageActive(img: string | undefined) {
     this.activeImg = img;
   }
 

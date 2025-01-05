@@ -1,32 +1,27 @@
 <div class="tp-product-details-thumb-wrapper tp-tab d-sm-flex">
   <nav>
-    <div
-      class="nav nav-tabs flex-sm-column"
-      id="productDetailsNavThumb"
-      role="tablist"
-    >
-      <button
-        *ngFor="let item of product?.images; let i = index"
+    <div class="nav nav-tabs flex-sm-column" id="productDetailsNavThumb" role="tablist">
+      <button *ngFor="let item of product?.images; let i = index"
         [class.active]="item.urlimg === productService.activeImg"
-        (click)="productService.handleImageActive(item.urlimg)"
-        type="button"
-        class="nav-link"
-      >
+        (click)="productService.handleImageActive(item.urlimg)" type="button" class="nav-link">
         <img [src]="item.urlimg" alt="nav-img" style="background-color: #F4F5F7;" />
       </button>
     </div>
   </nav>
+
+
+  <!-- Aqui se muestra la imagen principal del producto -->
   <div class="tab-content m-img" id="productDetailsNavContent">
-    <div
-      class="tp-product-details-nav-main-thumb"
-      style="background-color: #f5f6f8"
-    >
-      <img [src]="productService.activeImg" alt="prd-image" />
+    <div class="tp-product-details-nav-main-thumb" style="background-color: #f5f6f8">
+      <img [src]="productService.activeImg" alt="prd-image" class="img-custom-size"  />
       <div *ngIf="product.videoId" class="tp-product-details-thumb-video">
-        <a (click)="utilsService.playVideo('B0WuqoXkJkY')" class="tp-product-details-thumb-video-btn cursor-pointer popup-video">
+        <a (click)="utilsService.playVideo('B0WuqoXkJkY')"
+          class="tp-product-details-thumb-video-btn cursor-pointer popup-video">
           <i class="fas fa-play"></i>
         </a>
       </div>
     </div>
   </div>
+
+
 </div>

@@ -78,7 +78,7 @@ export class UtilsService {
     this.isProductModalOpen = true;
     this.modalId = id;
     this.product = item;
-    this.productService.handleImageActive(item.img);
+    this.productService.handleImageActive(item.imgurl);
     this.cartService.initialOrderQuantity();
   }
 
