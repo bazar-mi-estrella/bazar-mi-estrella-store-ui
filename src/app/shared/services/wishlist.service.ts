@@ -25,10 +25,10 @@ export class WishlistService {
     const isAdded = state.wishlists.findIndex((p: IProduct) => p.id === payload.id);
     if (isAdded !== -1) {
       state.wishlists = state.wishlists.filter((p: IProduct) => p.id !== payload.id);
-      this.toastrService.error(`${payload.name} remove to wishlist`);
+      this.toastrService.error(`${payload.name} eliminado de la lista de deseos.`);
     } else {
       state.wishlists.push(payload);
-      this.toastrService.success(`${payload.name} added to wishlist`);
+      this.toastrService.success(`${payload.name} agregado a la lista de deseos.`);
     }
     localStorage.setItem("wishlist_products", JSON.stringify(state.wishlists));
   };

@@ -45,7 +45,7 @@
     </span>
   </div>
 
-<!-- 
+  <!-- 
   <div *ngIf="handleIsColorVariant(product)" class="tp-product-details-variation">
     <div class="tp-product-details-variation-item">
       <h4 class="tp-product-details-variation-title">Color:</h4>
@@ -67,8 +67,9 @@
       <h4 class="tp-product-details-variation-title">Color:</h4>
       <div class="tp-product-details-variation-list">
         <button *ngFor="let item of product.images; let i = index"
-          [class.active]="item.urlimg === productService.activeImg" (click)="productService.handleImageActive(item.urlimg)"
-          type="button" class="color tp-color-variation-btn" style="margin-right: 5px">
+          [class.active]="item.urlimg === productService.activeImg"
+          (click)="productService.handleImageActive(item.urlimg)" type="button" class="color tp-color-variation-btn"
+          style="margin-right: 5px">
           <span :data-bg-color="item.codecolor" [style.backgroundColor]="item.codecolor"></span>
           <!-- <span *ngIf="item.color && item.color.name" class="tp-color-variation-tooltip">
             {{ item.color.name }}

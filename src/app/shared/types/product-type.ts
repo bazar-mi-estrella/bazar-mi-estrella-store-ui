@@ -52,7 +52,6 @@ export interface IProduct {
   parent: string;
   children: string;
   price: number;
-  discount: number;
   quantity: number;
   brand: {
     name: string;
@@ -78,4 +77,8 @@ export interface IProduct {
   tags?: string[];
   videoId?: string;
   sizes?: string[];
+
+
+  dateofferend?:string;//Fecha fin de oferta
+  discount:number;//Descuento por la oferta
 }

@@ -194,6 +194,10 @@ export class ProductService {
      return this.httpClient.get<IProduct[]>(this.API.concat("/trendings"))
   }
 
+  public getProductsOffers(): Observable<IProduct[]> {
+    return this.httpClient.get<IProduct[]>(this.API.concat("/offers"))
+ }
+
 
 
 
