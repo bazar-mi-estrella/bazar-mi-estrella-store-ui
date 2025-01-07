@@ -11,13 +11,13 @@
         />
       </div>
       <div class="tp-contact-input-title">
-        <label for="name">Your Name</label>
+        <label for="name">Tu nombre:</label>
       </div>
       <span
         *ngIf="name?.hasError('required') && (name?.touched || formSubmitted)"
         class="text-danger"
       >
-        Name is required
+        Nombre es requerido
       </span>
     </div>
     <div class="tp-contact-input-box">
@@ -26,12 +26,12 @@
           name="email"
           id="email"
           type="email"
-          placeholder="shofy@mail.com"
+          placeholder="cixtechmart@gmail.com"
           formControlName="email"
         />
       </div>
       <div class="tp-contact-input-title">
-        <label for="email">Your Email</label>
+        <label for="email">Tu correo electrónico</label>
       </div>
       <span
         *ngIf="
@@ -41,7 +41,7 @@
         "
         class="text-danger"
       >
-        Email is required and must be a valid email address
+      El correo electrónico es obligatorio y debe ser una dirección de correo electrónico válida
       </span>
     </div>
     <div class="tp-contact-input-box">
@@ -50,18 +50,18 @@
           name="subject"
           id="subject"
           type="text"
-          placeholder="Write your subject"
+          placeholder="Escribe tu asunto"
           formControlName="subject"
         />
       </div>
       <div class="tp-contact-input-title">
-        <label for="subject">Subject</label>
+        <label for="subject">Asunto</label>
       </div>
       <span
         *ngIf="subject?.hasError('required') && (subject?.touched || formSubmitted)"
         class="text-danger"
       >
-        subject is required
+        Asunto es requerido
       </span>
     </div>
     <div class="tp-contact-input-box">
@@ -69,22 +69,24 @@
         <textarea
           id="message"
           name="message"
-          placeholder="Write your message here..."
+          placeholder="Escribe tu mensaje aqui..."
           formControlName="message"
         ></textarea>
       </div>
       <div class="tp-contact-input-title">
-        <label for="message">Your Message</label>
+        <label for="message">Tu mensaje</label>
       </div>
       <span
         *ngIf="message?.hasError('required') && (message?.touched || formSubmitted)"
         class="text-danger"
       >
-        Message is required
+        Mensaje es requerido
       </span>
     </div>
   </div>
-  <div class="tp-contact-suggetions mb-20">
+
+  <!-- check al final del formulario -->
+  <div class="tp-contact-suggetions mb-20" *ngIf="false">
     <div class="tp-contact-remeber">
       <input id="remeber" type="checkbox" />
       <label for="remeber">
@@ -92,7 +94,9 @@
       </label>
     </div>
   </div>
+
+
   <div class="tp-contact-btn">
-    <button type="submit">Send Message</button>
+    <button type="submit">Enviar mensaje</button>
   </div>
 </form>

@@ -1,9 +1,9 @@
 <div class="tp-header-top-menu d-flex align-items-center justify-content-end">
   <div class="tp-header-top-menu-item tp-header-lang">
-    <span (click)="handleActive('lang')" class="tp-header-lang-toggle" id="tp-header-lang-toggle">Ingles</span>
+    <span (click)="handleActive('lang')" class="tp-header-lang-toggle" id="tp-header-lang-toggle">Español</span>
     <ul [ngClass]="isActive === 'lang' ? 'tp-lang-list-open' : ''">
       <li>
-        <a href="#">Español</a>
+        <a href="#">Ingles</a>
       </li>
       <li>
         <a href="#">Rusia</a>
@@ -14,7 +14,7 @@
     </ul>
   </div>
   <div class="tp-header-top-menu-item tp-header-currency">
-    <span (click)="handleActive('currency')" class="tp-header-currency-toggle" id="tp-header-currency-toggle">USD</span>
+    <span (click)="handleActive('currency')" class="tp-header-currency-toggle" id="tp-header-currency-toggle">PEN</span>
     <ul [ngClass]="isActive === 'currency' ? 'tp-currency-list-open' : ''">
       <li>
         <a href="#">EUR</a>

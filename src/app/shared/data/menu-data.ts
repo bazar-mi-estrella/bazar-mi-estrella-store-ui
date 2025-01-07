@@ -1,38 +1,38 @@
 import { IMenuItem, IMobileType } from "@/types/menu-d-type";
 
 export const menu_data:IMenuItem[] = [
-  {
-    id:1,
-    link:'/home/electronic',
-    title:'Destacado',
-    mega_menu:true,
-    home_pages:[
-      {
-        id:1,
-        title:'Electronics',
-        img:'/assets/img/menu/menu-home-1.jpg',
-        link:'/home/electronic'
-      },
-      {
-        id:2,
-        title:'Fashion',
-        img:'/assets/img/menu/menu-home-2.jpg',
-        link:'/home/fashion'
-      },
-      {
-        id:3,
-        title:'Beauty',
-        img:'/assets/img/menu/menu-home-3.jpg',
-        link:'/home/beauty'
-      },
-      {
-        id:4,
-        title:'Jewelry',
-        img:'/assets/img/menu/menu-home-4.jpg',
-        link:'/home/jewelry'
-      },
-    ]
-  },
+  // {
+  //   id:1,
+  //   link:'/home/electronic',
+  //   title:'Destacado',
+  //   mega_menu:true,
+  //   home_pages:[
+  //     {
+  //       id:1,
+  //       title:'Electronics',
+  //       img:'/assets/img/menu/menu-home-1.jpg',
+  //       link:'/home/electronic'
+  //     },
+  //     {
+  //       id:2,
+  //       title:'Fashion',
+  //       img:'/assets/img/menu/menu-home-2.jpg',
+  //       link:'/home/fashion'
+  //     },
+  //     {
+  //       id:3,
+  //       title:'Beauty',
+  //       img:'/assets/img/menu/menu-home-3.jpg',
+  //       link:'/home/beauty'
+  //     },
+  //     {
+  //       id:4,
+  //       title:'Jewelry',
+  //       img:'/assets/img/menu/menu-home-4.jpg',
+  //       link:'/home/jewelry'
+  //     },
+  //   ]
+  // },
  
   {
     id:3,
@@ -93,11 +93,11 @@ export const menu_data:IMenuItem[] = [
       },
     ]
   },
-  {
-    id:4,
-    link:'/pages/coupons',
-    title:'Cupones',
-  },
+  // {
+  //   id:4,
+  //   link:'/pages/coupons',
+  //   title:'Cupones',
+  // },
   {
     id:5,
     link:'/pages/blog',
