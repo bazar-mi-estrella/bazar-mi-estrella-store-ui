@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
   styleUrls: ['./status-filter.component.scss'],
 })
 export class StatusFilterComponent {
-  status: string[] = ['On sale', 'In Stock','Out of stock'];
+  status: string[] = ['En venta', 'En stock', 'Agotado'];
   activeQuery: string = '';
 
   constructor(

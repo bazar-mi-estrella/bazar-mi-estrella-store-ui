@@ -6,12 +6,12 @@
           name="name"
           id="name"
           type="text"
-          placeholder="Shahnewaz Sakil"
+          placeholder="Escribe tu nombre"
           formControlName="name"
         />
       </div>
       <div class="tp-contact-input-title">
-        <label for="name">Tu nombre:</label>
+        <label for="name">Tu nombre</label>
       </div>
       <span
         *ngIf="name?.hasError('required') && (name?.touched || formSubmitted)"
@@ -41,7 +41,8 @@
         "
         class="text-danger"
       >
-      El correo electrónico es obligatorio y debe ser una dirección de correo electrónico válida
+        El correo electrónico es obligatorio y debe ser una dirección de correo
+        electrónico válida
       </span>
     </div>
     <div class="tp-contact-input-box">
@@ -58,7 +59,9 @@
         <label for="subject">Asunto</label>
       </div>
       <span
-        *ngIf="subject?.hasError('required') && (subject?.touched || formSubmitted)"
+        *ngIf="
+          subject?.hasError('required') && (subject?.touched || formSubmitted)
+        "
         class="text-danger"
       >
         Asunto es requerido
@@ -77,7 +80,9 @@
         <label for="message">Tu mensaje</label>
       </div>
       <span
-        *ngIf="message?.hasError('required') && (message?.touched || formSubmitted)"
+        *ngIf="
+          message?.hasError('required') && (message?.touched || formSubmitted)
+        "
         class="text-danger"
       >
         Mensaje es requerido
@@ -90,11 +95,11 @@
     <div class="tp-contact-remeber">
       <input id="remeber" type="checkbox" />
       <label for="remeber">
-        Save my name, email, and website in this browser for the next time I comment.
+        Save my name, email, and website in this browser for the next time I
+        comment.
       </label>
     </div>
   </div>
-
 
   <div class="tp-contact-btn">
     <button type="submit">Enviar mensaje</button>
