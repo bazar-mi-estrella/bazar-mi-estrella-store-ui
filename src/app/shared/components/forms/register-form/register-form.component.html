@@ -5,10 +5,10 @@
         <input id="name" type="text" placeholder="Shahnewaz Sakil" formControlName="name">
       </div>
       <div class="tp-login-input-title">
-        <label for="name">Your Name</label>
+        <label for="name">Su nombre</label>
       </div>
       <span *ngIf="name?.hasError('required') && (name?.touched || formSubmitted)" class="text-danger">
-        Name is required
+        El nombre es obligatorio
       </span>
     </div>
 
@@ -17,10 +17,10 @@
         <input id="email" type="email" placeholder="shofy@mail.com" formControlName="email">
       </div>
       <div class="tp-login-input-title">
-        <label for="email">Your Email</label>
+        <label for="email">Tu correo electrónico</label>
       </div>
       <span *ngIf="(email?.hasError('required') && email?.touched) || (email?.hasError('email') && email?.dirty) || (formSubmitted && !email?.value)" class="text-danger">
-        Email is required and must be a valid email address
+        El correo electrónico es obligatorio y debe ser una dirección de correo electrónico válida.
       </span>
     </div>
 
@@ -65,21 +65,21 @@
           </span>
         </div>
         <div class="tp-login-input-title">
-          <label for="tp_password">Password</label>
+          <label for="tp_password">Contraseña</label>
         </div>
       </div>
       <span *ngIf="(password?.hasError('required') && password?.touched) || (password?.errors?.['minlength'] && password?.dirty) || (formSubmitted && !password?.value)" class="text-danger">
-        Password is required and must be a 6 character
+        La contraseña es obligatoria y debe tener 6 caracteres.
       </span>
     </div>
   </div>
   <div class="tp-login-suggetions d-sm-flex align-items-center justify-content-between mb-20">
     <div class="tp-login-remeber">
       <input id="remeber" type="checkbox">
-      <label for="remeber">I accept the terms of the Service & <a href="#">Privacy Policy</a>.</label>
+      <label for="remeber">Acepto los términos del Servicio y la <a href="#">Política de Privacidad </a>.</label>
     </div>
   </div>
   <div class="tp-login-bottom">
-    <button type="submit" class="tp-login-btn w-100">Sign Up</button>
+    <button type="submit" class="tp-login-btn w-100">Inscribirse</button>
   </div>
 </form>

@@ -24,7 +24,7 @@ export class SearchComponent {
   }
   // select option
   public selectOptions = [
-    { value: 'ascending', text: 'Default Sorting' },
+    { value: 'ascending', text: 'Ordenación predeterminada' },
     { value: 'low-to-high', text: 'Low to Hight' },
     { value: 'high-to-low', text: 'High to Low' },
     { value: 'new-added', text: 'New Added' },
@@ -55,7 +55,7 @@ export class SearchComponent {
                 return 1;
               }
               return 0;
-            })
+            });
             break;
 
           case 'low-to-high':

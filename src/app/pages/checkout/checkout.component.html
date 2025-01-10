@@ -32,11 +32,11 @@
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Nombre <span>*</span></label>
-                          <input type="text" placeholder="First Name" name="firstname" formControlName="firstname">
+                          <input type="text" placeholder="Tu nombre" name="firstname" formControlName="firstname">
                           <!-- error msg start -->
                           <span *ngIf="firstname?.hasError('required') && (firstname?.touched ||formSubmitted)"
                             class="text-danger">
-                            First Name is required
+                            El nombre es obligatorio
                           </span>
                           <!-- error msg end -->
                         </div>
@@ -44,11 +44,11 @@
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Apellido <span>*</span></label>
-                          <input type="text" placeholder="Last Name" name="lastname" formControlName="lastname">
+                          <input type="text" placeholder="Tu apellido" name="lastname" formControlName="lastname">
                           <!-- error msg start -->
                           <span *ngIf="lastname?.hasError('required') && (lastname?.touched ||formSubmitted)"
                             class="text-danger">
-                            Last Name is required
+                            El apellido es obligatorio
                           </span>
                           <!-- error msg end -->
                         </div>
@@ -59,11 +59,11 @@
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Celular <span>*</span></label>
-                          <input type="text" placeholder="Phone" name="phone" formControlName="phone">
+                          <input type="text" placeholder="Tu telefono" name="phone" formControlName="phone">
                           <!-- error msg start -->
                           <span *ngIf="phone?.hasError('required') && (phone?.touched ||formSubmitted)"
                             class="text-danger">
-                            Phone is required
+                            Se requiere teléfono
                           </span>
                           <!-- error msg end -->
                         </div>
@@ -163,21 +163,21 @@
 
                     <!-- shipping -->
                     <li class="tp-order-info-list-shipping">
-                      <span>Shipping</span>
+                      <span>Envío</span>
                       <div class="tp-order-info-list-shipping-item d-flex flex-column align-items-end">
                         <span>
                           <input id="flat_rate" type="radio" name="shipping">
-                          <label (click)="handleShippingCost(20)" for="flat_rate">Flat rate:
+                          <label (click)="handleShippingCost(20)" for="flat_rate">Tarifa plana:
                             <span>S/ 20.00</span></label>
                         </span>
                         <span>
                           <input id="local_pickup" type="radio" name="shipping">
-                          <label (click)="handleShippingCost(25)" for="local_pickup">Local pickup:
+                          <label (click)="handleShippingCost(25)" for="local_pickup">Recogida local:
                             <span>S/ 25.00</span></label>
                         </span>
                         <span>
                           <input id="free_shipping" type="radio" name="shipping">
-                          <label (click)="handleShippingCost('free')" for="free_shipping">Free shipping</label>
+                          <label (click)="handleShippingCost('free')" for="free_shipping">Envío gratis</label>
                         </span>
                       </div>
                     </li>
@@ -195,7 +195,7 @@
                   <div class="tp-checkout-payment-item">
                     <input type="radio" id="back_transfer" name="payment">
                     <label (click)="handlePayment('bank')" for="back_transfer"
-                      data-bs-toggle="direct-bank-transfer">Direct Bank Transfer</label>
+                      data-bs-toggle="direct-bank-transfer">Transferencia bancaria directa</label>
                     <div *ngIf="payment_name === 'bank'" class="tp-checkout-payment-desc direct-bank-transfer">
                       <p>Make your payment directly into our bank account. Please use your Order ID as the payment
                         reference. Your order will not be shipped until the funds have cleared in our account.</p>
@@ -203,7 +203,7 @@
                   </div>
                   <div class="tp-checkout-payment-item">
                     <input type="radio" id="cheque_payment" name="payment">
-                    <label (click)="handlePayment('cheque')" for="cheque_payment">Cheque Payment</label>
+                    <label (click)="handlePayment('cheque')" for="cheque_payment">Pago con cheque</label>
                     <div *ngIf="payment_name === 'cheque'" class="tp-checkout-payment-desc cheque-payment">
                       <p>Make your payment directly into our bank account. Please use your Order ID as the payment
                         reference. Your order will not be shipped until the funds have cleared in our account.</p>
