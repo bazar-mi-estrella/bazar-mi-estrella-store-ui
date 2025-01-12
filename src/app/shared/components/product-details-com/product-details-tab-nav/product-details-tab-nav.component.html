@@ -5,7 +5,7 @@
 
        <button (click)="handleActiveMarker($event)" class="nav-link active" id="nav-addInfo-tab" #navActive data-bs-toggle="tab" data-bs-target="#nav-addInfo" type="button" role="tab" aria-controls="nav-addInfo" aria-selected="false">Información adicional</button>
 
-       <button (click)="handleActiveMarker($event)" class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reseñas ({{product.reviews?.length}})</button>
+       <button (click)="handleActiveMarker($event)" *ngIf="false" class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reseñas ({{product.reviews?.length}})</button>
 
        <span #productTabMarker id="productTabMarker" class="tp-product-details-tab-line"></span>
      </div>

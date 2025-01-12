@@ -1,4 +1,5 @@
 import { Client } from "@/types/client.interface";
+import { ResponseDTO } from "@/types/responseDTO";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
@@ -13,8 +14,8 @@ export class ClientService {
 
     constructor(private readonly httpClient: HttpClient) { }
 
-    public save(data: Client): Observable<Client> {
-        return this.httpClient.post<Client>(this.API, data)
+    public save(data: Client): Observable<ResponseDTO<Client>> {
+        return this.httpClient.post<ResponseDTO<Client>>(this.API, data)
     }
 
     public findByEmail(email: string): Observable<Client> {

@@ -43,8 +43,8 @@ export class SocialLoginComponent {
       photo: response.user.photoURL ?? ""
     }
     this.clientService.save(data).subscribe(res => {
-      console.log(res);
-      sessionStorage.setItem("client_id", res.id)
+      console.log("data del client, ",res);
+      sessionStorage.setItem("client_id", res.data.id)
     })
   }
 }

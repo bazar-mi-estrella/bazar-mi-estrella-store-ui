@@ -148,6 +148,7 @@ export class CheckoutComponent {
 
 
   initForm(): void {
+    console.log('client_id', sessionStorage.getItem('client_id'));
     this.checkoutForm = new FormGroup({
       firstname: new FormControl(null, Validators.required),
       lastname: new FormControl(null, Validators.required),
