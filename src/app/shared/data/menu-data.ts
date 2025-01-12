@@ -128,7 +128,7 @@ export const mobile_menu: IMobileType[] = [
   {
     id: 1,
     homes: true,
-    title: 'Home',
+    title: 'Inicio',
     link: '/home/electronic',
     home_pages: [
       {

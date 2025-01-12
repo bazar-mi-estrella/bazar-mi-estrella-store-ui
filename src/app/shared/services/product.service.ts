@@ -12,11 +12,10 @@ import { ProductFilter } from '@/types/produc-filter.interface';
 const all_products = product_data
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
-  API = environment.API.concat("/product")
+  API = environment.API.concat('/product');
 
   public filter_offcanvas: boolean = false;
 
@@ -25,7 +24,7 @@ export class ProductService {
     return of(product_data);
   }
 
-  constructor(private readonly httpClient: HttpClient) { }
+  constructor(private readonly httpClient: HttpClient) {}
 
   activeImg: string | undefined;
 
@@ -33,32 +32,31 @@ export class ProductService {
     this.activeImg = img;
   }
 
-
-
-
-
-
-  
   // Get related Products
-  public getRelatedProducts(productId: string, category: string): Observable<IProduct[]> {
-    return this.products.pipe(map(items => {
-      return items.filter(
-        (p) =>
-          p.category.name.toLowerCase() === category.toLowerCase() &&
-          p.id !== productId
-      )
-    }));
+  public getRelatedProducts(
+    productId: string,
+    category: string
+  ): Observable<IProduct[]> {
+    return this.products.pipe(
+      map((items) => {
+        return items.filter(
+          (p) =>
+            p.category.name.toLowerCase() === category.toLowerCase() &&
+            p.id !== productId
+        );
+      })
+    );
   }
   // Get max price
   public get maxPrice(): number {
     const max_price = all_products.reduce((max, product) => {
       return product.price > max ? product.price : max;
     }, 0);
-    return max_price
+    return max_price;
   }
   // shop filterSelect
   public filterSelect = [
-    { value: 'asc', text: 'Default Sorting' },
+    { value: 'asc', text: 'Ordenación predeterminada' },
     { value: 'low', text: 'Low to Hight' },
     { value: 'high', text: 'High to Low' },
     { value: 'on-sale', text: 'On Sale' },
@@ -66,26 +64,26 @@ export class ProductService {
 
   // Get Product Filter
   public filterProducts(filter: any = []): Observable<IProduct[]> {
-    console.log("filters", filter)
-    return this.products.pipe(map(product =>
-      product.filter((item: IProduct) => {
-        if (!filter.length) return true
-        const Tags = filter.some((prev: any) => {
-          if (item.tags) {
-            if (item.tags.includes(prev)) {
-              return prev;
+    console.log('filters', filter);
+    return this.products.pipe(
+      map((product) =>
+        product.filter((item: IProduct) => {
+          if (!filter.length) return true;
+          const Tags = filter.some((prev: any) => {
+            if (item.tags) {
+              if (item.tags.includes(prev)) {
+                return prev;
+              }
             }
-          }
-        });
-        return Tags
-      })
-    ));
+          });
+          return Tags;
+        })
+      )
+    );
   }
-
 
   // Sorting Filter
   public sortProducts(products: IProduct[], payload: string): any {
-
     if (payload === 'asc') {
       return products.sort((a, b) => {
         if (a.id < b.id) {
@@ -94,9 +92,9 @@ export class ProductService {
           return 1;
         }
         return 0;
-      })
+      });
     } else if (payload === 'on-sale') {
-      return products.filter((p) => p.discount > 0)
+      return products.filter((p) => p.discount > 0);
     } else if (payload === 'low') {
       return products.sort((a, b) => {
         if (a.price < b.price) {
@@ -105,7 +103,7 @@ export class ProductService {
           return 1;
         }
         return 0;
-      })
+      });
     } else if (payload === 'high') {
       return products.sort((a, b) => {
         if (a.price > b.price) {
@@ -114,7 +112,7 @@ export class ProductService {
           return 1;
         }
         return 0;
-      })
+      });
     }
   }
 
@@ -123,7 +121,11 @@ export class ProductService {
     ------------- Product Pagination  -----------
     ---------------------------------------------
   */
-  public getPager(totalItems: number, currentPage: number = 1, pageSize: number = 9) {
+  public getPager(
+    totalItems: number,
+    currentPage: number = 1,
+    pageSize: number = 9
+  ) {
     // calculate total pages
     let totalPages = Math.ceil(totalItems / pageSize);
 
@@ -154,7 +156,9 @@ export class ProductService {
     let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
 
     // create an array of pages to ng-repeat in the pager control
-    let pages = Array.from(Array((endPage + 1) - startPage).keys()).map(i => startPage + i);
+    let pages = Array.from(Array(endPage + 1 - startPage).keys()).map(
+      (i) => startPage + i
+    );
 
     // return object with all pager properties required by the view
     return {
@@ -166,7 +170,7 @@ export class ProductService {
       endPage: endPage,
       startIndex: startIndex,
       endIndex: endIndex,
-      pages: pages
+      pages: pages,
     };
   }
 
@@ -175,44 +179,33 @@ export class ProductService {
   public getAllByfilter(params: ProductFilter): Observable<Page<IProduct>> {
     let httpParams = Object.entries(params)
       .filter(([_, value]) => value !== null && value !== undefined) // Filtra los valores definidos
-      .reduce((acc, [key, value]) => acc.append(key, value as string), new HttpParams()); // Crea HttpParams directamente
-    if (!params.size) httpParams = httpParams.append("size", 20)
-    if (!params.page) httpParams = httpParams.append("page", 0)
+      .reduce(
+        (acc, [key, value]) => acc.append(key, value as string),
+        new HttpParams()
+      ); // Crea HttpParams directamente
+    if (!params.size) httpParams = httpParams.append('size', 20);
+    if (!params.page) httpParams = httpParams.append('page', 0);
 
-    return this.httpClient.get<Page<IProduct>>(this.API.concat("/bandeja"), { params: httpParams })
+    return this.httpClient.get<Page<IProduct>>(this.API.concat('/bandeja'), {
+      params: httpParams,
+    });
   }
 
   // Get Products By id
   public getProductById(id: string): Observable<IProduct | undefined> {
-    return this.httpClient.get<IProduct>(this.API.concat("/").concat(id)).pipe(map(product => {
-      this.handleImageActive(product.imgurl ?? "")
-      return product
-    }))
+    return this.httpClient.get<IProduct>(this.API.concat('/').concat(id)).pipe(
+      map((product) => {
+        this.handleImageActive(product.imgurl ?? '');
+        return product;
+      })
+    );
   }
 
   public getProductsTrending(): Observable<IProduct[]> {
-     return this.httpClient.get<IProduct[]>(this.API.concat("/trendings"))
+    return this.httpClient.get<IProduct[]>(this.API.concat('/trendings'));
   }
 
   public getProductsOffers(): Observable<IProduct[]> {
-    return this.httpClient.get<IProduct[]>(this.API.concat("/offers"))
- }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return this.httpClient.get<IProduct[]>(this.API.concat('/offers'));
+  }
 }

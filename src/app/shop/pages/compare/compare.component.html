@@ -3,15 +3,15 @@
 <!-- header end -->
 
 <!-- breadcrumb area start -->
-<app-breadcrumb-one title="Compare" subtitle="Compare"></app-breadcrumb-one>
+<app-breadcrumb-one title="Comparar" subtitle="Comparar"></app-breadcrumb-one>
 <!-- breadcrumb area end -->
 
 <!-- compare area start -->
 <section class="tp-compare-area pb-120">
   <div class="container">
     <div *ngIf="compareService.getCompareProducts().length === 0" class="text-center pt-50">
-      <h3>No Compare Items Found</h3>
-      <a routerLink="/shop" class="tp-cart-checkout-btn mt-20">Continue Shopping</a>
+      <h3>No se encontraron elementos para comparar</h3>
+      <a routerLink="/shop" class="tp-cart-checkout-btn mt-20">Seguir comprando</a>
     </div>
     <div *ngIf="compareService.getCompareProducts().length > 0" class="row">
       <div class="col-xl-12">
