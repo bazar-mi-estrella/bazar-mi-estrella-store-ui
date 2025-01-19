@@ -2,7 +2,7 @@ import { Client } from "@/types/client.interface";
 import { OrderDTO } from "@/types/order-interface";
 import { OrderPostDTO } from "@/types/order-post.interface";
 import { ResponseDTO } from "@/types/responseDTO";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -25,9 +25,17 @@ export class OrderService {
         return this.httpClient.get<OrderDTO>(this.API.concat("/").concat(idOrder))
     }
 
-    public createSesionStripe(): Observable<ResponseDTO<string>> {
-        return this.httpClient.post<ResponseDTO<string>>(this.API_STRIPE.concat("/create-checkout-session"),{})
+    public createSesionStripe(idorden: string): Observable<ResponseDTO<string>> {
+        return this.httpClient.post<ResponseDTO<string>>(this.API_STRIPE.concat(`/create-checkout-session?idOrden=${idorden}`), {})
     }
 
-  
+    public getSesionStripe(idSesion: string,idOrden:string): Observable<any> {
+        let params: HttpParams = new HttpParams(); // Inicializamos el HttpParams
+        params = params.append('sessionId', idSesion);
+        params = params.append('idOrden', idOrden);
+        params = params.append('update', true);
+        return this.httpClient.get<any>(this.API_STRIPE.concat(`/session?${params}`))
+    }
+
+
 }

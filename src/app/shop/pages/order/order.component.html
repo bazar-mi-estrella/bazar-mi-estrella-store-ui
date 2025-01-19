@@ -113,10 +113,9 @@
             </div>
           </div>
           <!-- apartado de texto para pagar orden-->
-          <div class="tp-order-info-wrapper">
-            <h5 *ngIf="!isPagado">Su pago aún esta pendiente de realizar.</h5>
-            <button type="button" *ngIf="!isPagado" class="tp-checkout-btn w-100" (click)="payOrder()">Pagar orden</button>
-            <h5 *ngIf="isPagado">El pedido ya fue pagado.</h5>
+          <div class="tp-order-info-wrapper" *ngIf="!isPagado">
+            <h5>Su pago aún esta pendiente de realizar.</h5>
+            <button type="button" class="tp-checkout-btn w-100" (click)="payOrder()">Pagar orden</button>
           </div>
         </div>
 

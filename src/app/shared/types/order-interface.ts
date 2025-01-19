@@ -15,6 +15,7 @@ export interface OrderDTO {
     code: string;
     stateId: string; // UUID como string
     stateName:string;
+    statepagoId:string;
     datepreparation:string;
     dateenvio:string;
     datedelivery:string;

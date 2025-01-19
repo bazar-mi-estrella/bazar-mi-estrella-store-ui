@@ -12,6 +12,7 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { NgxStripeModule } from 'ngx-stripe';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NgxStripeModule } from 'ngx-stripe';
       enableHtml: true,
       positionClass: 'toast-top-center',
     }),
+    NgxSkeletonLoaderModule // Importa aquí el módulo
   ],
   exports: [
     ShopComponent,

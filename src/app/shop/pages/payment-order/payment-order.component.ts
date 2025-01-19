@@ -53,7 +53,7 @@ export class PaymentOrderComponent implements OnInit {
   
     try {
       // Llamar al backend de Spring Boot para crear la sesión de Stripe Checkout
-      const response = await this.orderService.createSesionStripe().toPromise();
+      const response = await this.orderService.createSesionStripe('').toPromise();
   
      // Extraer el sessionId del objeto recibido
      const sessionId = response?.data ?? '';//Lo hago asi pq angular interpreta que puede venir null, pero siempre va a venir un string
