@@ -1,4 +1,7 @@
 import { Client } from "@/types/client.interface";
+import { OrderDTO } from "@/types/order-interface";
+import { OrderPostDTO } from "@/types/order-post.interface";
+import { ResponseDTO } from "@/types/responseDTO";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
@@ -13,11 +16,13 @@ export class OrderService {
 
     constructor(private readonly httpClient: HttpClient) { }
 
-    public save(data: Client): Observable<Client> {
-        return this.httpClient.post<Client>(this.API, data)
+    public save(data: OrderPostDTO): Observable<ResponseDTO<OrderDTO>> {
+        return this.httpClient.post<ResponseDTO<OrderDTO>>(this.API, data)
     }
 
-    public findByEmail(email: string): Observable<Client> {
-        return this.httpClient.get<Client>(this.API.concat("/email"), { params: { email } })
+    public findById(idOrder: string): Observable<OrderDTO> {
+        return this.httpClient.get<OrderDTO>(this.API.concat("/").concat(idOrder))
     }
+
+  
 }

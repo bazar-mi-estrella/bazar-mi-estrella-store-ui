@@ -34,7 +34,7 @@ export class CartService {
         orderQuantity: 1,
       };
       state.cart_products.push(newItem);
-      this.toastrService.success(`${payload.name} added to cart`);
+      this.toastrService.success(`${payload.name} añadido al carrito.`);
     } else {
       state.cart_products.map((item: IProduct) => {
         if (item.id === payload.id) {
@@ -44,9 +44,9 @@ export class CartService {
                 this.orderQuantity !== 1
                   ? this.orderQuantity + item.orderQuantity
                   : item.orderQuantity + 1;
-              this.toastrService.success(`${this.orderQuantity} ${item.name} added to cart`);
+              this.toastrService.success(`${this.orderQuantity} ${item.name} añadido al carrito.`);
             } else {
-              this.toastrService.success(`No more quantity available for this product!`);
+              this.toastrService.success(`No hay más cantidad disponible para este producto!`);
               this.orderQuantity = 1;
             }
           }

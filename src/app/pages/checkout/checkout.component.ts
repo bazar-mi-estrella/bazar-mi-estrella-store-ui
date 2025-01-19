@@ -82,8 +82,6 @@ export class CheckoutComponent {
   ];
 
   changeHandlerDepartamento(selectedOption: { id: string; name: string }) {
-    console.log('Selected option:', selectedOption);
-
     // Update the 'country' form control with the selected option's value
     this.checkoutForm.patchValue({
       departamentoId: selectedOption.id
@@ -98,7 +96,6 @@ export class CheckoutComponent {
   }
 
   changeHandlerProvincia(selectedOption: { id: string; name: string }) {
-    console.log('Selected option:', selectedOption);
 
     // Update the 'country' form control with the selected option's value
     this.checkoutForm.patchValue({
@@ -114,7 +111,6 @@ export class CheckoutComponent {
   }
 
   changeHandler(selectedOption: { id: string; name: string }) {
-    console.log('Selected option:', selectedOption);
 
     // Update the 'country' form control with the selected option's value
     this.checkoutForm.patchValue({
@@ -126,7 +122,6 @@ export class CheckoutComponent {
 
 
   handleCouponSubmit() {
-    console.log(this.couponCode);
     // Add coupon code handling logic here
     if (this.couponCode) {
       // logic here
@@ -169,31 +164,28 @@ export class CheckoutComponent {
     if (this.checkoutForm.valid) {
       this.listdetails?.setValue(this.produts.map(x => this.formatProductsSave(x)))
       this.saveOrder()
-      console.log('checkout-form-value', this.checkoutForm);
-      this.toastrService.success(`Order successfully`);
+      this.toastrService.success(`Pedido realizado correctamente`);
 
       // Reset the form
       this.checkoutForm.reset();
       this.formSubmitted = false; // Reset formSubmitted to false
     }
-    console.log('checkout-form', this.checkoutForm);
   }
 
 
   saveOrder(): void {
     this.orderService.save(this.checkoutForm.value).subscribe(data => {
-      this.router.navigate(["/shop/order"])
+      this.router.navigate(["/shop/order",{idOrder:data.data.id}])
     })
   }
 
 
   formatProductsSave(product: IProduct): OrderDetailPost {
-    console.log("product", product)
     return {
       unitprice: product.price,
       productId: product.id,
       quantity: product.orderQuantity ?? 0,
-    }
+    } as OrderDetailPost;
 
   }
 
