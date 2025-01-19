@@ -13,6 +13,7 @@ import { environment } from "src/environments/environment";
 export class OrderService {
 
     API = environment.API.concat("/order")
+    API_STRIPE = environment.API.concat("/stripe")
 
     constructor(private readonly httpClient: HttpClient) { }
 
@@ -22,6 +23,10 @@ export class OrderService {
 
     public findById(idOrder: string): Observable<OrderDTO> {
         return this.httpClient.get<OrderDTO>(this.API.concat("/").concat(idOrder))
+    }
+
+    public createSesionStripe(): Observable<ResponseDTO<string>> {
+        return this.httpClient.post<ResponseDTO<string>>(this.API_STRIPE.concat("/create-checkout-session"),{})
     }
 
   

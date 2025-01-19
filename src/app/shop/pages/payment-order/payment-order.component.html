@@ -1,0 +1,23 @@
+<!-- header start -->
+<app-header-two [style_2]="true"></app-header-two>
+<!-- header end -->
+
+<!-- breadcrumb area start -->
+<app-breadcrumb-one title="Seguimiento de su pedido" subtitle="Seguimiento de su pedido"></app-breadcrumb-one>
+<!-- breadcrumb area end -->
+
+<!-- Esto es lo que se debe modificar en si -->
+<section class="tp-order-area pb-160">
+
+    <div class="tp-order-info-wrapper">
+        <h1>Pago con Stripe</h1>
+        <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+        <button type="button" class="tp-checkout-btn w-100"   (click)="payOrder()">Pagar</button>
+    </div>
+
+</section>
+<!-- order area end -->
+
+<!-- footer start -->
+<app-footer-one [primary_style]="true"></app-footer-one>
+<!-- footer end -->

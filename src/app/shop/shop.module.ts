@@ -62,6 +62,9 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { CompareComponent } from './pages/compare/compare.component';
 import { OrderComponent } from './pages/order/order.component';
 import { ProductCardComponent } from './product/electronics/product-card/product-card.component';
+import { PaymentOrderComponent } from './pages/payment-order/payment-order.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -112,7 +115,7 @@ import { ProductCardComponent } from './product/electronics/product-card/product
     WishlistComponent,
     CompareComponent,
     OrderComponent,
-
+    PaymentOrderComponent,
     ProductCardComponent
   ],
   imports: [
@@ -121,6 +124,7 @@ import { ProductCardComponent } from './product/electronics/product-card/product
     NgxSliderModule,
     SharedModule,
     FormsModule,
+    NgxStripeModule.forRoot(environment.CLAVE_STRIPE) // Reemplaza con tu clave pública
   ],
   exports:[
     BeautyAllProductsComponent,

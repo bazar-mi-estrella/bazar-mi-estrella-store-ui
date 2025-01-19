@@ -33,6 +33,7 @@ export class OrderComponent implements OnInit {
 
   payOrder(): void {
     console.log('dataOrder >>', this.dataOrder);
+    this.router.navigate(['/shop/payment-order', {idOrder:this.idOrder}]);
   }
 
 

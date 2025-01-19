@@ -20,6 +20,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { CompareComponent } from './pages/compare/compare.component';
 import { OrderComponent } from './pages/order/order.component';
+import { PaymentOrderComponent } from './pages/payment-order/payment-order.component';
 
 
 
@@ -123,6 +124,11 @@ const routes: Routes = [
     path:'order',
     component:OrderComponent,
     title:'Shop Order Page'
+  },
+  {
+    path:'payment-order',
+    component:PaymentOrderComponent,
+    title:'Payment Order Page'
   },
 ];
 
