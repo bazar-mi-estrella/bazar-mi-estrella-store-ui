@@ -11,9 +11,15 @@
   <div class="container">
     <div class="tp-order-inner">
       <div class="row gx-0">
+
+
         <div class="col-lg-6">
           <div class="tp-order-details" data-bg-color="#4F3D97" style="background-color: rgb(79, 61, 151)">
-            <div class="tp-order-details-top text-center mb-70">
+            <!-- Mostrar el loader mientras carga -->
+            <ngx-skeleton-loader *ngIf="isLoading" count="8"
+              [theme]="{ height: '30px', 'margin-bottom': '15px', 'background-color': '#66589b' }"></ngx-skeleton-loader>
+
+            <div class="tp-order-details-top text-center mb-70" *ngIf="!isLoading">
               <div class="tp-order-details-icon">
                 <span>
                   <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +45,7 @@
                 </p>
               </div>
             </div>
-            <div class="tp-order-details-item-wrapper">
+            <div class="tp-order-details-item-wrapper" *ngIf="!isLoading">
               <div class="row">
                 <div class="col-sm-6">
                   <div class="tp-order-details-item">
@@ -67,12 +73,21 @@
                 </div>
               </div>
             </div>
+
+
+
           </div>
         </div>
 
         <!-- apartado de detalles del pedido -->
         <div class="col-lg-6">
-          <div class="tp-order-info-wrapper">
+
+
+          <!-- Mostrar el loader mientras carga -->
+          <ngx-skeleton-loader *ngIf="isLoading" count="10"
+            [theme]="{ height: '30px', 'margin-bottom': '15px', 'background-color': '#f4f4f4' }"></ngx-skeleton-loader>
+
+          <div class="tp-order-info-wrapper" *ngIf="!isLoading">
             <h4 class="tp-order-info-title">Detalles del pedido</h4>
 
             <div class="tp-order-info-list">
@@ -113,7 +128,7 @@
             </div>
           </div>
           <!-- apartado de texto para pagar orden-->
-          <div class="tp-order-info-wrapper" *ngIf="!isPagado">
+          <div class="tp-order-info-wrapper" *ngIf="!isPagado && !isLoading">
             <h5>Su pago aún esta pendiente de realizar.</h5>
             <button type="button" class="tp-checkout-btn w-100" (click)="payOrder()">Pagar orden</button>
           </div>

@@ -18,10 +18,10 @@ export class OrderComponent implements OnInit {
 
   dataOrder: OrderDTO = {} as OrderDTO;
   isPagado: boolean = false;//Validar en caso la orden ya haya sido pagada
+  isLoading: boolean = true;
+  stripePromise = loadStripe(environment.CLAVE_STRIPE); // Tu clave pública
 
-    stripePromise = loadStripe(environment.CLAVE_STRIPE); // Tu clave pública
-  
-    
+
   constructor(
     private router: Router,
     private activateRoute: ActivatedRoute,
@@ -34,10 +34,11 @@ export class OrderComponent implements OnInit {
   }
 
   async getDataOrder(): Promise<void> {
-    if(this.idSession) await this.orderService.getSesionStripe(this.idSession,this.idOrder).toPromise();
+    if (this.idSession) await this.orderService.getSesionStripe(this.idSession, this.idOrder).toPromise();
     this.orderService.findById(this.idOrder).subscribe(result => {
       this.dataOrder = result;
-      if(this.dataOrder.statepagoId === Constants.ESTADO_PAGO_PAGADO) this.isPagado = true;
+      if (this.dataOrder.statepagoId === Constants.ESTADO_PAGO_PAGADO) this.isPagado = true;
+      this.isLoading = false;
     });
   }
 
@@ -57,22 +58,22 @@ export class OrderComponent implements OnInit {
   async payOrder(): Promise<void> {
     // Cargar el objeto Stripe
     const stripe = await this.stripePromise;
-  
+
     // Asegúrate de que Stripe se cargó correctamente
     if (!stripe) {
       console.error('Stripe no se pudo cargar.');
       return;
     }
-  
+
     try {
       // Llamar al backend de Spring Boot para crear la sesión de Stripe Checkout
       const response = await this.orderService.createSesionStripe(this.idOrder).toPromise();
-  
-     // Extraer el sessionId del objeto recibido
-     const sessionId = response?.data ?? '';//Lo hago asi pq angular interpreta que puede venir null, pero siempre va a venir un string
 
-     // Redirigir a Stripe Checkout
-     const result = await stripe.redirectToCheckout({ sessionId });
+      // Extraer el sessionId del objeto recibido
+      const sessionId = response?.data ?? '';//Lo hago asi pq angular interpreta que puede venir null, pero siempre va a venir un string
+
+      // Redirigir a Stripe Checkout
+      const result = await stripe.redirectToCheckout({ sessionId });
       if (result.error) {
         console.error('Error redirigiendo a Stripe Checkout:', result.error.message);
       }
@@ -80,7 +81,7 @@ export class OrderComponent implements OnInit {
       console.error('Error durante el flujo de pago:', error);
     }
   }
-  
+
 
 
 }

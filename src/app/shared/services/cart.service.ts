@@ -29,6 +29,7 @@ export class CartService {
       this.toastrService.error(`Out of stock ${payload.name}`);
     }
     else if (!isExist) {
+      console.log('entro a no existe')
       const newItem = {
         ...payload,
         orderQuantity: 1,
@@ -36,6 +37,7 @@ export class CartService {
       state.cart_products.push(newItem);
       this.toastrService.success(`${payload.name} añadido al carrito.`);
     } else {
+      console.log('entro a si existe')
       state.cart_products.map((item: IProduct) => {
         if (item.id === payload.id) {
           if (typeof item.orderQuantity !== "undefined") {
@@ -118,7 +120,7 @@ export class CartService {
     state.cart_products = state.cart_products.filter(
       (p: IProduct) => p.id !== payload.id
     );
-    this.toastrService.error(`${payload.name} remove to cart`);
+    this.toastrService.error(`${payload.name} fue removido del carrito.`);
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
   };
 

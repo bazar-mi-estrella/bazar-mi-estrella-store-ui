@@ -65,6 +65,7 @@ import { ProductCardComponent } from './product/electronics/product-card/product
 import { PaymentOrderComponent } from './pages/payment-order/payment-order.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { environment } from 'src/environments/environment';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -124,6 +125,7 @@ import { environment } from 'src/environments/environment';
     NgxSliderModule,
     SharedModule,
     FormsModule,
+    NgxSkeletonLoaderModule,
     NgxStripeModule.forRoot(environment.CLAVE_STRIPE) // Reemplaza con tu clave pública
   ],
   exports:[
