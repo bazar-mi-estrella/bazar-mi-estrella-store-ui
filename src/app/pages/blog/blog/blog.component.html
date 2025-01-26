@@ -4,42 +4,218 @@
 
 <main>
   <!-- breadcrumb start -->
-  <app-breadcrumb-two title="Acerca de nosotros" subtitle="Nosotros"></app-breadcrumb-two>
+  <app-breadcrumb-two
+    title="Acerca de nosotros"
+    subtitle="Nosotros"
+  ></app-breadcrumb-two>
   <!-- breadcrumb end -->
 
-  <!-- Contenedor de lo que se muestra en el acerca de nostros -->
-  <section class="tp-postbox-area pt-120 pb-120">
+  <!DOCTYPE html>
+  <html lang="es">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Acerca de Nosotros</title>
+    </head>
+    <body style="font-family: bold; margin: 0; padding: 0">
+      <!-- Sección con título y eslogan -->
+      <section
+        style="background-color: #cce7ff; padding: 10rem 0; text-align: center"
+      >
+        <h1 style="font-size: 4rem; font-weight: bold; margin-bottom: 1rem">
+          ¿Quiénes somos?
+        </h1>
+        <p
+          style="
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #333333;
+            margin: 0;
+          "
+        >
+          Sinónimo de Precio – calidad y la mejor garantía Post venta.
+        </p>
+      </section>
 
-    
-    <!-- <div class="container">
-      <div class="row">
-        <div class="col-xl-9 col-lg-8">
-          <div class="tp-postbox-wrapper pr-50">
-            <ng-container
-              *ngFor="let item of blogs.slice(startIndex, endIndex);let i = index"
+      <!-- Contenido principal -->
+      <main style="padding: 2rem">
+        <section style="margin: 0 auto; max-width: 1200px">
+          <!-- Concepto de la empresa -->
+          <div
+            style="
+              margin-bottom: 3rem;
+              display: flex;
+              align-items: center;
+              gap: 2rem;
+            "
+          >
+            <!-- Contenedor del texto -->
+            <div style="flex: 1">
+              <h2
+                style="
+                  font-size: 2rem;
+                  font-weight: bold;
+                  margin-bottom: 1rem;
+                  color: white;
+                  background: #010f1c;
+                  padding: 1rem 2rem;
+                  border-radius: 10px;
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                  display: inline-block;
+                "
+              >
+                CIX TECH MART
+              </h2>
+
+              <p style="font-size: 1.125rem; line-height: 1.8; margin: 0">
+                Somos una empresa peruana emergente en el ámbito del comercio
+                electrónico, especializada en la importación, comercialización y
+                distribución de productos tecnológicos (Teléfonos móviles,
+                Laptops, Audífonos, Teclados, Mouse, Monitores, Impresoras,
+                Etc.), inicia sus actividades desde el año 2023. Durante estos
+                años, hemos brindado satisfacción a nuestros clientes, siendo
+                este nuestro éxito.
+              </p>
+            </div>
+
+            <!-- Contenedor de la imagen -->
+            <div style="flex: 1; text-align: center">
+              <img
+                src="/assets/img/about/cixtechmart.jpeg"
+                alt="about-img"
+                alt="Tecnología"
+                style="
+                  max-width: 100%;
+                  height: auto;
+                  border-radius: 10px;
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                "
+              />
+            </div>
+          </div>
+
+          <!-- Misión y Visión -->
+          <div style="display: flex; gap: 2rem; margin-bottom: 3rem">
+            <div style="flex: 1">
+              <h3
+                style="
+                  font-size: 2rem;
+                  font-weight: bold;
+                  margin-bottom: 1rem;
+                  color: white;
+                  background: #010f1c;
+                  padding: 1rem 2rem;
+                  border-radius: 10px;
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                  display: inline-block;
+                "
+              >
+                NUESTRA MISIÓN
+              </h3>
+
+              <p style="font-size: 1.125rem; line-height: 1.8">
+                Somos una sólida y dinámica empresa peruana, líder en
+                comercialización de productos tecnológicos, con soluciones
+                tecnológicas innovadoras que potencien el desarrollo y éxito de
+                nuestros clientes, asegurando calidad y compromiso.
+              </p>
+            </div>
+            <div style="flex: 1">
+              <h3
+                style="
+                  font-size: 2rem;
+                  font-weight: bold;
+                  margin-bottom: 1rem;
+                  color: white;
+                  background: #010f1c;
+                  padding: 1rem 2rem;
+                  border-radius: 10px;
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                  display: inline-block;
+                "
+              >
+                NUESTRA VISIÓN
+              </h3>
+
+              <p style="font-size: 1.125rem; line-height: 1.8">
+                Ser una empresa de prestigio internacional en crecimiento
+                constante, brindando productos tecnológicos con un buen precio y
+                variedad que excedan las expectativas del mercado, consolidando
+                el valor de la empresa CIX TECH MART.
+              </p>
+            </div>
+          </div>
+          <div style="margin-bottom: 3rem">
+            <!-- Título independiente -->
+            <h3
+              style="
+                font-size: 1.6rem;
+                font-weight: bold;
+                margin-bottom: 1rem;
+                color: white;
+                background: #010f1c;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                display: inline-block;
+                text-align: center;
+                width: 100%;
+              "
             >
-              <app-blog-postbox-item [blog]="item"></app-blog-postbox-item>
-            </ng-container>
-            <div class="tp-blog-pagination mt-50">
-              <div class="tp-pagination">
-                <app-pagination-two
-                  [itemsPerPage]="4"
-                  [data]="blogs"
-                  (handlePaginate)="handlePagination($event)"
-                ></app-pagination-two>
+              ¿POR QUÉ ELEGIRNOS COMO PROVEEDOR DE TUS PRODUCTOS TECNOLÓGICOS?
+            </h3>
+
+            <!-- Contenedor para el texto y la imagen -->
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 3rem;
+                justify-content: space-between;
+              "
+            >
+              <!-- Texto y lista -->
+              <div style="flex: 1">
+                <ul
+                  style="
+                    font-size: 1.125rem;
+                    line-height: 1.8;
+                    padding-left: 1.5rem;
+                    list-style: disc;
+                  "
+                >
+                  <li>Experiencia comprobada en soluciones tecnológicas.</li>
+                  <li>
+                    Compromiso con la calidad y la satisfacción del cliente.
+                  </li>
+                  <li>
+                    Innovación constante para mantenernos a la vanguardia.
+                  </li>
+                  <li>Equipo altamente capacitado y apasionado.</li>
+                  <li>Soporte personalizado y atención al detalle.</li>
+                </ul>
+              </div>
+
+              <!-- Imagen al costado -->
+              <div style="flex: 1; text-align: center">
+                <img
+                  src="/assets/img/about/Tecnologia.jpg"
+                  alt="Tecnología"
+                  style="
+                    width: 70%; /* La imagen ocupará el 50% del ancho del contenedor */
+                    height: auto; /* Mantiene la proporción */
+                    border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                  "
+                />
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-xl-3 col-lg-4">
-          <app-blog-sidebar></app-blog-sidebar>
-        </div>
-      </div>
-    </div> -->
+        </section>
+      </main>
+    </body>
+  </html>
 
-
-
-  </section>
   <!-- postbox area end -->
 </main>
 
