@@ -18,30 +18,33 @@ export class CartService {
     return state.cart_products;
   }
 
-  handleOpenCartSidebar () {
+  handleOpenCartSidebar() {
     this.isCartOpen = !this.isCartOpen
   }
 
   // add_cart_product
   addCartProduct(payload: IProduct) {
     const isExist = state.cart_products.some((i: IProduct) => i.id === payload.id);
-    if (payload.status === 'out-of-stock' || payload.quantity === 0) {
-      this.toastrService.error(`Out of stock ${payload.name}`);
+    if (payload.stock == 0) {
+      this.toastrService.error(`Fuera de stock ${payload.name}`);
     }
     else if (!isExist) {
-      console.log('entro a no existe')
-      const newItem = {
-        ...payload,
-        orderQuantity: 1,
-      };
-      state.cart_products.push(newItem);
-      this.toastrService.success(`${payload.name} añadido al carrito.`);
+      if (payload.stock && payload.stock >= this.orderQuantity) {
+        const newItem = {
+          ...payload,
+          orderQuantity: this.orderQuantity,
+        };
+        state.cart_products.push(newItem);
+        this.toastrService.success(`${payload.name} añadido al carrito.`);
+      } else {
+        this.toastrService.success(`La cantidad a comprar, supera el stock disponible!`);
+        this.orderQuantity = 1;
+      }
     } else {
-      console.log('entro a si existe')
       state.cart_products.map((item: IProduct) => {
         if (item.id === payload.id) {
           if (typeof item.orderQuantity !== "undefined") {
-            if (item.quantity >= item.orderQuantity + this.orderQuantity) {
+            if (item.stock && item.stock >= item.orderQuantity + this.orderQuantity) {
               item.orderQuantity =
                 this.orderQuantity !== 1
                   ? this.orderQuantity + item.orderQuantity
@@ -57,9 +60,10 @@ export class CartService {
       });
     }
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
+    this.orderQuantity = 1;
   };
 
-// total price quantity
+  // total price quantity
   public totalPriceQuantity() {
     return state.cart_products.reduce(
       (cartTotal: { total: number; quantity: number }, cartItem: IProduct) => {

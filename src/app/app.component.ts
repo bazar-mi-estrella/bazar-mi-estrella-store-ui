@@ -27,11 +27,7 @@ export class AppComponent implements OnInit {
         sessionStorage.setItem('photo_url', user.photoURL ?? "")
         sessionStorage.setItem('auth_id', user.uid ?? "")
         sessionStorage.setItem('name', user.displayName ?? "")
-
-        console.log('User logged in:', user);
-        console.log('User ID:', user.uid);
-        console.log('Email:', user.email);
-        this.findByEmail(user.email)
+        this.findByEmail(user.email);
       } else {
         console.log('No user is signed in.');
         sessionStorage.clear();

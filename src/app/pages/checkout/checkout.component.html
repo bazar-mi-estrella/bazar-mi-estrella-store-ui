@@ -23,8 +23,14 @@
 
         <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
           <div class="row">
+
+
             <div class="col-lg-7">
-              <div class="tp-checkout-bill-area">
+              <!-- Mostrar el loader mientras carga -->
+              <ngx-skeleton-loader *ngIf="isLoading" count="4"
+              [theme]="{ height: '50px', 'margin-bottom': '15px', 'background-color': '#f4f4f4' }"></ngx-skeleton-loader>
+
+              <div class="tp-checkout-bill-area" *ngIf="!isLoading">
                 <h3 class="tp-checkout-bill-title">Detalles de facturación</h3>
                 <div class="tp-checkout-bill-form">
                   <div class="tp-checkout-bill-inner">
@@ -54,7 +60,7 @@
                         </div>
                       </div>
 
-                      
+
 
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
@@ -69,7 +75,7 @@
                         </div>
                       </div>
 
-                
+
 
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
@@ -120,19 +126,27 @@
                       <div class="col-md-12">
                         <div class="tp-checkout-input">
                           <label>Dirección <span>*</span></label>
-                          <input type="text" placeholder="Ingresa tu dirección exacta" name="address" formControlName="address">
-                         
+                          <input type="text" placeholder="Ingresa tu dirección exacta" name="address"
+                            formControlName="address">
+
                         </div>
                       </div>
-                     
+
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+
             <div class="col-lg-5">
+
+              <!-- Mostrar el loader mientras carga -->
+              <ngx-skeleton-loader *ngIf="isLoading" count="8"
+                [theme]="{ height: '50px', 'margin-bottom': '15px', 'background-color': '#f4f4f4' }"></ngx-skeleton-loader>
+
               <!-- checkout place order -->
-              <div class="tp-checkout-place white-bg">
+              <div class="tp-checkout-place white-bg" *ngIf="!isLoading">
                 <h3 class="tp-checkout-place-title">Mi Pedido</h3>
 
                 <div class="tp-order-info-list">
@@ -215,6 +229,9 @@
                 </div>
               </div>
             </div>
+
+
+
           </div>
         </form>
       </div>

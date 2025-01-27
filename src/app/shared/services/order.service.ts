@@ -1,6 +1,7 @@
 import { Client } from "@/types/client.interface";
 import { OrderDTO } from "@/types/order-interface";
 import { OrderPostDTO } from "@/types/order-post.interface";
+import { OrderTrayDTO } from "@/types/order-tray-interface";
 import { ResponseDTO } from "@/types/responseDTO";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
@@ -23,6 +24,10 @@ export class OrderService {
 
     public findById(idOrder: string): Observable<OrderDTO> {
         return this.httpClient.get<OrderDTO>(this.API.concat("/").concat(idOrder))
+    }
+
+    public getByClientId(idClient: string): Observable<OrderTrayDTO[]> {
+        return this.httpClient.get<OrderTrayDTO[]>(this.API.concat("/byclient/").concat(idClient))
     }
 
     public createSesionStripe(idorden: string): Observable<ResponseDTO<string>> {

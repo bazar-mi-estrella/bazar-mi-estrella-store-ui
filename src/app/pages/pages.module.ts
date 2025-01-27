@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { ContactComponent } from './contact/contact.component';
@@ -20,6 +20,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 
@@ -50,6 +51,8 @@ import { SearchComponent } from './search/search.component';
     ShopModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSkeletonLoaderModule,
+
   ]
 })
 export class PagesModule { }

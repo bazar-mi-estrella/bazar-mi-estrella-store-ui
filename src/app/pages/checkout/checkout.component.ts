@@ -21,6 +21,7 @@ export class CheckoutComponent {
 
   isOpenLogin = false;
   isOpenCoupon = false;
+  isLoading: boolean = true;//Loader para ver si esta cargando la data
   shipCost: number = 0;
   couponCode: string = '';
   payment_name: string = '';
@@ -42,6 +43,9 @@ export class CheckoutComponent {
     this.initForm();
     this.initValues();
     this.produts = this.cartService.getCartProducts();
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
   }
 
 
@@ -143,7 +147,6 @@ export class CheckoutComponent {
 
 
   initForm(): void {
-    console.log('client_id', sessionStorage.getItem('client_id'));
     this.checkoutForm = new FormGroup({
       firstname: new FormControl(null, Validators.required),
       lastname: new FormControl(null, Validators.required),
@@ -162,20 +165,25 @@ export class CheckoutComponent {
     this.formSubmitted = true;
 
     if (this.checkoutForm.valid) {
-      this.listdetails?.setValue(this.produts.map(x => this.formatProductsSave(x)))
-      this.saveOrder()
-      this.toastrService.success(`Pedido realizado correctamente`);
+      this.listdetails?.setValue(this.produts.map(x => this.formatProductsSave(x)));
+      this.isLoading = true;//Para que se muestre el loader
+      this.orderService.save(this.checkoutForm.value).subscribe(data => {
+        this.toastrService.success(`Pedido realizado correctamente`);
+        // Reset the form
+        this.checkoutForm.reset();
+        this.formSubmitted = false; // Reset formSubmitted to false
+        this.isLoading = false; //Para que se quite el loader
+        // localStorage.setItem("cart_products", JSON.stringify('[]')); // Limpiamos el carrito
+        this.router.navigate(["/shop/order", { idOrder: data.data.id }])
+      });
 
-      // Reset the form
-      this.checkoutForm.reset();
-      this.formSubmitted = false; // Reset formSubmitted to false
     }
   }
 
 
   saveOrder(): void {
     this.orderService.save(this.checkoutForm.value).subscribe(data => {
-      this.router.navigate(["/shop/order",{idOrder:data.data.id}])
+      this.router.navigate(["/shop/order", { idOrder: data.data.id }])
     })
   }
 

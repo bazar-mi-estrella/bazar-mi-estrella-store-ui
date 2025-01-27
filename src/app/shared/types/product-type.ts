@@ -7,36 +7,20 @@ type IReview = {
   date: string;
 }
 
-export interface ImagesProduc{
-  codecolor:string;
-  id:string;
-  namecolor:string;
-  urlimg:string;
+export interface ImagesProduc {
+  codecolor: string;
+  id: string;
+  namecolor: string;
+  urlimg: string;
 }
 
-export interface Descripaditionals{
-  id:string;
-  key:string;
-  value:string;
+export interface Descripaditionals {
+  id: string;
+  key: string;
+  value: string;
 }
 
 export interface IProduct {
-  id: string;
-  marcaId?: string;
-  marcaName?: string;
-  modeloId?: string;
-  modeloName?: string;
-  name?: string;
-  statusId?: string;
-  stock?: number;
-  typeId?: string;
-  typeName: string;
-  descuent?: number;
-  imgurl?:string;
-  images:ImagesProduc[];
-  descripaditionals:Descripaditionals[];
-  sku:string;
-  code?:string;
 
   img: string;
   title: string;
@@ -51,7 +35,6 @@ export interface IProduct {
   }[];
   parent: string;
   children: string;
-  price: number;
   quantity: number;
   brand: {
     name: string;
@@ -62,7 +45,6 @@ export interface IProduct {
   status: string;
   reviews?: IReview[];
   productType: string;
-  description: string;
   orderQuantity?: number;
   additionalInformation: {
     key: string;
@@ -78,7 +60,33 @@ export interface IProduct {
   videoId?: string;
   sizes?: string[];
 
+  descuent?: number;
+  sku: string;
+  code?: string;
 
-  dateofferend?:string;//Fecha fin de oferta
-  discount:number;//Descuento por la oferta
+
+
+  //Campos que si vienen del backend
+  id: string;
+  datecreate?:string;
+  dateofferend?: string;//Fecha fin de oferta
+  discount: number;//Descuento por la oferta
+  datepublication?:string;
+  description: string;
+  descripaditionals: Descripaditionals[];
+  images: ImagesProduc[];
+  imgurl?: string;
+  marcaId?: string;
+  marcaName?: string;
+  modeloId?: string;
+  modeloName?: string;
+  typeId?: string;
+  typeName: string;
+  name?: string;
+  price: number;
+  statusId?: string;
+  stock?: number;
+
+
+
 }
