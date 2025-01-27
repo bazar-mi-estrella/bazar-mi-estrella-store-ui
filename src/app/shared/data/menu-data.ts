@@ -107,14 +107,7 @@ export const menu_data: IMenuItem[] = [
   {
     id: 5,
     link: '/pages/blog',
-    title: 'Blog',
-    drop_down: true,
-    dropdown_menus: [
-      { title: 'Blog Standard', link: '/pages/blog' },
-      { title: 'Blog Grid', link: '/pages/blog-grid' },
-      { title: 'Blog List', link: '/pages/blog-list' },
-      { title: 'Blog Details', link: '/pages/blog-details' },
-    ],
+    title: 'Nosotros',
   },
   {
     id: 5,
