@@ -26,7 +26,9 @@ export class HeaderOneComponent {
     public wishlistService: WishlistService,
     public utilsService: UtilsService,
     private readonly router: Router,
-  ) { }
+  ) {
+    console.log("Esta es la foto ", this.photo_url);
+   }
 
 
   // select options for header category
