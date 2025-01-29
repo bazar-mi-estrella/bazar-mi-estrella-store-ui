@@ -21,6 +21,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -52,7 +54,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     FormsModule,
     ReactiveFormsModule,
     NgxSkeletonLoaderModule,
-
+    MatIconModule,
+    MatTooltipModule
   ]
 })
 export class PagesModule { }

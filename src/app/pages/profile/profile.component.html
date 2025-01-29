@@ -462,7 +462,7 @@
                                        <th scope="col">Fecha de generación</th>
                                        <th scope="col">Estado de pago</th>
                                        <th scope="col">Estado</th>
-                                       <th scope="col">View</th>
+                                       <th scope="col">Acciones</th>
                                     </tr>
                                  </thead>
                                  <tbody>
@@ -472,8 +472,8 @@
                                        <td data-info="title">{{ pedido.datecreate | date:'dd/mm/yyyy HH:mm' }}</td>
                                        <td data-info="status done">{{ pedido.statepagoName }}</td>
                                        <td data-info="status done">{{ pedido.stateName }}</td>
-                                       <td>
-                                          <!-- Condicional para mostrar acciones dinámicas -->
+
+                                       <!-- <td>
                                           <a href="#" class="tp-logout-btn"
                                              *ngIf="pedido.stateName === 'Pending'; else otherActions">
                                              Invoice
@@ -486,7 +486,31 @@
                                              <a href="#" class="tp-logout-btn"
                                                 *ngIf="pedido.stateName === 'On Hold'">Status</a>
                                           </ng-template>
+                                       </td> -->
+
+                                       <td>
+                                          <!-- Condicional para mostrar acciones dinámicas -->
+                                          <button mat-icon-button color="primary" matTooltip="Generate Invoice">
+                                             <mat-icon>delete</mat-icon> <!-- Ícono de invoice -->
+                                          </button>
+
+                                          <button mat-icon-button color="accent"
+                                             *ngIf="pedido.stateName === 'Need your reply'" matTooltip="Reply">
+                                             <mat-icon>reply</mat-icon> <!-- Ícono de reply -->
+                                          </button>
+
+                                          <button mat-icon-button color="warn" *ngIf="pedido.stateName === 'Resolved'"
+                                             matTooltip="View Invoice">
+                                             <mat-icon>visibility</mat-icon> <!-- Ícono de view -->
+                                          </button>
+
+                                          <button mat-icon-button color="default" *ngIf="pedido.stateName === 'On Hold'"
+                                             matTooltip="Check Status">
+                                             <mat-icon>hourglass_empty</mat-icon> <!-- Ícono de status -->
+                                          </button>
                                        </td>
+
+
                                     </tr>
                                  </tbody>
                               </table>
