@@ -53,7 +53,7 @@
                   </div>
                </div>
                <div class="col-xxl-8 col-lg-8">
-                  <div class="profile__tab-content">
+                  <div class="profile__tab-content" style="width: 110%;">
                      <div class="tab-content" id="profile-tabContent">
                         <!-- profile area start -->
                         <div class="tab-pane fade show active" id="nav-profile" role="tabpanel"
@@ -454,7 +454,11 @@
 
                         <!-- profile ticket start -->
                         <div class="tab-pane fade" id="nav-order" role="tabpanel" aria-labelledby="nav-order-tab">
-                           <div class="profile__ticket table-responsive">
+
+                           <ngx-skeleton-loader *ngIf="isLoadingPedidos" count="6"
+                              [theme]="{ height: '40px', 'margin-bottom': '15px', 'background-color': '#f4f4f4' }"></ngx-skeleton-loader>
+
+                           <div class="profile__ticket table-responsive" *ngIf="!isLoadingPedidos">
                               <table class="table">
                                  <thead>
                                     <tr>
@@ -467,47 +471,37 @@
                                  </thead>
                                  <tbody>
                                     <!-- Iteramos sobre la lista listpedidos -->
-                                    <tr *ngFor="let pedido of listpedidos">
+                                    <tr *ngFor="let pedido of listpedidos; let i = index;">
                                        <th scope="row"> {{ pedido.code }}</th>
                                        <td data-info="title">{{ pedido.datecreate | date:'dd/mm/yyyy HH:mm' }}</td>
                                        <td data-info="status done">{{ pedido.statepagoName }}</td>
                                        <td data-info="status done">{{ pedido.stateName }}</td>
 
-                                       <!-- <td>
-                                          <a href="#" class="tp-logout-btn"
-                                             *ngIf="pedido.stateName === 'Pending'; else otherActions">
-                                             Invoice
-                                          </a>
-                                          <ng-template #otherActions>
-                                             <a href="#" class="tp-logout-btn"
-                                                *ngIf="pedido.stateName === 'Need your reply'">Reply</a>
-                                             <a href="#" class="tp-logout-btn"
-                                                *ngIf="pedido.stateName === 'Resolved'">Invoice</a>
-                                             <a href="#" class="tp-logout-btn"
-                                                *ngIf="pedido.stateName === 'On Hold'">Status</a>
-                                          </ng-template>
-                                       </td> -->
-
                                        <td>
-                                          <!-- Condicional para mostrar acciones dinámicas -->
-                                          <button mat-icon-button color="primary" matTooltip="Generate Invoice">
+
+                                          <button mat-icon-button matTooltip="Ver detalle del pedido"
+                                             *ngIf="pedido.statepagoId == Constantes.ESTADO_PAGO_PAGADO"
+                                             (click)="viewOrPayPedido(pedido)">
+                                             <mat-icon>remove_red_eye</mat-icon> <!-- Ícono de invoice -->
+                                          </button>
+
+                                          <button mat-icon-button *ngIf="pedido.statepagoId == Constantes.ESTADO_PAGO_POR_PAGAR 
+                                             && pedido.stateId == Constantes.ESTADO_GENERADO"
+                                             (click)="viewOrPayPedido(pedido)" matTooltip="Pagar pedido">
+                                             <mat-icon>payment</mat-icon> <!-- Ícono de reply -->
+                                          </button>
+
+                                          <button mat-icon-button matTooltip="Cancelar pedido" *ngIf="pedido.statepagoId == Constantes.ESTADO_PAGO_POR_PAGAR 
+                                             && pedido.stateId == Constantes.ESTADO_GENERADO"
+                                             (click)="cancelPedido(pedido,i)">
                                              <mat-icon>delete</mat-icon> <!-- Ícono de invoice -->
                                           </button>
 
-                                          <button mat-icon-button color="accent"
-                                             *ngIf="pedido.stateName === 'Need your reply'" matTooltip="Reply">
-                                             <mat-icon>reply</mat-icon> <!-- Ícono de reply -->
+                                          <button mat-icon-button *ngIf="pedido.stateId == Constantes.ESTADO_ENTREGADO"
+                                             matTooltip="Solicitar reembolso" (click)="solitdRefund(pedido)">
+                                             <mat-icon>exit_to_app</mat-icon> <!-- Ícono de invoice -->
                                           </button>
 
-                                          <button mat-icon-button color="warn" *ngIf="pedido.stateName === 'Resolved'"
-                                             matTooltip="View Invoice">
-                                             <mat-icon>visibility</mat-icon> <!-- Ícono de view -->
-                                          </button>
-
-                                          <button mat-icon-button color="default" *ngIf="pedido.stateName === 'On Hold'"
-                                             matTooltip="Check Status">
-                                             <mat-icon>hourglass_empty</mat-icon> <!-- Ícono de status -->
-                                          </button>
                                        </td>
 
 

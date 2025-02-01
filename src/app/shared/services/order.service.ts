@@ -30,6 +30,10 @@ export class OrderService {
         return this.httpClient.get<OrderTrayDTO[]>(this.API.concat("/byclient/").concat(idClient))
     }
 
+    public cancelOrder(idOrder: string): Observable<ResponseDTO<OrderTrayDTO>> {
+        return this.httpClient.get<ResponseDTO<OrderTrayDTO>>(this.API.concat("/cancel/").concat(idOrder))
+    }
+
     public createSesionStripe(idorden: string): Observable<ResponseDTO<string>> {
         return this.httpClient.post<ResponseDTO<string>>(this.API_STRIPE.concat(`/create-checkout-session?idOrden=${idorden}`), {})
     }

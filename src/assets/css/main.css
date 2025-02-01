@@ -12973,6 +12973,7 @@ div.tp-blog-thumb img {
 }
 .profile__tab-content {
   padding: 25px 30px 30px;
+  /* background-color: var(--tp-common-white); */
   background-color: var(--tp-common-white);
   box-shadow: 0px 30px 50px rgba(5, 47, 40, 0.12);
 }

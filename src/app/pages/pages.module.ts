@@ -23,6 +23,7 @@ import { SearchComponent } from './search/search.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { RefundOrderComponent } from './refund-order/refund-order.component';
 
 
 
@@ -44,7 +45,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     NotFoundComponent,
     CheckoutComponent,
     ProfileComponent,
-    SearchComponent
+    SearchComponent,
+    RefundOrderComponent
   ],
   imports: [
     CommonModule,

@@ -9,3 +9,16 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import './assets/scss/main.scss';
 
+
+//Estilos para las alertas de sweet
+.swal2-popup {
+    font-size: 1.2rem !important;
+}
+
+.swal2-confirm {
+    background-color: green !important;
+}
+
+.swal2-cancel {
+    background-color: red !important;
+}

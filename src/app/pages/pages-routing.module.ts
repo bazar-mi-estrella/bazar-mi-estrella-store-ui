@@ -15,6 +15,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { RefundOrderComponent } from './refund-order/refund-order.component';
 
 const routes: Routes = [
   {
@@ -93,6 +94,11 @@ const routes: Routes = [
     path: 'search',
     component: SearchComponent,
     title: 'Search Page'
+  },
+  {
+    path: 'refund-order',
+    component: RefundOrderComponent,
+    title: 'Refund order Page'
   },
 ];
 

@@ -20,6 +20,23 @@ export class OrderComponent implements OnInit {
   isPagado: boolean = false;//Validar en caso la orden ya haya sido pagada
   isLoading: boolean = true;
   stripePromise = loadStripe(environment.CLAVE_STRIPE); // Tu clave pública
+  titlePedido: string = "Pedido";
+  descripcionPedido: string = "Descripcion.";
+  mapTitlePedido = new Map<string, string>([
+    [Constants.ESTADO_GENERADO, "El pedido ha sido generado exitosamente."],
+    [Constants.ESTADO_PREPARANDO_ENVIO, "El pedido esta siendo preparado para su envio."],
+    [Constants.ESTADO_EN_TRANSITO, "El pedido ha sido enviado a su destino."],
+    [Constants.ESTADO_ENTREGADO, "El pedido fue entregado exitosamente."],
+    [Constants.ESTADO_DEVUELTO, "El pedido fue reembolsado exitosamente."]
+  ]);
+
+  mapDescripcionPedido = new Map<string, string>([
+    [Constants.ESTADO_GENERADO, "Una vez realizado el pago, se realizara la preparación de su pedido."],
+    [Constants.ESTADO_PREPARANDO_ENVIO, "Le enviaremos un correo electrónico de confirmación de envío tan pronto como se envíe su pedido."],
+    [Constants.ESTADO_EN_TRANSITO, "Este atento a su celular, una ves el repartidor llega a su destino, le realizara una llamada."],
+    [Constants.ESTADO_ENTREGADO, "Agradecemos su compra."],
+    [Constants.ESTADO_DEVUELTO, "La devolución de su pedido fue realizado correctamente."]
+  ]);
 
 
   constructor(
@@ -38,6 +55,8 @@ export class OrderComponent implements OnInit {
     this.orderService.findById(this.idOrder).subscribe(result => {
       this.dataOrder = result;
       if (this.dataOrder.statepagoId === Constants.ESTADO_PAGO_PAGADO) this.isPagado = true;
+      this.titlePedido = this.mapTitlePedido.get(this.dataOrder.stateId) ?? "Pedido";
+      this.descripcionPedido = this.mapDescripcionPedido.get(this.dataOrder.stateId) ?? "Descripcion.";
       this.isLoading = false;
     });
   }

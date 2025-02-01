@@ -1,0 +1,152 @@
+<!-- header start -->
+<app-header-two [style_2]="true"></app-header-two>
+<!-- header end -->
+
+<!-- breadcrumb area start -->
+<section class="breadcrumb__area include-bg text-center pt-95 pb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-12">
+                <div class="breadcrumb__content p-relative z-index-1">
+                    <h3 class="breadcrumb__title">Solicitar reembolso</h3>
+                    <div class="breadcrumb__list">
+                        <span><a href="#">Inicio</a></span>
+                        <span>Reembolso</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb area end -->
+
+<!-- contact area start -->
+<section class="tp-contact-area pb-100">
+    <div class="container">
+        <div class="tp-contact-inner">
+            <div class="row">
+                <div class="col-xl-9 col-lg-8">
+                    <div class="tp-contact-wrapper">
+                        <h3 class="tp-contact-title">Formulario de solicitud de reembolso</h3>
+
+                        <ngx-skeleton-loader *ngIf="isLoading" count="5"
+                            [theme]="{ height: '40px', 'margin-bottom': '15px', 'background-color': '#f4f4f4' }"></ngx-skeleton-loader>
+
+                        <div class="tp-contact-form" *ngIf="!isLoading">
+                            <!-- contact form start -->
+                            <form id="contact-form" [formGroup]="refundForm" (ngSubmit)="onSubmit()">
+                                <div class="tp-contact-input-wrapper">
+
+                                    <div class="tp-contact-input-box">
+                                        <div class="tp-checkout-input">
+                                            <label for="codeorder">Código de Pedido</label>
+                                            <input name="codeorder" id="codeorder" type="text"
+                                                placeholder="Escribe tu código de pedido" formControlName="codeorder" />
+                                            <span
+                                                *ngIf="codeorder?.hasError('required') && (codeorder?.touched || formSubmitted)"
+                                                class="text-danger">
+                                                Código es requerido
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="tp-contact-input-box">
+                                        <div class="tp-checkout-input">
+                                            <label for="name">Nombre</label>
+                                            <input name="name" id="name" type="text" placeholder="Escribe tu nombre"
+                                                formControlName="name" />
+                                            <span *ngIf="name?.hasError('required') && (name?.touched || formSubmitted)"
+                                                class="text-danger">
+                                                Nombre es requerido
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="tp-contact-input-box">
+                                        <div class="tp-checkout-input">
+                                            <label for="email">Tu correo electrónico</label>
+                                            <input name="email" id="email" type="email"
+                                                placeholder="cixtechmart@gmail.com" formControlName="email" />
+                                            <span *ngIf="
+                                                (email?.hasError('required') && email?.touched) ||
+                                                (email?.hasError('email') && email?.dirty) ||
+                                                (formSubmitted && !email?.value)" class="text-danger">
+                                                El correo electrónico es obligatorio y debe ser una dirección de correo
+                                                válida.
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="tp-contact-input-box">
+                                        <div class="tp-checkout-input">
+                                            <label for="phone">Teléfono</label>
+                                            <input name="phone" id="phone" type="text" placeholder="Escribe tu nombre"
+                                                formControlName="phone" />
+                                            <span
+                                                *ngIf="phone?.hasError('required') && (phone?.touched || formSubmitted)"
+                                                class="text-danger">
+                                                Teléfono es requerido
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="tp-contact-input-box">
+                                        <div class="tp-checkout-input">
+                                            <label>Motivo de reembolso </label>
+                                            <app-nice-select [options]="listMotivos" name="Seleccionar Distrito"
+                                                [defaultCurrent]="-1" placeholder="Seleccionar Motivo"
+                                                (onChange)="changeHandler($event)">
+                                            </app-nice-select>
+                                            <span
+                                                *ngIf="reason?.hasError('required') && (reason?.touched ||formSubmitted)"
+                                                class="text-danger">
+                                                Motivo is required
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="tp-contact-input-box">
+                                        <div class="tp-checkout-input">
+                                            <label for="message">Detalle</label>
+                                            <textarea id="message" name="message"
+                                                placeholder="Escribe tu mensaje aquí..." formControlName="message">
+                                            </textarea>
+                                            <span *ngIf="
+                                                message?.hasError('required') && (message?.touched || formSubmitted)"
+                                                class="text-danger">
+                                                Mensaje es requerido
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+
+
+                                <div class="tp-contact-btn">
+                                    <button type="submit">Enviar solicitud</button>
+                                </div>
+                            </form>
+                            <!-- contact form end -->
+                            <p class="ajax-response"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- contact area end -->
+
+<!-- footer start -->
+<app-footer-one [primary_style]="true"></app-footer-one>
+<!-- footer end -->

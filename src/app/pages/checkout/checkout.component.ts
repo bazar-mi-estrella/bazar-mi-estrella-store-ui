@@ -19,6 +19,8 @@ import { Router } from '@angular/router';
 })
 export class CheckoutComponent {
 
+  public checkoutForm!: FormGroup;
+  public formSubmitted = false;
   isOpenLogin = false;
   isOpenCoupon = false;
   isLoading: boolean = true;//Loader para ver si esta cargando la data
@@ -140,8 +142,7 @@ export class CheckoutComponent {
     this.payment_name = value
   }
 
-  public checkoutForm!: FormGroup;
-  public formSubmitted = false;
+
 
 
 

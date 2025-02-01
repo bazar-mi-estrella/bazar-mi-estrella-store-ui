@@ -39,9 +39,9 @@
                 </span>
               </div>
               <div class="tp-order-details-content">
-                <h3 class="tp-order-details-title">Su pedido confirmado</h3>
+                <h3 class="tp-order-details-title">{{titlePedido}}</h3>
                 <p>
-                  Le enviaremos un correo electrónico de confirmación de envío tan pronto como se envíe su pedido
+                  {{descripcionPedido}}
                 </p>
               </div>
             </div>
@@ -50,25 +50,25 @@
                 <div class="col-sm-6">
                   <div class="tp-order-details-item">
                     <h4>Fecha de pedido:</h4>
-                    <p>April 10, 2023</p>
+                    <p>{{ dataOrder.datecreate | date:'dd/mm/yyyy'}}</p>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="tp-order-details-item">
-                    <h4>Entrega prevista:</h4>
-                    <p>April 16, 2023</p>
+                    <h4>Fecha de entrega:</h4>
+                    <p>{{ dataOrder.datedelivery ? (dataOrder.datedelivery | date: 'dd/MM/yyyy') : '- -' }}</p>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="tp-order-details-item">
                     <h4>Número de orden:</h4>
-                    <p>#9641</p>
+                    <p>#{{dataOrder.numcode}}</p>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="tp-order-details-item">
                     <h4>Método de pago:</h4>
-                    <p>Credit Card</p>
+                    <p>{{dataOrder.paymentmethod}}</p>
                   </div>
                 </div>
               </div>
