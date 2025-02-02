@@ -497,7 +497,8 @@
                                              <mat-icon>delete</mat-icon> <!-- Ícono de invoice -->
                                           </button>
 
-                                          <button mat-icon-button *ngIf="pedido.stateId == Constantes.ESTADO_ENTREGADO"
+                                          <button mat-icon-button
+                                             *ngIf="pedido.stateId == Constantes.ESTADO_PREPARANDO_ENVIO || pedido.stateId == Constantes.ESTADO_EN_TRANSITO"
                                              matTooltip="Solicitar reembolso" (click)="solitdRefund(pedido)">
                                              <mat-icon>exit_to_app</mat-icon> <!-- Ícono de invoice -->
                                           </button>
