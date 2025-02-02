@@ -1,3 +1,4 @@
+import { ClientPost } from "@/types/client-post.interface";
 import { Client } from "@/types/client.interface";
 import { ResponseDTO } from "@/types/responseDTO";
 import { HttpClient } from "@angular/common/http";
@@ -14,11 +15,15 @@ export class ClientService {
 
     constructor(private readonly httpClient: HttpClient) { }
 
-    public save(data: Client): Observable<ResponseDTO<Client>> {
+    public save(data: ClientPost): Observable<ResponseDTO<Client>> {
         return this.httpClient.post<ResponseDTO<Client>>(this.API, data)
     }
 
     public findByEmail(email: string): Observable<Client> {
         return this.httpClient.get<Client>(this.API.concat("/email"), { params: { email } })
+    }
+
+    public findById(idClient: string): Observable<Client> {
+        return this.httpClient.get<Client>(this.API.concat(`/${idClient}`), {})
     }
 }

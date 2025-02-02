@@ -1,9 +1,7 @@
-export interface Client{
+export interface ClientPost{
     id:string;
     fullname: string;
     idfirebase:string;
     photo:string;
-    phone:string;
     email:string;
-    address:string;
 }

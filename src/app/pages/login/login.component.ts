@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../shared/services/user.service';
+import { FirebaseService } from '../../shared/services/firebase.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,7 @@ import { UserService } from '../../shared/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private readonly userService: UserService) { }
+  constructor(private readonly userService: FirebaseService) { }
   ngOnInit(): void {
     this.userService.logout()
       .then((res) => {

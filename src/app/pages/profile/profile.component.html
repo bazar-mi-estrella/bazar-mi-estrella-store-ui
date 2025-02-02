@@ -30,7 +30,7 @@
                               aria-selected="false"><span><i class="fa-regular fa-circle-info"></i></span>
                               Información</button>
 
-                           <button class="nav-link" id="nav-address-tab" data-bs-toggle="tab"
+                           <button class="nav-link" *ngIf="viewOtros" id="nav-address-tab" data-bs-toggle="tab"
                               data-bs-target="#nav-address" type="button" role="tab" aria-controls="nav-address"
                               aria-selected="false"><span><i class="fa-light fa-location-dot"></i></span> Dirección
                            </button>
@@ -39,7 +39,7 @@
                               type="button" role="tab" aria-controls="nav-order" aria-selected="false"><span><i
                                     class="fa-light fa-clipboard-list-check"></i></span> Mis Pedidos </button>
 
-                           <button class="nav-link" id="nav-notification-tab" data-bs-toggle="tab"
+                           <button class="nav-link" *ngIf="viewOtros" id="nav-notification-tab" data-bs-toggle="tab"
                               data-bs-target="#nav-notification" type="button" role="tab"
                               aria-controls="nav-notification" aria-selected="false"><span><i
                                     class="fa-regular fa-bell"></i></span> Notificaciones</button>
@@ -52,6 +52,7 @@
                      </nav>
                   </div>
                </div>
+
                <div class="col-xxl-8 col-lg-8">
                   <div class="profile__tab-content" style="width: 110%;">
                      <div class="tab-content" id="profile-tabContent">
@@ -73,7 +74,7 @@
                                           </div>
                                           <div class="profile__main-content">
                                              <h4 class="profile__main-title">Bienvenido {{fullname}}!</h4>
-                                             <p>You have <span>08</span> notifications</p>
+                                             <p *ngIf="viewOtros">You have <span>08</span> notifications</p>
                                           </div>
                                        </div>
                                     </div>
@@ -86,7 +87,7 @@
                               </div>
                               <div class="profile__main-info">
                                  <div class="row gx-3">
-                                    <div class="col-md-3 col-sm-6">
+                                    <div class="col-md-3 col-sm-6" *ngIf="viewOtros">
                                        <div class="profile__main-info-item">
                                           <div class="profile__main-info-icon">
                                              <span>
@@ -104,7 +105,8 @@
                                        <div class="profile__main-info-item">
                                           <div class="profile__main-info-icon">
                                              <span>
-                                                <span class="profile-icon-count profile-order">5</span>
+                                                <span
+                                                   class="profile-icon-count profile-order">{{listpedidos.length}}</span>
                                                 <svg viewBox="0 0 512 512">
                                                    <path
                                                       d="M472.916,224H448.007a24.534,24.534,0,0,0-23.417-18H398V140.976a6.86,6.86,0,0,0-3.346-6.062L207.077,26.572a6.927,6.927,0,0,0-6.962,0L12.48,134.914A6.981,6.981,0,0,0,9,140.976V357.661a7,7,0,0,0,3.5,6.062L200.154,472.065a7,7,0,0,0,3.5.938,7.361,7.361,0,0,0,3.6-.938L306,415.108v41.174A29.642,29.642,0,0,0,335.891,486H472.916A29.807,29.807,0,0,0,503,456.282v-202.1A30.2,30.2,0,0,0,472.916,224Zm-48.077-4A10.161,10.161,0,0,1,435,230.161v.678A10.161,10.161,0,0,1,424.839,241H384.161A10.161,10.161,0,0,1,374,230.839v-.678A10.161,10.161,0,0,1,384.161,220ZM203.654,40.717l77.974,45.018L107.986,185.987,30.013,140.969ZM197,453.878,23,353.619V153.085L197,253.344Zm6.654-212.658-81.668-47.151L295.628,93.818,377.3,140.969ZM306,254.182V398.943l-95,54.935V253.344L384,153.085V206h.217A24.533,24.533,0,0,0,360.8,224H335.891A30.037,30.037,0,0,0,306,254.182Zm183,202.1A15.793,15.793,0,0,1,472.916,472H335.891A15.628,15.628,0,0,1,320,456.282v-202.1A16.022,16.022,0,0,1,335.891,238h25.182a23.944,23.944,0,0,0,23.144,17H424.59a23.942,23.942,0,0,0,23.143-17h25.183A16.186,16.186,0,0,1,489,254.182Z" />
@@ -130,7 +132,7 @@
                                           <h4 class="profile__main-info-title">Orders</h4>
                                        </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-6">
+                                    <div class="col-md-3 col-sm-6" *ngIf="viewOtros">
                                        <div class="profile__main-info-item">
                                           <div class="profile__main-info-icon">
                                              <span>
@@ -144,7 +146,7 @@
                                           <h4 class="profile__main-info-title">Wishlist</h4>
                                        </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-6">
+                                    <div class="col-md-3 col-sm-6" *ngIf="viewOtros">
                                        <div class="profile__main-info-item">
                                           <div class="profile__main-info-icon">
                                              <span>
@@ -190,15 +192,15 @@
                         <div class="tab-pane fade" id="nav-information" role="tabpanel"
                            aria-labelledby="nav-information-tab">
                            <div class="profile__info">
-                              <h3 class="profile__info-title">Personal Details</h3>
+                              <h3 class="profile__info-title">Datos Personales</h3>
                               <div class="profile__info-content">
-                                 <form action="#">
+                                 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                                     <div class="row">
                                        <div class="col-xxl-6 col-md-6">
                                           <div class="profile__input-box">
                                              <div class="profile__input">
-                                                <input type="text" placeholder="Enter your username"
-                                                   value="Shahnewaz Sakil">
+                                                <input type="text" placeholder="Enter your nombre"
+                                                   value="Shahnewaz Sakil" formControlName="username">
                                                 <span>
                                                    <svg width="17" height="19" viewBox="0 0 17 19" fill="none"
                                                       xmlns="http://www.w3.org/2000/svg">
@@ -220,7 +222,7 @@
                                           <div class="profile__input-box">
                                              <div class="profile__input">
                                                 <input type="email" placeholder="Enter your email"
-                                                   value="example@mail.com">
+                                                   value="example@mail.com" formControlName="email">
                                                 <span>
                                                    <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
                                                       xmlns="http://www.w3.org/2000/svg">
@@ -237,29 +239,12 @@
                                              </div>
                                           </div>
                                        </div>
+
                                        <div class="col-xxl-6 col-md-6">
                                           <div class="profile__input-box">
                                              <div class="profile__input">
-                                                <input type="text" placeholder="Enter username" value="shahnewzname">
-                                                <span>
-                                                   <i class="fa-brands fa-facebook-f"></i>
-                                                </span>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="col-xxl-6 col-md-6">
-                                          <div class="profile__input-box">
-                                             <div class="profile__input">
-                                                <input type="text" placeholder="Enter username" value="shahnewzname">
-                                                <span><i class="fa-brands fa-twitter"></i></span>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="col-xxl-6 col-md-6">
-                                          <div class="profile__input-box">
-                                             <div class="profile__input">
-                                                <input type="text" placeholder="Enter your number"
-                                                   value="0123 456 7889">
+                                                <input type="text" placeholder="Enter your number" value="0123 456 7889"
+                                                   formControlName="phone">
                                                 <span>
                                                    <svg width="15" height="18" viewBox="0 0 15 18" fill="none"
                                                       xmlns="http://www.w3.org/2000/svg">
@@ -279,7 +264,8 @@
                                              </div>
                                           </div>
                                        </div>
-                                       <div class="col-xxl-6 col-md-6">
+
+                                       <!-- <div class="col-xxl-6 col-md-6">
                                           <div class="profile__input-box">
                                              <div class="profile__input">
                                                 <app-nice-select [options]="genderSelectOptions" name="Select Gender"
@@ -288,12 +274,13 @@
                                                 </app-nice-select>
                                              </div>
                                           </div>
-                                       </div>
+                                       </div> -->
+
                                        <div class="col-xxl-12">
                                           <div class="profile__input-box">
                                              <div class="profile__input">
                                                 <input type="text" placeholder="Enter your address"
-                                                   value="3304 Randall Drive">
+                                                   value="3304 Randall Drive" formControlName="address">
                                                 <span>
                                                    <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
                                                       xmlns="http://www.w3.org/2000/svg">
@@ -309,19 +296,12 @@
                                           </div>
                                        </div>
 
-                                       <div class="col-xxl-12">
-                                          <div class="profile__input-box">
-                                             <div class="profile__input">
-                                                <textarea
-                                                   placeholder="Enter your bio">Hi there, this is my bio...</textarea>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="col-xxl-12">
+                                       <div class="col-xxl-12" *ngIf="viewOtros">
                                           <div class="profile__btn">
-                                             <button type="submit" class="tp-btn">Update Profile</button>
+                                             <button type="submit" class="tp-btn">Actualizar perfil</button>
                                           </div>
                                        </div>
+
                                     </div>
                                  </form>
                               </div>
@@ -332,36 +312,61 @@
                         <!-- profile password start -->
                         <div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
                            <div class="profile__password">
-                              <form action="#">
+                              <form [formGroup]="passwordForm" (ngSubmit)="onSubmitPassword()">
                                  <div class="row">
                                     <div class="col-xxl-12">
                                        <div class="tp-profile-input-box">
                                           <div class="tp-contact-input">
-                                             <input name="old_pass" id="old_pass" type="password">
+                                             <input name="old_pass" id="old_pass" type="password"
+                                                formControlName="oldPassword">
                                           </div>
                                           <div class="tp-profile-input-title">
-                                             <label for="old_pass">Old Password</label>
+                                             <label for="old_pass">Antigua contraseña</label>
                                           </div>
+                                          <span *ngIf="oldPassword?.hasError('required') && oldPassword?.touched"
+                                             class="text-danger">
+                                             Old password is required
+                                          </span>
                                        </div>
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                        <div class="tp-profile-input-box">
                                           <div class="tp-profile-input">
-                                             <input name="new_pass" id="new_pass" type="password">
+                                             <input name="new_pass" id="new_pass" type="password"
+                                                formControlName="newPassword">
                                           </div>
                                           <div class="tp-profile-input-title">
-                                             <label for="new_pass">New Password</label>
+                                             <label for="new_pass">Nueva contraseña</label>
                                           </div>
+                                          <span *ngIf="newPassword?.hasError('required') && newPassword?.touched"
+                                             class="text-danger">
+                                             New password is required
+                                          </span>
+                                          <span *ngIf="newPassword?.hasError('minlength') && newPassword?.touched"
+                                             class="text-danger">
+                                             Password must be at least 6 characters
+                                          </span>
                                        </div>
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                        <div class="tp-profile-input-box">
                                           <div class="tp-profile-input">
-                                             <input name="con_new_pass" id="con_new_pass" type="password">
+                                             <input name="con_new_pass" id="con_new_pass" type="password"
+                                                formControlName="confirmPassword">
                                           </div>
                                           <div class="tp-profile-input-title">
-                                             <label for="con_new_pass">Confirm Password</label>
+                                             <label for="con_new_pass">Confirmar contraseña</label>
                                           </div>
+                                          <span
+                                             *ngIf="confirmPassword?.hasError('required') && confirmPassword?.touched"
+                                             class="text-danger">
+                                             Please confirm your password
+                                          </span>
+                                          <span
+                                             *ngIf="passwordForm.hasError('passwordMismatch') && confirmPassword?.touched"
+                                             class="text-danger">
+                                             Passwords do not match
+                                          </span>
                                        </div>
                                     </div>
                                     <div class="col-xxl-6 col-md-6">

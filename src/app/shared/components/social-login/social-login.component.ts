@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { FirebaseService } from '../../services/firebase.service';
 import { UserCredential } from '@angular/fire/auth';
 import { ClientService } from '../../services/client.service';
 import { Client } from '@/types/client.interface';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ClientPost } from '@/types/client-post.interface';
 
 @Component({
   selector: 'app-social-login',
@@ -12,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SocialLoginComponent {
 
-  constructor(private readonly userService: UserService,
+  constructor(private readonly userService: FirebaseService,
     private readonly clientService: ClientService,
     private readonly route: ActivatedRoute,
     private readonly router: Router
@@ -35,7 +36,7 @@ export class SocialLoginComponent {
   }
 
   saveCLient(response: UserCredential): void {
-    let data: Client = {
+    let data: ClientPost = {
       id: "",
       idfirebase: response.user.uid,
       fullname: response.user.displayName ?? "",

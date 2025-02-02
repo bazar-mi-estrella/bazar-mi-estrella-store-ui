@@ -11,7 +11,6 @@ import { CartService } from '@/shared/services/cart.service';
 export class ProductDetailsWrapperComponent {
   @Input() product!: IProduct;
   @Input() isShowBottom: boolean = true;
-
   textMore = false;
 
   handleTextToggle() {
