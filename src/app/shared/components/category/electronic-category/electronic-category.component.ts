@@ -15,7 +15,7 @@ export class ElectronicCategoryComponent implements OnInit {
   constructor(private readonly typeMarcaModelService: TypeMarcaModelService) { }
 
   ngOnInit(): void {
-    this.typeMarcaModelService.getAll().subscribe((res) => {
+    this.typeMarcaModelService.getAllTypes().subscribe((res) => {
       this.category_items = res.slice(0,5)
     })
   }

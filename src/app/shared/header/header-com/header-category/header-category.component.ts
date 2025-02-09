@@ -17,8 +17,9 @@ export class HeaderCategoryComponent   {
   constructor(private router: Router, private readonly typeMarcaModelService: TypeMarcaModelService) { }
 
   public getAll(): void {
-    this.typeMarcaModelService.getAll().subscribe(res => {
-      this.categoryItems = res.slice(0,5)
+    this.typeMarcaModelService.getAllTypes().subscribe(res => {
+      // this.categoryItems = res.slice(0,5)
+      this.categoryItems = res;
     })
   }
 
