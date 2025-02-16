@@ -111,7 +111,7 @@ export class CartService {
         if (typeof item.orderQuantity !== "undefined") {
           if (item.orderQuantity > 1) {
             item.orderQuantity = item.orderQuantity - 1;
-            this.toastrService.info(`Decrement Quantity For ${item.name}`);
+            this.toastrService.info(`Cantidad disminuida para ${item.name}`);
           }
         }
       }
