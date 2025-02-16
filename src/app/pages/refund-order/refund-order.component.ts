@@ -1,3 +1,4 @@
+import { Constants } from '@/shared/classes/constants';
 import { MasterService } from '@/shared/services/master.service';
 import { OrderService } from '@/shared/services/order.service';
 import { RefundService } from '@/shared/services/refund.service';
@@ -95,6 +96,11 @@ export class RefundOrderComponent implements OnInit {
       }
 
       this.refundService.save(dataSave).subscribe(x => {
+        if(x.code!=Constants.HTTP_STATUS_CORRECT){
+          this.toastrService.error(`Ya ha realizado una solicitud para este pedido, por favor espere nuestra respuesta.`);
+          this.isLoading = false;
+          return;
+        }
         this.toastrService.success(`Solicitud enviada correctamente, por favor, revisu su correo para más detalles.`);
         // Reset the form
         this.refundForm.reset();
