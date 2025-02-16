@@ -65,7 +65,8 @@ export class CartService {
 
   // total price quantity
   public totalPriceQuantity() {
-    return state.cart_products.reduce(
+    let products:[]= JSON.parse(localStorage['cart_products'] || '[]');
+    return products.reduce(
       (cartTotal: { total: number; quantity: number }, cartItem: IProduct) => {
         const { price, orderQuantity, discount } = cartItem;
         if (typeof orderQuantity !== "undefined") {
