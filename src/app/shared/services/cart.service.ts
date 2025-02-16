@@ -132,7 +132,7 @@ export class CartService {
   // clear cart
   clear_cart() {
     const confirmMsg = window.confirm(
-      "Are you sure deleted your all cart items ?"
+      "Estas seguro de eliminar todos los items del carrito ?"
     );
     if (confirmMsg) {
       state.cart_products = [];
