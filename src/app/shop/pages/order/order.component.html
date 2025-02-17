@@ -100,7 +100,7 @@
 
                 <!-- lista de productos pedidos -->
                 <li class="tp-order-info-list-desc" *ngFor="let detalle of dataOrder.listdetails">
-                  <p>{{detalle.productName}} <span> x {{detalle.quantity}}</span></p>
+                  <p>{{detalle.productName || detalle.description}} <span> x {{detalle.quantity}}</span></p>
                   <span>s/{{detalle.total}}</span>
                 </li>
 
@@ -110,7 +110,7 @@
                   <span>s/{{dataOrder.subtotal}}</span>
                 </li>
                 <!-- shipping -->
-                <li class="tp-order-info-list-shipping">
+                <li class="tp-order-info-list-shipping" *ngIf="false">
                   <span>Envío</span>
                   <div class="tp-order-info-list-shipping-item d-flex flex-column align-items-end">
                     <span>

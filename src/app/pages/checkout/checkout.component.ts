@@ -24,9 +24,11 @@ export class CheckoutComponent {
   isOpenLogin = false;
   isOpenCoupon = false;
   isLoading: boolean = true;//Loader para ver si esta cargando la data
-  shipCost: number = 0;
+  shipCost: number = this.cartService.totalPriceQuantity().total >= 100 ? 0 : 20;//Costo de envio
   couponCode: string = '';
   payment_name: string = '';
+  sendFree: boolean = this.cartService.totalPriceQuantity().total >= 100;//Si el total es mayor a 100 el envio es gratis
+  // sendFree: boolean = false;//Si el total es mayor a 100 el envio es gratis
 
   produts: IProduct[] = [];
   departamentosList: Departamento[] = []
@@ -72,11 +74,8 @@ export class CheckoutComponent {
   }
 
   handleShippingCost(value: number | string) {
-    if (value === 'free') {
-      this.shipCost = 0;
-    } else {
-      this.shipCost = value as number;
-    }
+    if (this.sendFree) return;
+    this.shipCost = value as number;
   }
 
   public countrySelectOptions = [
@@ -166,7 +165,9 @@ export class CheckoutComponent {
     this.formSubmitted = true;
 
     if (this.checkoutForm.valid) {
-      this.listdetails?.setValue(this.produts.map(x => this.formatProductsSave(x)));
+      let details = this.produts.map(x => this.formatProductsSave(x));
+      if (!this.sendFree) details.push(this.addCostSend());
+      this.listdetails?.setValue(details);
       this.isLoading = true;//Para que se muestre el loader
       this.orderService.save(this.checkoutForm.value).subscribe(data => {
         this.toastrService.success(`Pedido realizado correctamente`);
@@ -194,9 +195,22 @@ export class CheckoutComponent {
       unitprice: product.price,
       productId: product.id,
       quantity: product.orderQuantity ?? 0,
-    } as OrderDetailPost;
-
+      description: '',
+      type: 1
+    };
   }
+
+  //Añadir el costo de envio
+  addCostSend(): OrderDetailPost {
+    return {
+      unitprice: this.shipCost,
+      productId: '',
+      quantity: 1,
+      description: this.shipCost == 20 ? 'Envío normal a domicilio' : 'Envío express a domicilio',
+      type: 2
+    }
+  }
+
 
   get listdetails() { return this.checkoutForm.get('listdetails') }
 

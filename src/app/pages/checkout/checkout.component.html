@@ -180,18 +180,18 @@
                       <span>Envío</span>
                       <div class="tp-order-info-list-shipping-item d-flex flex-column align-items-end">
                         <span>
-                          <input id="flat_rate" type="radio" name="shipping">
-                          <label (click)="handleShippingCost(20)" for="flat_rate">Tarifa plana:
+                          <input id="flat_rate" value="20" [checked]="shipCost == 20" [attr.disabled]="sendFree ? true : null" type="radio" name="shipping">
+                          <label (click)="handleShippingCost(20)" for="flat_rate">Envío normal:
                             <span>S/ 20.00</span></label>
                         </span>
                         <span>
-                          <input id="local_pickup" type="radio" name="shipping">
-                          <label (click)="handleShippingCost(25)" for="local_pickup">Recogida local:
+                          <input id="local_pickup" value="25" [checked]="shipCost == 25" [attr.disabled]="sendFree ? true : null" type="radio" name="shipping">
+                          <label (click)="handleShippingCost(25)" for="local_pickup">Envio express:
                             <span>S/ 25.00</span></label>
                         </span>
                         <span>
-                          <input id="free_shipping" type="radio" name="shipping">
-                          <label (click)="handleShippingCost('free')" for="free_shipping">Envío gratis</label>
+                          <input id="free_shipping" value="free" [checked]="shipCost == 0" [attr.disabled]="true" type="radio" name="shipping">
+                          <label for="free_shipping">Envío gratis</label>
                         </span>
                       </div>
                     </li>
@@ -205,7 +205,7 @@
                     </li>
                   </ul>
                 </div>
-                <div class="tp-checkout-payment">
+                <div class="tp-checkout-payment" *ngIf="false">
                   <div class="tp-checkout-payment-item">
                     <input type="radio" id="back_transfer" name="payment">
                     <label (click)="handlePayment('bank')" for="back_transfer"

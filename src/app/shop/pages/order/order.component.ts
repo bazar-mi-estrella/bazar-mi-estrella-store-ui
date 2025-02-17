@@ -1,5 +1,6 @@
 import { Constants } from '@/shared/classes/constants';
 import { OrderService } from '@/shared/services/order.service';
+import { OrderDetail } from '@/types/orden-detail.interface';
 import { OrderDTO } from '@/types/order-interface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,6 +18,7 @@ export class OrderComponent implements OnInit {
   idSession: string = this.activateRoute.snapshot.params?.['session_payment_id'];
 
   dataOrder: OrderDTO = {} as OrderDTO;
+  listDeatilsOrder:OrderDetail[] = [];
   isPagado: boolean = false;//Validar en caso la orden ya haya sido pagada
   isLoading: boolean = true;
   stripePromise = loadStripe(environment.CLAVE_STRIPE); // Tu clave pública

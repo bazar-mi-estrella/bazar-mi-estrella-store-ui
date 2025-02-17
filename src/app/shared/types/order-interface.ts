@@ -1,4 +1,5 @@
 import { OrderDetailPost } from "./orden-detail-post.interface";
+import { OrderDetail } from "./orden-detail.interface";
 
 export interface OrderDTO {
     id: string; // UUID como string
@@ -24,5 +25,5 @@ export interface OrderDTO {
     paymentmethod:string;//Metodo de pago de la orden
     dateenvio:string;
     datedelivery:string;
-    listdetails: OrderDetailPost[];
+    listdetails: OrderDetail[];
   }
