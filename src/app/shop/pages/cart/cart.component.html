@@ -3,7 +3,7 @@
 <!-- header end -->
 
 <!-- breadcrumb area start -->
-<app-breadcrumb-one title="Carro de la compra" subtitle="Carrito de compras"></app-breadcrumb-one>
+<app-breadcrumb-one title="Carrito de compras" subtitle="Carrito de compras"></app-breadcrumb-one>
 <!-- breadcrumb area end -->
 
 <!-- cart area start -->
@@ -114,7 +114,7 @@
               }}
             </span>
           </div>
-          <div class="tp-cart-checkout-shipping">
+          <div class="tp-cart-checkout-shipping" *ngIf="false">
             <h4 class="tp-cart-checkout-shipping-title">Envío</h4>
             <div class="tp-cart-checkout-shipping-option-wrapper">
               <div class="tp-cart-checkout-shipping-option">
@@ -131,7 +131,7 @@
               </div>
             </div>
           </div>
-          <div class="tp-cart-checkout-total d-flex align-items-center justify-content-between">
+          <div class="tp-cart-checkout-total d-flex align-items-center justify-content-between" *ngIf="false">
             <span>Total</span>
             <span>${{
               (cartService.totalPriceQuantity().total + shipCost).toFixed(2)

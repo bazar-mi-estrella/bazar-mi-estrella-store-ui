@@ -56,6 +56,7 @@ export class OrderComponent implements OnInit {
     if (this.idSession) await this.orderService.getSesionStripe(this.idSession, this.idOrder).toPromise();
     this.orderService.findById(this.idOrder).subscribe(result => {
       this.dataOrder = result;
+      console.log('dataOrder >>', this.dataOrder);
       if (this.dataOrder.statepagoId === Constants.ESTADO_PAGO_PAGADO) this.isPagado = true;
       this.titlePedido = this.mapTitlePedido.get(this.dataOrder.stateId) ?? "Pedido";
       this.descripcionPedido = this.mapDescripcionPedido.get(this.dataOrder.stateId) ?? "Descripcion.";

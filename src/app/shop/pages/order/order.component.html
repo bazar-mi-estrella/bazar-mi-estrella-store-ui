@@ -50,7 +50,7 @@
                 <div class="col-sm-6">
                   <div class="tp-order-details-item">
                     <h4>Fecha de pedido:</h4>
-                    <p>{{ dataOrder.datecreate | date:'dd/mm/yyyy'}}</p>
+                    <p>{{ dataOrder.datecreate | date:'dd/MM/yyyy'}}</p>
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -68,7 +68,7 @@
                 <div class="col-sm-6">
                   <div class="tp-order-details-item">
                     <h4>Método de pago:</h4>
-                    <p>{{dataOrder.paymentmethod}}</p>
+                    <p>{{dataOrder.paymentmethod || '- -'}}</p>
                   </div>
                 </div>
               </div>
