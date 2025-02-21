@@ -183,7 +183,7 @@ export class ProductService {
         (acc, [key, value]) => acc.append(key, value as string),
         new HttpParams()
       ); // Crea HttpParams directamente
-    if (!params.size) httpParams = httpParams.append('size', 20);
+    if (!params.size) httpParams = httpParams.append('size', 100);
     if (!params.page) httpParams = httpParams.append('page', 0);
 
     return this.httpClient.get<Page<IProduct>>(this.API.concat('/bandeja'), {

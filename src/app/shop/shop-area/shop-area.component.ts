@@ -99,7 +99,6 @@ export class ShopAreaComponent {
         if (this.brand) {
           this.products = this.products.filter((p) => p.brand.name.toLowerCase() === this.brand);
         } */
-
         // Price Filter
         this.products = this.products.filter(
           (p) => p.price >= Number(this.minPrice) && p.price <= Number(this.maxPrice)

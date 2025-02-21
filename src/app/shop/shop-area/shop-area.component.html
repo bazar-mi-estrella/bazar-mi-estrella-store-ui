@@ -86,7 +86,7 @@
                 </div>
               </div>
               <div class="col-xl-6">
-                <div class="tp-shop-top-right d-sm-flex align-items-center justify-content-xl-end">
+                <div class="tp-shop-top-right d-sm-flex align-items-center justify-content-xl-end" *ngIf="false">
                   <div class="tp-shop-top-select">
                     <app-nice-select [options]="niceSelectOptions" name="Default Sorting" [defaultCurrent]="0"
                       (onChange)="changeFilterSelect($event)" placeholder="Ordenación predeterminada"></app-nice-select>
