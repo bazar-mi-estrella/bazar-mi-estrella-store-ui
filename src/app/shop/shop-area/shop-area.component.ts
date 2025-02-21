@@ -53,7 +53,6 @@ export class ShopAreaComponent {
   ) {
     // Get Query params..
     this.route.queryParams.subscribe((params) => {
-      console.log('params_shop_area', params);
       this.minPrice = params['minPrice'] ? params['minPrice'] : this.minPrice;
       this.maxPrice = params['maxPrice'] ? params['maxPrice'] : this.maxPrice;
       this.brand = params['brand']

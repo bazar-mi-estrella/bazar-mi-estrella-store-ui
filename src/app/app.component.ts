@@ -17,8 +17,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("auth", this.auth)
-
     // Escuchar cambios en el estado del usuario
     onAuthStateChanged(this.auth, (user: User | null) => {
       if (user) {

@@ -4,6 +4,8 @@ import { ViewportScroller } from '@angular/common';
 import category_data from '@/data/category-data';
 import { ICategory } from '@/types/category-type';
 import { ProductService } from 'src/app/shared/services/product.service';
+import { TypeMarcaModelService } from '@/shared/services/typemarcmodel.service';
+import { TypeMarcModel } from '@/types/typemarcmodel.interface';
 
 @Component({
   selector: 'app-category-filter',
@@ -13,18 +15,20 @@ import { ProductService } from 'src/app/shared/services/product.service';
 export class CategoryFilterComponent {
   public categoryData: ICategory[] = category_data;
   activeQuery: string = '';
-
+  listTypes:TypeMarcModel[] = [];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private viewScroller: ViewportScroller,
-    public productService: ProductService
+    public productService: ProductService,
+    private typeMarcaModelService:TypeMarcaModelService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.route.queryParams.subscribe((queryParams) => {
-      this.activeQuery = queryParams['category'];
+      this.activeQuery = queryParams['type'];
     });
+    this.listTypes=await this.typeMarcaModelService.getAllTypes().toPromise() ?? [];
   }
 
   handleCategoryRoute(value: string): void {
@@ -32,7 +36,7 @@ export class CategoryFilterComponent {
 
     // Define the query parameters as an object
     const queryParams: Params = {
-      category: newCategory,
+      type: newCategory,
     };
 
     this.router
