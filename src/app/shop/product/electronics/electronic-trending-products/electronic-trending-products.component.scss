@@ -1,0 +1,13 @@
+.skeleton-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    /* Espacio entre las columnas */
+}
+
+ngx-skeleton-loader {
+    flex: 1;
+    /* Hace que cada columna ocupe el mismo espacio */
+    height: 50px;
+    background-color: #f4f4f4;
+}

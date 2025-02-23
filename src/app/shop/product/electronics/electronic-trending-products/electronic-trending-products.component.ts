@@ -10,7 +10,7 @@ import { IProduct } from '@/types/product-type';
 export class ElectronicTrendingProductsComponent implements OnInit {
   // electronic prd
   public electronic_prd: IProduct[] = [];
-
+  isLoading: boolean = true;
     // tab
     public activeTab = 'New';
     public tabs = ['Nuevo', 'Featured', 'Top Sellers'];
@@ -37,8 +37,8 @@ export class ElectronicTrendingProductsComponent implements OnInit {
 
   getProductsTrending() {
     return this.productService.getProductsTrending().subscribe((products) => {
-      console.log(products);
       this.filteredProducts=products;
+      // this.isLoading = false;
     });
   }
 
