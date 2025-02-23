@@ -21,7 +21,7 @@
                         <div class="tp-product-details-desc-content pt-25">
                           <span>{{product.typeName}}</span>
                           <h3 class="tp-product-details-desc-title">{{product.name}}</h3>
-                          <p>{{ product.description }}</p>
+                          <p [innerHTML]="sanitizedDescription"></p>
                         </div>
                     </div>
                   </div>

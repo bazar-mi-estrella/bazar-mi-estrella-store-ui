@@ -12,9 +12,9 @@
   <!-- checkout area start -->
   <section class="tp-checkout-area pb-120" style="background-color: #EFF1F5;">
     <div *ngIf="cartService.getCartProducts().length === 0;else checkoutBlock" class="text-center pt-50">
-      <h3 class="py-2">No items found in cart to checkout</h3>
+      <h3 class="py-2">No se encontraron productos en el carrito para pagar</h3>
       <a routerLink="/shop" class="tp-checkout-btn">
-        Return to shop
+        Regresar a comprar
       </a>
     </div>
 

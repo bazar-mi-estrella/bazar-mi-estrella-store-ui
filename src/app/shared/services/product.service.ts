@@ -64,7 +64,6 @@ export class ProductService {
 
   // Get Product Filter
   public filterProducts(filter: any = []): Observable<IProduct[]> {
-    console.log('filters', filter);
     return this.products.pipe(
       map((product) =>
         product.filter((item: IProduct) => {

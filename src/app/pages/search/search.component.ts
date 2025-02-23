@@ -3,6 +3,7 @@ import { ProductService } from '@/shared/services/product.service';
 import { IProduct } from '@/types/product-type';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
+import { ProductFilter } from '@/types/produc-filter.interface';
 
 @Component({
   selector: 'app-search',
@@ -43,74 +44,88 @@ export class SearchComponent {
       this.selectVal = params['selectVal'] || '';
       this.sortBy = params['sortBy'] || '';
 
-      this.productService.products.subscribe((productData) => {
-        this.products = productData;
+      // this.productService.products.subscribe((productData) => {
+      //   this.products = productData;
+      //   console.log('Esta es la lista de productos ', this.products);
 
-        switch (this.sortBy) {
-          case 'ascending':
-            this.products = this.products.sort((a, b) => {
-              if (a.title < b.title) {
-                return -1;
-              } else if (a.title > b.title) {
-                return 1;
-              }
-              return 0;
-            });
-            break;
+      //   switch (this.sortBy) {
+      //     case 'ascending':
+      //       this.products = this.products.sort((a, b) => {
+      //         if (a.title < b.title) {
+      //           return -1;
+      //         } else if (a.title > b.title) {
+      //           return 1;
+      //         }
+      //         return 0;
+      //       });
+      //       break;
 
-          case 'low-to-high':
-            this.products = this.products.sort(
-              (a, b) => Number(a.price) - Number(b.price)
-            );
-            break;
+      //     case 'low-to-high':
+      //       this.products = this.products.sort(
+      //         (a, b) => Number(a.price) - Number(b.price)
+      //       );
+      //       break;
 
-          case 'high-to-low':
-            this.products = this.products.sort(
-              (a, b) => Number(b.price) - Number(a.price)
-            );
-            break;
+      //     case 'high-to-low':
+      //       this.products = this.products.sort(
+      //         (a, b) => Number(b.price) - Number(a.price)
+      //       );
+      //       break;
 
-          case 'new-added':
-            this.products = this.products.slice(-8);
-            break;
+      //     case 'new-added':
+      //       this.products = this.products.slice(-8);
+      //       break;
 
-          case 'on-sale':
-            this.products = this.products.filter((p) => p.discount > 0);
-            break;
+      //     case 'on-sale':
+      //       this.products = this.products.filter((p) => p.discount > 0);
+      //       break;
 
-          default:
-            this.products = productData;
-            break;
-        }
+      //     default:
+      //       this.products = productData;
+      //       break;
+      //   }
 
-        if (this.searchText && !this.productType) {
-          this.products = productData.filter((prd) =>
-            prd.title.toLowerCase().includes(this.searchText.toLowerCase())
-          );
-        }
+      //   if (this.searchText && !this.productType) {
+      //     this.products = productData.filter((prd) =>
+      //       prd.title.toLowerCase().includes(this.searchText.toLowerCase())
+      //     );
+      //   }
 
-        if (this.productType && !this.searchText) {
-          this.products = productData.filter(
-            (prd) =>
-              prd.productType.toLowerCase() === this.productType.toLowerCase()
-          );
-        }
+      //   if (this.productType && !this.searchText) {
+      //     this.products = productData.filter(
+      //       (prd) =>
+      //         prd.productType.toLowerCase() === this.productType.toLowerCase()
+      //     );
+      //   }
 
-        if (this.productType && this.searchText) {
-          this.products = productData
-            .filter(
-              (prd) =>
-                prd.productType.toLowerCase() === this.productType.toLowerCase()
-            )
-            .filter((p) =>
-              p.title.toLowerCase().includes(this.searchText.toLowerCase())
-            );
-        }
-      });
+      //   if (this.productType && this.searchText) {
+      //     this.products = productData
+      //       .filter(
+      //         (prd) =>
+      //           prd.productType.toLowerCase() === this.productType.toLowerCase()
+      //       )
+      //       .filter((p) =>
+      //         p.title.toLowerCase().includes(this.searchText.toLowerCase())
+      //       );
+      //   }
+      // });
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getDataProducts();
+  }
+
+
+  getDataProducts() {
+    let filter={
+      name:this.searchText
+    }as ProductFilter;
+    this.productService.getAllByfilter(filter).subscribe((response) => {
+      console.log('Estos son los productos', response.content);
+      this.products = response.content;
+    });
+  }
 
   handlePerView(): void {
     this.perView += 3;
