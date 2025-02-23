@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild, Input } from '@angular/core';
 import Swiper from 'swiper';
-import { Navigation, Pagination,EffectFade } from 'swiper/modules';
+import { Navigation, Pagination, EffectFade } from 'swiper/modules';
 
 
 @Component({
@@ -17,8 +17,8 @@ export class HeroBannerOneComponent {
   public HomeSliderData = [
     {
       id: 1,
-      pre_title: { text: "Starting at", price: 274 },
-      title: "The best tablet Collection 2023",
+      pre_title: { text: "A partir de", price: 274 },
+      title: "La mejor colección de tablets",
       subtitle: {
         text_1: "Exclusive offer ",
         percent: 35,
@@ -29,8 +29,8 @@ export class HeroBannerOneComponent {
     },
     {
       id: 2,
-      pre_title: { text: "Starting at", price: 999 },
-      title: "The best note book collection 2023",
+      pre_title: { text: "A partir de", price: 999 },
+      title: "La mejor colección de note books",
       subtitle: {
         text_1: "Exclusive offer ",
         percent: 10,
@@ -41,8 +41,8 @@ export class HeroBannerOneComponent {
     },
     {
       id: 3,
-      pre_title: { text: "Starting at", price: 999 },
-      title: "The best note book collection 2023",
+      pre_title: { text: "A partir de", price: 999 },
+      title: "La mejor colección de note book",
       subtitle: {
         text_1: "Exclusive offer ",
         percent: 10,
@@ -59,8 +59,8 @@ export class HeroBannerOneComponent {
         slidesPerView: 1,
         spaceBetween: 30,
         loop: false,
-        effect : 'fade',
-        modules:[EffectFade,Pagination],
+        effect: 'fade',
+        modules: [EffectFade, Pagination],
         pagination: {
           el: ".tp-slider-dot",
           clickable: true

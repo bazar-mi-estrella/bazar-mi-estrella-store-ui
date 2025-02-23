@@ -5,7 +5,7 @@ export const sliderData: ISliderData[] = [
   {
     id: 1,
     pre_title: { text: "Starting at", price: 274 },
-    title: "The best tablet Collection 2023",
+    title: "La mejor colección de tablets",
     subtitle: {
       text_1: "Exclusive offer ",
       percent: 35,
@@ -17,7 +17,7 @@ export const sliderData: ISliderData[] = [
   {
     id: 2,
     pre_title: { text: "Starting at", price: 999 },
-    title: "The best note book collection 2023",
+    title: "La mejor colección de note book",
     subtitle: {
       text_1: "Exclusive offer ",
       percent: 10,
