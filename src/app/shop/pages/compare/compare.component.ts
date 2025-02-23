@@ -9,5 +9,7 @@ import { Component } from '@angular/core';
 })
 export class CompareComponent {
 
-  constructor(public compareService:CompareService,public cartService:CartService){}
+  constructor(public compareService:CompareService,public cartService:CartService){
+    console.log(this.compareService.getCompareProducts());
+  }
 }

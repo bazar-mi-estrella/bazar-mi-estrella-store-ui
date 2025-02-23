@@ -17,8 +17,7 @@ export class TypeMarcaModelService {
     constructor(private readonly httpClient: HttpClient) { }
 
     public getAllTypes(): Observable<TypeMarcModel[]> {
-
-        if (this.dataLoaded) return this.dataSubject.asObservable(); // Devuelve el Observable con los datos
+        if (this.dataLoaded && this.dataSubject.value.length <= 0) return this.dataSubject.asObservable(); // Devuelve el Observable con los datos
 
         return this.httpClient
             .get<TypeMarcModel[]>(this.API.concat("/types"))

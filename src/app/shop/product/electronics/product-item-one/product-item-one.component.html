@@ -124,14 +124,14 @@
     <!-- Precio del producto y precio con descuento(15) -->
     <div class="tp-product-price-wrapper">
       <ng-container *ngIf="10 > 0; else noDiscount">
-        <span class="tp-product-price old-price">${{ product.price }}</span>
+        <span class="tp-product-price old-price">s/{{ product.price }}</span>
         <span class="tp-product-price new-price">
-          ${{ (product.price - (product.price * product.discount / 100)).toFixed(2) }}
-          <!-- ${{ (product.price - (product.price * 10 / 100)).toFixed(2) }} -->
+          s/{{ (product.price - (product.price * product.discount / 100)).toFixed(2) }}
+          <!-- s/{{ (product.price - (product.price * 10 / 100)).toFixed(2) }} -->
         </span>
       </ng-container>
       <ng-template #noDiscount>
-        <span class="tp-product-price new-price">${{ product.price.toFixed(2) }}</span>
+        <span class="tp-product-price new-price">s/{{ product.price.toFixed(2) }}</span>
       </ng-template>
     </div>
 

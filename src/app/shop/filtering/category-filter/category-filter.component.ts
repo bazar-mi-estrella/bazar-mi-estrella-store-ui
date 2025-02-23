@@ -25,6 +25,7 @@ export class CategoryFilterComponent {
   ) {}
 
   async ngOnInit(): Promise<void> {
+    console.log('CategoryFilterComponent');
     this.route.queryParams.subscribe((queryParams) => {
       this.activeQuery = queryParams['type'];
     });

@@ -73,12 +73,12 @@
      <div class="tp-product-price-wrapper-3">
       <ng-container *ngIf="product.discount > 0; else noDiscount">
         <span class="tp-product-price-3 new-price">
-          ${{ (product.price - (product.price * product.discount / 100)).toFixed(2) }}
+          s/{{ (product.price - (product.price * product.discount / 100)).toFixed(2) }}
         </span>
-        <span class="tp-product-price-3 old-price">${{ product.price }}</span>
+        <span class="tp-product-price-3 old-price">s/{{ product.price }}</span>
       </ng-container>
       <ng-template #noDiscount>
-        <span class="tp-product-price-3 new-price">${{ product.price.toFixed(2) }}</span>
+        <span class="tp-product-price-3 new-price">s/{{ product.price.toFixed(2) }}</span>
       </ng-template>
      </div>
   </div>

@@ -41,7 +41,7 @@
                 </td>
                 <!-- price -->
                 <td class="tp-cart-price">
-                  <span>${{ item.price.toFixed(2) }}</span>
+                  <span>s/{{ item.price.toFixed(2) }}</span>
                 </td>
                 <!-- quantity -->
                 <td class="tp-cart-quantity">
@@ -109,7 +109,7 @@
           <div class="tp-cart-checkout-top d-flex align-items-center justify-content-between">
             <span class="tp-cart-checkout-top-title">Subtotal</span>
             <span class="tp-cart-checkout-top-price">
-              ${{
+              s/{{
               (cartService.totalPriceQuantity().total + shipCost).toFixed(2)
               }}
             </span>
@@ -133,7 +133,7 @@
           </div>
           <div class="tp-cart-checkout-total d-flex align-items-center justify-content-between" *ngIf="false">
             <span>Total</span>
-            <span>${{
+            <span>s/{{
               (cartService.totalPriceQuantity().total + shipCost).toFixed(2)
               }}</span>
           </div>

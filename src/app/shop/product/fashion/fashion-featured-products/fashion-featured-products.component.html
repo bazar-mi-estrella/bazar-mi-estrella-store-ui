@@ -27,13 +27,13 @@
                           </h3>
                           <div class="tp-featured-price-wrapper">
                              <ng-container *ngIf="item.discount > 0; else noDiscount">
-                              <span class="tp-featured-price old-price">${{ item.price }}</span>
+                              <span class="tp-featured-price old-price">s/{{ item.price }}</span>
                               <span class="tp-featured-price new-price">
-                                ${{ (item.price - (item.price * item.discount / 100)).toFixed(2) }}
+                                s/{{ (item.price - (item.price * item.discount / 100)).toFixed(2) }}
                               </span>
                             </ng-container>
                             <ng-template #noDiscount>
-                              <span class="tp-featured-price new-price">${{ item.price.toFixed(2) }}</span>
+                              <span class="tp-featured-price new-price">s/{{ item.price.toFixed(2) }}</span>
                             </ng-template>
                           </div>
                           <div class="tp-product-rating-icon tp-product-rating-icon-2">

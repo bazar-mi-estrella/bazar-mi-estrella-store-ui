@@ -35,13 +35,13 @@
   <!-- price -->
   <div class="tp-product-details-price-wrapper mb-20">
     <div *ngIf="product.discount > 0">
-      <span class="tp-product-details-price old-price">${{ product.price }}</span>
+      <span class="tp-product-details-price old-price">s/{{ product.price }}</span>
       <span class="tp-product-details-price new-price">
-        ${{ ((product.price || 0) - ((product.price || 0) * (product.discount || 0)) / 100).toFixed(2) }}
+        s/{{ ((product.price || 0) - ((product.price || 0) * (product.discount || 0)) / 100).toFixed(2) }}
       </span>
     </div>
     <span *ngIf="product.discount <= 0" class="tp-product-details-price new-price">
-      ${{ (product.price || 0).toFixed(2) }}
+      s/{{ (product.price || 0).toFixed(2) }}
     </span>
   </div>
 
