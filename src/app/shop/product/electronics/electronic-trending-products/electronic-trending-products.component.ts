@@ -38,7 +38,7 @@ export class ElectronicTrendingProductsComponent implements OnInit {
   getProductsTrending() {
     return this.productService.getProductsTrending().subscribe((products) => {
       this.filteredProducts=products;
-      // this.isLoading = false;
+      this.isLoading = false;
     });
   }
 

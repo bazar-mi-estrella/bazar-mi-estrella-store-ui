@@ -1,0 +1,24 @@
+.tp-product-offer-slider-active {
+    position: relative;
+  }
+  
+  .swiper-wrapper {
+    display: flex;
+    flex-wrap: nowrap; /* Evita que los elementos se envuelvan en varias filas */
+  }
+  
+  .skeleton-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 25%; /* Esto asegura que los skeletons ocupen el 25% del ancho del swiper, creando 4 columnas */
+    height: 300px;
+    margin-right: 15px; /* Espacio entre las columnas */
+  }
+  
+  ngx-skeleton-loader {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+  }
+  

@@ -35,25 +35,30 @@
 
     </div>
 
+
     <!-- Card para mostrar cada producto -->
     <div class="row">
       <div class="col-xl-12">
         <div class="tp-product-tab-content">
 
+          <!-- Skeleton loader -->
           <div *ngIf="isLoading" class="skeleton-container">
             <ngx-skeleton-loader *ngFor="let item of [].constructor(4)"
               [theme]="{ height: '300px', 'background-color': '#f4f4f4' }"></ngx-skeleton-loader>
           </div>
 
-
+          <!-- Productos cargados -->
           <div class="row" *ngIf="!isLoading">
             <div *ngFor="let item of filteredProducts; let i = index" class="col-xl-3 col-lg-3 col-sm-6">
               <app-product-card [product]="item"></app-product-card>
             </div>
           </div>
+
         </div>
       </div>
     </div>
+
+
 
 
   </div>

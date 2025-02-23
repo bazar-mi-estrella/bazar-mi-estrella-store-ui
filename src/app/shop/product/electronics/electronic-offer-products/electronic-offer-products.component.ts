@@ -15,7 +15,7 @@ export class ElectronicOfferProductsComponent {
   public electronic_prd:IProduct[] = [];
   // product offer
   public offer_products:IProduct[] = []
-
+  isLoading: boolean = true;
   constructor(
     public productService: ProductService) 
   {
@@ -62,6 +62,7 @@ export class ElectronicOfferProductsComponent {
   getProductsOffer() {
     return this.productService.getProductsOffers().subscribe((products) => {
       this.offer_products=products;
+      this.isLoading = false;
     });
   }
 
