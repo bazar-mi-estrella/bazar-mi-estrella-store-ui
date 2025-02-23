@@ -2,89 +2,55 @@
   <div class="tp-contact-input-wrapper">
     <div class="tp-contact-input-box">
       <div class="tp-contact-input">
-        <input
-          name="name"
-          id="name"
-          type="text"
-          placeholder="Escribe tu nombre"
-          formControlName="name"
-        />
+        <input name="name" id="name" type="text" placeholder="Escribe tu nombre" formControlName="name" />
       </div>
       <div class="tp-contact-input-title">
         <label for="name">Tu nombre</label>
       </div>
-      <span
-        *ngIf="name?.hasError('required') && (name?.touched || formSubmitted)"
-        class="text-danger"
-      >
+      <span *ngIf="name?.hasError('required') && (name?.touched || formSubmitted)" class="text-danger">
         Nombre es requerido
       </span>
     </div>
     <div class="tp-contact-input-box">
       <div class="tp-contact-input">
-        <input
-          name="email"
-          id="email"
-          type="email"
-          placeholder="cixtechmart@gmail.com"
-          formControlName="email"
-        />
+        <input name="email" id="email" type="email" placeholder="cixtechmart@gmail.com" formControlName="email" />
       </div>
       <div class="tp-contact-input-title">
         <label for="email">Tu correo electrónico</label>
       </div>
-      <span
-        *ngIf="
+      <span *ngIf="
           (email?.hasError('required') && email?.touched) ||
           (email?.hasError('email') && email?.dirty) ||
           (formSubmitted && !email?.value)
-        "
-        class="text-danger"
-      >
+        " class="text-danger">
         El correo electrónico es obligatorio y debe ser una dirección de correo
         electrónico válida
       </span>
     </div>
     <div class="tp-contact-input-box">
       <div class="tp-contact-input">
-        <input
-          name="subject"
-          id="subject"
-          type="text"
-          placeholder="Escribe tu asunto"
-          formControlName="subject"
-        />
+        <input name="subject" id="subject" type="text" placeholder="Escribe tu asunto" formControlName="subject" />
       </div>
       <div class="tp-contact-input-title">
         <label for="subject">Asunto</label>
       </div>
-      <span
-        *ngIf="
+      <span *ngIf="
           subject?.hasError('required') && (subject?.touched || formSubmitted)
-        "
-        class="text-danger"
-      >
+        " class="text-danger">
         Asunto es requerido
       </span>
     </div>
     <div class="tp-contact-input-box">
       <div class="tp-contact-input">
-        <textarea
-          id="message"
-          name="message"
-          placeholder="Escribe tu mensaje aqui..."
-          formControlName="message"
-        ></textarea>
+        <textarea id="message" name="message" placeholder="Escribe tu mensaje aqui..."
+          formControlName="message"></textarea>
       </div>
       <div class="tp-contact-input-title">
         <label for="message">Tu mensaje</label>
       </div>
-      <span
-        *ngIf="
+      <span *ngIf="
           message?.hasError('required') && (message?.touched || formSubmitted)
-        "
-        class="text-danger"
-      >
+        " class="text-danger">
         Mensaje es requerido
       </span>
     </div>
@@ -101,7 +67,10 @@
     </div>
   </div>
 
-  <div class="tp-contact-btn">
+  <ngx-skeleton-loader *ngIf="isLoading" count="1"
+    [theme]="{ height: '50px',width:'180px', 'margin-bottom': '15px', 'background-color': '#303030' }"></ngx-skeleton-loader>
+
+  <div class="tp-contact-btn" *ngIf="!isLoading">
     <button type="submit">Enviar mensaje</button>
   </div>
 </form>

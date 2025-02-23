@@ -66,6 +66,9 @@ import { ProductDetailsWrapperComponent } from './components/product-details-com
 import { CountdownTimerComponent } from './components/countdown-timer/countdown-timer.component';
 import { MobileSidebarComponent } from './components/offcanvas/mobile-sidebar/mobile-sidebar.component';
 import { PaginationTwoComponent } from './ui/pagination-two/pagination-two.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { environment } from 'src/environments/environment';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 @NgModule({
@@ -134,8 +137,10 @@ import { PaginationTwoComponent } from './ui/pagination-two/pagination-two.compo
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSkeletonLoaderModule,
+
   ],
-  exports:[
+  exports: [
     HeaderOneComponent,
     HeaderTwoComponent,
     NiceSelectComponent,

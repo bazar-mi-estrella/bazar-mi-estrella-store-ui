@@ -19,6 +19,6 @@ export class Constants {
 
     public static HTTP_STATUS_CORRECT:number = 200;
     public static HTTP_STATUS_VALIDATE:number = 500;
-
+    public static EMAIL_COMPANY:string = 'cixtechmart@gmail.com';
 
 }
