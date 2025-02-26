@@ -35,7 +35,10 @@ export class OrderService {
     }
 
     public createSesionStripe(idorden: string): Observable<ResponseDTO<string>> {
-        return this.httpClient.post<ResponseDTO<string>>(this.API_STRIPE.concat(`/create-checkout-session?idOrden=${idorden}`), {})
+        let params: HttpParams = new HttpParams(); // Inicializamos el HttpParams
+        params = params.append('idOrden', idorden);
+        params = params.append('urlreturn', environment.PATH);
+        return this.httpClient.post<ResponseDTO<string>>(this.API_STRIPE.concat(`/create-checkout-session?${params}`), {})
     }
 
     public getSesionStripe(idSesion: string,idOrden:string): Observable<any> {
