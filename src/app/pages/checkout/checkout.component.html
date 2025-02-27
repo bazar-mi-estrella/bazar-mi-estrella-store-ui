@@ -65,7 +65,7 @@
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Celular <span>*</span></label>
-                          <input type="text" placeholder="Tu telefono" name="phone" formControlName="phone">
+                          <input type="text" placeholder="Tu telefono" maxlength="11" name="phone" formControlName="phone">
                           <!-- error msg start -->
                           <span *ngIf="phone?.hasError('required') && (phone?.touched ||formSubmitted)"
                             class="text-danger">
@@ -75,27 +75,38 @@
                         </div>
                       </div>
 
-
-
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
-                          <label>Departamento </label>
-                          <app-nice-select [options]="departamentosList" name="Select Country" [defaultCurrent]="-1"
-                            (onChange)="changeHandlerDepartamento($event)" placeholder="Seleccionar Departamento">
-                          </app-nice-select>
+                          <label>Número de DNI <span>*</span></label>
+                          <input type="text" placeholder="Tu DNI" name="numberdocument" maxlength="8" formControlName="numberdocument">
                           <!-- error msg start -->
-                          <span *ngIf="state?.hasError('required') && (state?.touched ||formSubmitted)"
+                          <span *ngIf="numberdocument?.hasError('required') && (numberdocument?.touched ||formSubmitted)"
                             class="text-danger">
-                            State is required
+                            Se requiere DNI
                           </span>
                           <!-- error msg end -->
                         </div>
                       </div>
 
+
+
+                      <!-- <div class="col-md-4">
+                        <div class="tp-checkout-input">
+                          <label>Departamento </label>
+                          <app-nice-select [options]="departamentosList" name="Select Country" [defaultCurrent]="-1"
+                            (onChange)="changeHandlerDepartamento($event)" placeholder="Seleccionar Departamento">
+                          </app-nice-select>
+                          <span *ngIf="state?.hasError('required') && (state?.touched ||formSubmitted)"
+                            class="text-danger">
+                            State is required
+                          </span>
+                        </div>
+                      </div> -->
+
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Provincia </label>
-                          <app-nice-select [options]="provinciaList" name="Select Country" [defaultCurrent]="0"
+                          <app-nice-select [options]="provinciaList" name="Select Country" [defaultCurrent]="-1"
                             (onChange)="changeHandlerProvincia($event)" placeholder="Seleccionar Provincia">
                           </app-nice-select>
                           <!-- error msg start -->

@@ -11,6 +11,7 @@ import { Distrito } from '@/types/distrito.interface';
 import { OrderService } from '../../shared/services/order.service';
 import { OrderDetailPost } from '@/types/orden-detail-post.interface';
 import { Router } from '@angular/router';
+import { Constants } from '@/shared/classes/constants';
 
 @Component({
   selector: 'app-checkout',
@@ -55,10 +56,10 @@ export class CheckoutComponent {
 
   initValues(): void {
     forkJoin({
-      departamentosList: this.ubigeoService.getDepartamentos(),
+      provincesList: this.ubigeoService.getProvincias(Constants.UUID_DEPARTAMENT_LAMBAYEQUE),
     }).subscribe({
       next: (response) => {
-        this.departamentosList = response.departamentosList;
+        this.provinciaList = response.provincesList;
       },
       error: (error) => {
         console.error('Error al obtener datos:', error);
@@ -106,7 +107,7 @@ export class CheckoutComponent {
     this.checkoutForm.patchValue({
       provinciaId: selectedOption.id
     });
-
+    this.distritoId?.setValue(null)
     this.distritoList = []
 
 
@@ -152,9 +153,10 @@ export class CheckoutComponent {
       lastname: new FormControl(null, Validators.required),
       address: new FormControl(null, Validators.required),
       phone: new FormControl(null, Validators.required),
+      numberdocument: new FormControl(null, Validators.required),
       clientId: new FormControl(sessionStorage.getItem('client_id'), [Validators.required]),
       listdetails: new FormControl([]),
-      departamentoId: new FormControl(null, Validators.required),
+      // departamentoId: new FormControl(null, Validators.required),
       provinciaId: new FormControl(null, Validators.required),
       distritoId: new FormControl(null, Validators.required)
 
@@ -217,6 +219,8 @@ export class CheckoutComponent {
   get firstname() { return this.checkoutForm.get('firstname') }
   get lastname() { return this.checkoutForm.get('lastname') }
   get country() { return this.checkoutForm.get('country') }
+  get numberdocument() { return this.checkoutForm.get('numberdocument') }
+  get distritoId() { return this.checkoutForm.get('distritoId') }
   get address() { return this.checkoutForm.get('address') }
   get state() { return this.checkoutForm.get('state') }
   get zipCode() { return this.checkoutForm.get('zipCode') }
