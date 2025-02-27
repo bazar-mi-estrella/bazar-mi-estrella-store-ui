@@ -5,6 +5,7 @@ import { OrderDTO } from '@/types/order-interface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { loadStripe } from '@stripe/stripe-js';
+import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -18,7 +19,7 @@ export class OrderComponent implements OnInit {
   idSession: string = this.activateRoute.snapshot.params?.['session_payment_id'];
 
   dataOrder: OrderDTO = {} as OrderDTO;
-  listDeatilsOrder:OrderDetail[] = [];
+  listDeatilsOrder: OrderDetail[] = [];
   isPagado: boolean = false;//Validar en caso la orden ya haya sido pagada
   isLoading: boolean = true;
   stripePromise = loadStripe(environment.CLAVE_STRIPE); // Tu clave pública
@@ -45,6 +46,7 @@ export class OrderComponent implements OnInit {
     private router: Router,
     private activateRoute: ActivatedRoute,
     private orderService: OrderService,
+    private toastrService: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -53,7 +55,16 @@ export class OrderComponent implements OnInit {
   }
 
   async getDataOrder(): Promise<void> {
-    if (this.idSession) await this.orderService.getSesionStripe(this.idSession, this.idOrder).toPromise();
+    if (this.idSession) {
+      try {
+        await this.orderService.getSesionStripe(this.idSession, this.idOrder).toPromise();
+        this.toastrService.success('Pago realizado con éxito');
+      } catch (error) {
+        console.error('Error al obtener la sesión de Stripe:', error);
+        this.toastrService.error('Error al realizar el pago');
+      }
+
+    }
     this.orderService.findById(this.idOrder).subscribe(result => {
       this.dataOrder = result;
       console.log('dataOrder >>', this.dataOrder);
