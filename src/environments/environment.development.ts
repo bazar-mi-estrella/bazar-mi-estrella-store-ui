@@ -1,4 +1,4 @@
-const HOST="https://cix-tech-mart-api-0uki.onrender.com";
+const HOST="https://cix-tech-mart-api-wfc2.onrender.com";
 // const HOST = "http://localhost:8081";
 
 export const environment = {
