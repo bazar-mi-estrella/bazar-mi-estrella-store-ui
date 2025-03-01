@@ -38,7 +38,7 @@
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Nombre <span>*</span></label>
-                          <input type="text" placeholder="Tu nombre" name="firstname" formControlName="firstname">
+                          <input type="text" placeholder="Tu nombre" name="firstname" maxlength="150" formControlName="firstname">
                           <!-- error msg start -->
                           <span *ngIf="firstname?.hasError('required') && (firstname?.touched ||formSubmitted)"
                             class="text-danger">
@@ -50,7 +50,7 @@
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Apellido <span>*</span></label>
-                          <input type="text" placeholder="Tu apellido" name="lastname" formControlName="lastname">
+                          <input type="text" placeholder="Tu apellido" name="lastname" maxlength="150" formControlName="lastname">
                           <!-- error msg start -->
                           <span *ngIf="lastname?.hasError('required') && (lastname?.touched ||formSubmitted)"
                             class="text-danger">
@@ -65,7 +65,7 @@
                       <div class="col-md-4">
                         <div class="tp-checkout-input">
                           <label>Celular <span>*</span></label>
-                          <input type="text" placeholder="Tu telefono" maxlength="11" name="phone" formControlName="phone">
+                          <input type="text" placeholder="Tu teléfono" maxlength="11" name="phone" formControlName="phone">
                           <!-- error msg start -->
                           <span *ngIf="phone?.hasError('required') && (phone?.touched ||formSubmitted)"
                             class="text-danger">
