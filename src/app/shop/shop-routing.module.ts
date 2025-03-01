@@ -26,109 +26,109 @@ import { PaymentOrderComponent } from './pages/payment-order/payment-order.compo
 
 const routes: Routes = [
   {
-    path:'shop',
-    component:ShopComponent,
-    title:'Shop Page'
+    path: 'shop',
+    component: ShopComponent,
+    title: 'Página de la tienda',
   },
   {
-    path:'shop-list',
-    component:ShopListComponent,
-    title:'Shop List Page'
+    path: 'shop-list',
+    component: ShopListComponent,
+    title: 'Shop List Page',
   },
   {
-    path:'shop-full-width',
-    component:ShopFullWidthComponent,
-    title:'Shop Full Width Page'
+    path: 'shop-full-width',
+    component: ShopFullWidthComponent,
+    title: 'Shop Full Width Page',
   },
   {
-    path:'shop-1600',
-    component:ShopSixteenThousandPxComponent,
-    title:'Shop 1600 Page'
+    path: 'shop-1600',
+    component: ShopSixteenThousandPxComponent,
+    title: 'Shop 1600 Page',
   },
   {
-    path:'shop-right-sidebar',
-    component:ShopRightSidebarComponent,
-    title:'Shop Right Sidebar Page'
+    path: 'shop-right-sidebar',
+    component: ShopRightSidebarComponent,
+    title: 'Shop Right Sidebar Page',
   },
   {
-    path:'shop-no-sidebar',
-    component:ShopNoSidebarComponent,
-    title:'Shop No Sidebar Page'
+    path: 'shop-no-sidebar',
+    component: ShopNoSidebarComponent,
+    title: 'Shop No Sidebar Page',
   },
   {
-    path:'shop-filter-dropdown',
-    component:ShopFilterDropdownComponent,
-    title:'Shop Filter Dropdown Page'
+    path: 'shop-filter-dropdown',
+    component: ShopFilterDropdownComponent,
+    title: 'Shop Filter Dropdown Page',
   },
   {
-    path:'shop-filter-offcanvas',
-    component:ShopFilterOffcanvasComponent,
-    title:'Shop Filter Offcanvas Page'
+    path: 'shop-filter-offcanvas',
+    component: ShopFilterOffcanvasComponent,
+    title: 'Shop Filter Offcanvas Page',
   },
   {
-    path:'shop-load-more',
-    component:ShopLoadMoreComponent,
-    title:'Shop Load More Page'
+    path: 'shop-load-more',
+    component: ShopLoadMoreComponent,
+    title: 'Shop Load More Page',
   },
   {
-    path:'shop-category',
-    component:ShopCategoryComponent,
-    title:'Shop Category Page'
+    path: 'shop-category',
+    component: ShopCategoryComponent,
+    title: 'Shop Category Page',
   },
   {
-    path:'shop-details',
-    component:ProductDetailsComponent,
-    title:'Shop Details Page'
+    path: 'shop-details',
+    component: ProductDetailsComponent,
+    title: 'Shop Details Page',
   },
   {
-    path:'shop-details/:id',
-    component:DynamicProductDetailsComponent,
-    title:'Shop Details Page'
+    path: 'shop-details/:id',
+    component: DynamicProductDetailsComponent,
+    title: 'Shop Details Page',
   },
   {
-    path:'shop-details-with-video',
-    component:ProductDetailsWithVideoComponent,
-    title:'Shop Details With Video Page'
+    path: 'shop-details-with-video',
+    component: ProductDetailsWithVideoComponent,
+    title: 'Shop Details With Video Page',
   },
   {
-    path:'shop-details-with-countdown',
-    component:ProductDetailsWithCountdownComponent,
-    title:'Shop Details With Countdown Page'
+    path: 'shop-details-with-countdown',
+    component: ProductDetailsWithCountdownComponent,
+    title: 'Shop Details With Countdown Page',
   },
   {
-    path:'shop-details-list',
-    component:ProductDetailsListComponent,
-    title:'Shop Details List Page'
+    path: 'shop-details-list',
+    component: ProductDetailsListComponent,
+    title: 'Shop Details List Page',
   },
   {
-    path:'shop-details-gallery',
-    component:ProductDetailsGalleryComponent,
-    title:'Shop Details Gallery Page'
+    path: 'shop-details-gallery',
+    component: ProductDetailsGalleryComponent,
+    title: 'Shop Details Gallery Page',
   },
   {
-    path:'cart',
-    component:CartComponent,
-    title:'Shop cart Page'
+    path: 'cart',
+    component: CartComponent,
+    title: 'Shop cart Page',
   },
   {
-    path:'wishlist',
-    component:WishlistComponent,
-    title:'Shop Wishlist Page'
+    path: 'wishlist',
+    component: WishlistComponent,
+    title: 'Shop Wishlist Page',
   },
   {
-    path:'compare',
-    component:CompareComponent,
-    title:'Shop Compare Page'
+    path: 'compare',
+    component: CompareComponent,
+    title: 'Shop Compare Page',
   },
   {
-    path:'order',
-    component:OrderComponent,
-    title:'Shop Order Page'
+    path: 'order',
+    component: OrderComponent,
+    title: 'Shop Order Page',
   },
   {
-    path:'payment-order',
-    component:PaymentOrderComponent,
-    title:'Payment Order Page'
+    path: 'payment-order',
+    component: PaymentOrderComponent,
+    title: 'Payment Order Page',
   },
 ];
 
