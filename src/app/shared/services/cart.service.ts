@@ -130,7 +130,7 @@ export class CartService {
   };
 
   // clear cart
-  clear_cart() {
+  clear_cartConfirm() {
     const confirmMsg = window.confirm(
       "Estas seguro de eliminar todos los items del carrito ?"
     );
@@ -139,6 +139,12 @@ export class CartService {
     }
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
   };
+
+  clear_cart_products() {
+    state.cart_products = [];
+    localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
+  }
+
   // initialOrderQuantity
   initialOrderQuantity() {
     return this.orderQuantity = 1;

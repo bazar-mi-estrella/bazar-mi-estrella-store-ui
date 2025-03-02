@@ -188,7 +188,7 @@ export class CheckoutComponent {
         this.checkoutForm.reset();
         this.formSubmitted = false; // Reset formSubmitted to false
         this.isLoading = false; //Para que se quite el loader
-        localStorage.setItem("cart_products", JSON.stringify([])); // Limpiamos el carrito
+        this.cartService.clear_cart_products();
         this.router.navigate(["/shop/order", { idOrder: data.data.id }])
       });
 
