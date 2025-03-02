@@ -21,12 +21,12 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent,
-    title: 'Contact Page'
+    title: 'Pagina de contacto'
   },
   {
     path: 'blog',
     component: BlogComponent,
-    title: 'Blog Page'
+    title: 'Nosotros'
   },
   {
     path: 'blog-grid',
