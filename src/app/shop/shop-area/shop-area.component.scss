@@ -1,0 +1,25 @@
+.tp-product-area-slider-active {
+    position: relative;
+  }
+  
+  .swiper-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Permitir múltiples filas */
+    gap: 10px; /* Espacio entre los elementos */
+  }
+  
+  .skeleton-slide {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    flex: 1 0 calc(33.33% - 10px); /* Ocupa 1/3 del ancho con espacio */
+    height: 300px; /* Mantiene la altura */
+    box-sizing: border-box; /* Evita que el padding/margin altere el tamaño */
+  }
+  
+  ngx-skeleton-loader {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+  }
+  

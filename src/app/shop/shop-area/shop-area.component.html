@@ -95,10 +95,22 @@
               </div>
             </div>
           </div>
+
+
+          <!-- Skeleton loader (cuando isLoading es true) -->
+          <div *ngIf="isLoading" class="tp-product-area-slider-active swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide skeleton-slide" *ngFor="let item of [].constructor(9)">
+                <ngx-skeleton-loader [theme]="{ height: '300px', 'background-color': '#f4f4f4' }"></ngx-skeleton-loader>
+              </div>
+            </div>
+          </div>
+
+
           <div class="tp-shop-items-wrapper tp-shop-item-primary">
 
             <!-- if no item in product  -->
-            <div *ngIf="products.length === 0" class="cartmini__empty text-center">
+            <div *ngIf="products.length === 0 && !isLoading" class="cartmini__empty text-center">
               <img src="/assets/img/product/cartmini/empty-cart.png" alt="empty-cart-img" />
               <h4>Lo sentimos, no pudimos encontrar el producto que buscabas. </h4>
               <p>Comprueba si has escrito mal algo o intenta buscar con otras palabras. </p>

@@ -13,7 +13,7 @@ export class PaginationComponent {
 
   @Output() setPage: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {}
+  constructor() {  }
 
   ngOnInit(): void {}
 

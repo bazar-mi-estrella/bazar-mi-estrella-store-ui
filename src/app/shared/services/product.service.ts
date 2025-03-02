@@ -24,7 +24,7 @@ export class ProductService {
     return of(product_data);
   }
 
-  constructor(private readonly httpClient: HttpClient) {}
+  constructor(private readonly httpClient: HttpClient) { }
 
   activeImg: string | undefined;
 
@@ -176,15 +176,16 @@ export class ProductService {
   //****************************** METODOS PROPIOS *****************************************/
 
   public getAllByfilter(params: ProductFilter): Observable<Page<IProduct>> {
+    console.log("áramsss", params);
     let httpParams = Object.entries(params)
       .filter(([_, value]) => value !== null && value !== undefined) // Filtra los valores definidos
       .reduce(
         (acc, [key, value]) => acc.append(key, value as string),
         new HttpParams()
       ); // Crea HttpParams directamente
-    if (!params.size) httpParams = httpParams.append('size', 100);
+    if (!params.size) httpParams = httpParams.append('size', 9);
     if (!params.page) httpParams = httpParams.append('page', 0);
-
+    if (params.page != 0 && params.page != null && params.page != undefined) httpParams = httpParams.set('page', Number(params.page) - 1);
     return this.httpClient.get<Page<IProduct>>(this.API.concat('/bandeja'), {
       params: httpParams,
     });

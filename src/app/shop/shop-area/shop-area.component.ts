@@ -17,7 +17,7 @@ export class ShopAreaComponent {
   @Input() shop_1600: boolean = false;
   @Input() shop_right_side: boolean = false;
   @Input() shop_no_side: boolean = false;
-
+  isLoading: boolean = false;
   public products: IProduct[] = [];
   public minPrice: number = 0;
   public maxPrice: number = this.productService.maxPrice;
@@ -67,7 +67,7 @@ export class ShopAreaComponent {
       this.pageNo = params['page'] ? params['page'] : this.pageNo;
       this.sortBy = params['sortBy'] ? params['sortBy'] : 'asc';
 
-    
+      this.isLoading = true;
       // Get Filtered Products..
       this.productService.getAllByfilter(params as ProductFilter).subscribe((response) => {
         // Sorting Filter
@@ -104,8 +104,9 @@ export class ShopAreaComponent {
           (p) => p.price >= Number(this.minPrice) && p.price <= Number(this.maxPrice)
         );
         // Paginate Products
-        this.paginate = this.productService.getPager(this.products.length,Number(+this.pageNo),this.pageSize);
-        this.products = this.products.slice(this.paginate.startIndex,this.paginate.endIndex + 1);
+        this.paginate = this.productService.getPager(response.totalElements,Number(+this.pageNo),this.pageSize);
+        // this.products = this.products.slice(this.paginate.startIndex,this.paginate.endIndex + 1);
+        this.isLoading = false;
       });
     });
   }

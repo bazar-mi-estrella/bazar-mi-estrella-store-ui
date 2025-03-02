@@ -45,7 +45,7 @@
           <!-- Slider de productos cargados (cuando isLoading es false) -->
           <div *ngIf="!isLoading" class="tp-product-offer-slider-active swiper-container">
             <div class="swiper-wrapper">
-              <div class="swiper-slide" *ngFor="let item of offer_products">
+              <div *ngFor="let item of offer_products" class="col-xl-3 col-lg-3 col-sm-6">
                 <app-product-card [product]="item" [offer_style]="true"></app-product-card>
               </div>
             </div>
