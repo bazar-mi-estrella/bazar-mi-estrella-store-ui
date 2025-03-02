@@ -71,6 +71,10 @@
                             class="text-danger">
                             Se requiere teléfono
                           </span>
+                          <span *ngIf="phone?.hasError('pattern')"
+                            class="text-danger">
+                            El teléfono son solo números
+                          </span>
                           <!-- error msg end -->
                         </div>
                       </div>
@@ -84,6 +88,10 @@
                             class="text-danger">
                             Se requiere DNI
                           </span>
+                          <span *ngIf="numberdocument?.hasError('pattern')"
+                          class="text-danger">
+                          El DNI son solo números
+                        </span>
                           <!-- error msg end -->
                         </div>
                       </div>
