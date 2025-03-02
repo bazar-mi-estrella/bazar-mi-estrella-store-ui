@@ -23,4 +23,12 @@ export class Constants {
 
 
     public static UUID_DEPARTAMENT_LAMBAYEQUE:string = '5de76549-55f8-48fb-91c2-900c2db4fed1';
+
+    //Ids de distritos con envio gratis
+    public static LIST_DIST_SEND_FREE:string[]=[
+        'e0552c2b-c59c-461f-8833-d17d466a5a10',//Ferreñafe
+        'bcf8da95-aa77-4aa1-8132-e54f17f9700c', //Lambayeque
+        '0f3175e3-4c5d-4e14-9552-0d8e91a24519'
+    ]
+    
 }

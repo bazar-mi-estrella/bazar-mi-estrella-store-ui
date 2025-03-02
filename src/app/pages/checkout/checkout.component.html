@@ -71,6 +71,10 @@
                             class="text-danger">
                             Se requiere teléfono
                           </span>
+                          <span *ngIf="phone?.hasError('pattern')"
+                            class="text-danger">
+                            El teléfono son solo números
+                          </span>
                           <!-- error msg end -->
                         </div>
                       </div>
@@ -84,6 +88,10 @@
                             class="text-danger">
                             Se requiere DNI
                           </span>
+                          <span *ngIf="numberdocument?.hasError('pattern')"
+                          class="text-danger">
+                          El DNI son solo números
+                        </span>
                           <!-- error msg end -->
                         </div>
                       </div>
@@ -173,7 +181,7 @@
                     <li *ngFor="let item of produts" class="tp-order-info-list-desc">
                       <p>{{item.name}} <span> x {{item.orderQuantity}}</span></p>
                       <span *ngIf="item.discount > 0; else noDiscount">
-                        S/{{ (item.price - (item.price * item.discount / 100)).toFixed(2) }}
+                        S/{{ (item.price - item.discount).toFixed(2) }}
                       </span>
                       <ng-template #noDiscount>
                         <span>S/{{item.price.toFixed(2)}}</span>

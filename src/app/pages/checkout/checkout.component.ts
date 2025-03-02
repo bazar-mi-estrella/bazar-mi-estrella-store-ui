@@ -107,17 +107,17 @@ export class CheckoutComponent {
     this.checkoutForm.patchValue({
       provinciaId: selectedOption.id
     });
-    this.distritoId?.setValue(null)
+    // this.distritoId?.setValue(null)
     this.distritoList = []
-
-
+    this.checkoutForm.patchValue({
+      distritoId: null
+    });
     this.ubigeoService.getDistritos(selectedOption.id).subscribe(res => {
       this.distritoList = res
     })
   }
 
   changeHandler(selectedOption: { id: string; name: string }) {
-
     // Update the 'country' form control with the selected option's value
     this.checkoutForm.patchValue({
       distritoId: selectedOption.id
@@ -152,8 +152,8 @@ export class CheckoutComponent {
       firstname: new FormControl(null, Validators.required),
       lastname: new FormControl(null, Validators.required),
       address: new FormControl(null, Validators.required),
-      phone: new FormControl(null, Validators.required),
-      numberdocument: new FormControl(null, Validators.required),
+      phone: new FormControl(null, [Validators.required,Validators.pattern("^[0-9]*$")]),
+      numberdocument: new FormControl(null, [Validators.required,Validators.pattern("^[0-9]*$")]),
       clientId: new FormControl(sessionStorage.getItem('client_id'), [Validators.required]),
       listdetails: new FormControl([]),
       // departamentoId: new FormControl(null, Validators.required),

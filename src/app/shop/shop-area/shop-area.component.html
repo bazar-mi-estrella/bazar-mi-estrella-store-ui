@@ -8,7 +8,7 @@
           <!--price filter -->
           <div class="tp-shop-widget mb-35">
             <h3 class="tp-shop-widget-title no-border">Rango de precios</h3>
-            <app-price-filter [min]="minPrice" [max]="maxPrice" (priceFilter)="updateFilter($event)"></app-price-filter>
+            <app-price-filter [min]="minPrice" [max]="maxPrice" [range]="rangePriceFilter"  (priceFilter)="updateFilter($event)"></app-price-filter>
           </div>
           <!-- status -->
           <div class="tp-shop-widget mb-50">

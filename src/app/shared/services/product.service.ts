@@ -180,7 +180,7 @@ export class ProductService {
     let httpParams = Object.entries(params)
       .filter(([_, value]) => value !== null && value !== undefined) // Filtra los valores definidos
       .reduce(
-        (acc, [key, value]) => acc.append(key, value as string),
+        (acc, [key, value]) => acc.append(key, value.replace('-',' ') as string),//Hago el remplazo para el tema de cámara web, deberia ser de otra manera
         new HttpParams()
       ); // Crea HttpParams directamente
     if (!params.size) httpParams = httpParams.append('size', 9);
