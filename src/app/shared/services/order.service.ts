@@ -34,6 +34,10 @@ export class OrderService {
         return this.httpClient.get<ResponseDTO<OrderTrayDTO>>(this.API.concat("/cancel/").concat(idOrder))
     }
 
+    public confirmReceiveOrder(idOrder: string): Observable<ResponseDTO<Number>> {
+        return this.httpClient.put<ResponseDTO<Number>>(this.API.concat("/receive/").concat(idOrder),{})
+    }
+
     public createSesionStripe(idorden: string): Observable<ResponseDTO<string>> {
         let params: HttpParams = new HttpParams(); // Inicializamos el HttpParams
         params = params.append('idOrden', idorden);

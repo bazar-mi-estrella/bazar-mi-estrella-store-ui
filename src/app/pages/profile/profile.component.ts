@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
     private sweetAlert: SweetAlertService,
     private orderService: OrderService,
     private clientService: ClientService,
-    private firebase:FirebaseService
+    private firebase: FirebaseService
   ) { }
 
   public genderSelectOptions = [
@@ -132,6 +132,26 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(["/pages/refund-order", { idOrder: row.id }])
   }
 
+  confirmReceive(row: OrderTrayDTO) {
+    this.sweetAlert.confirm('¿Estás seguro de confirmar la entrega del pedido?').then(async (result) => {
+      if (result) {
+        try {
+          this.isLoadingPedidos = true;
+          await firstValueFrom(this.orderService.confirmReceiveOrder(row.id));  // Esperar la cancelación
+          this.listpedidos = await firstValueFrom(this.orderService.getByClientId(this.clientId)) ?? [];
+          let config = this.sweetAlert.getAlertConfig('1', 'Confirmación realizada con éxito');
+          Swal.fire(config).then(() => { });
+        } catch (error) {
+          console.error('Error al cancelar el pedido:', error);
+          this.sweetAlert.getAlertConfig('2', 'Error al confirmar el pedido');
+        } finally {
+          this.isLoadingPedidos = false;
+        }
+      }
+    });
+  }
+
+
   onSubmit() {
     if (this.profileForm.valid) {
       console.log('Formulario enviado con éxito:', this.profileForm.value);
@@ -145,7 +165,7 @@ export class ProfileComponent implements OnInit {
     if (this.passwordForm.valid) {
       console.log('Password updated successfully:', this.passwordForm.value);
       let message = await this.firebase.changePassword(this.newPassword?.value);
-      console.log("Este es el mensaje de cambio de contra",message);
+      console.log("Este es el mensaje de cambio de contra", message);
     } else {
       console.log('Form is invalid');
       this.passwordForm.markAllAsTouched(); // Muestra los errores si el usuario no ha interactuado con todos los campos
