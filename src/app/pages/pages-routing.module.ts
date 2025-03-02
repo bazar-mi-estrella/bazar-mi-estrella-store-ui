@@ -61,7 +61,7 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    title: 'Login Page',
+    title: 'Inicio de sesión',
   },
   {
     path: 'register',
@@ -76,7 +76,7 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
-    title: 'Checkout Page',
+    title: 'Página de pago',
     ...canActivate(
       (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
         return redirectUnauthorizedTo([
@@ -107,7 +107,7 @@ const routes: Routes = [
   {
     path: 'refund-order',
     component: RefundOrderComponent,
-    title: 'Refund order Page',
+    title: 'Pedido de reembolso',
   },
 ];
 
