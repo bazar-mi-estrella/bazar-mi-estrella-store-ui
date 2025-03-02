@@ -74,7 +74,7 @@
                <span class="tp-product-price-2 new-price">S/{{ product.price.toFixed(2) }}</span>
             </ng-template>
          </div>
-         <p>{{ product.description.slice(0, 100) }}...</p>
+         <p [innerHTML]="getsanitizedDescription(product)"></p>
          <div class="tp-product-list-add-to-cart">
             <button *ngIf="!isItemInCart(product)" (click)="addToCart(product)"
                class="tp-product-list-add-to-cart-btn">Agregar al carrito</button>

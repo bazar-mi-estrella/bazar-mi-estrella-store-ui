@@ -34,7 +34,7 @@
                 <th>Descripción</th>
                 <td *ngFor="let item of compareService.getCompareProducts()">
                   <div class="tp-compare-desc">
-                    <p>{{ item.description.substring(0, 150) }}</p>
+                    <p>{{ item.name }}</p>
                   </div>
                 </td>
               </tr>

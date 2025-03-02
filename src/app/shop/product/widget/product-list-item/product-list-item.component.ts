@@ -3,6 +3,7 @@ import { IProduct } from '@/types/product-type';
 import { CartService } from '@/shared/services/cart.service';
 import { CompareService } from '@/shared/services/compare.service';
 import { WishlistService } from '@/shared/services/wishlist.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-list-item',
@@ -16,6 +17,7 @@ export class ProductListItemComponent {
     public cartService: CartService,
     public wishlistService: WishlistService,
     public compareService: CompareService,
+    private sanitizer: DomSanitizer
   ) {}
   // add to cart
   addToCart(product: IProduct) {
@@ -33,5 +35,9 @@ export class ProductListItemComponent {
   // Function to check if an item is in the cart
   isItemInCart(item: IProduct): boolean {
     return this.cartService.getCartProducts().some((prd: IProduct) => prd.id === item.id);
+  }
+
+  getsanitizedDescription(product: IProduct) {
+    return this.sanitizer.bypassSecurityTrustHtml(product.description?.slice(0, 100));
   }
 }
