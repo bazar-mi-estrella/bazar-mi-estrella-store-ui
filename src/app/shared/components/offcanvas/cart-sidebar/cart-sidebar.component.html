@@ -29,9 +29,7 @@
             <div class="cartmini__price-wrapper">
               <span *ngIf="item.discount > 0 && item.orderQuantity" class="cartmini__price">
                 {{
-                (
-                (item.price - (item.price * item.discount) / 100) * item.orderQuantity
-                ).toFixed(2)
+                getPrice(item)
                 }}
               </span>
               <span *ngIf="!item.discount && item.orderQuantity" class="cartmini__price">

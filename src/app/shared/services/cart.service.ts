@@ -72,7 +72,7 @@ export class CartService {
         if (typeof orderQuantity !== "undefined") {
           if (discount && discount > 0) {
             // Calculate the item total with discount
-            const itemTotal = (price - (price * discount) / 100) * orderQuantity;
+            const itemTotal = (price - discount) * orderQuantity;
             cartTotal.total += itemTotal;
           } else {
             // Calculate the item total without discount

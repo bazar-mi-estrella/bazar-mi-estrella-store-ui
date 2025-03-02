@@ -41,7 +41,7 @@
                 </td>
                 <!-- price -->
                 <td class="tp-cart-price">
-                  <span>s/{{ item.price.toFixed(2) }}</span>
+                  <span>s/{{ item.discount ? (item.price - item.discount).toFixed(2) : item.price.toFixed(2) }}</span>
                 </td>
                 <!-- quantity -->
                 <td class="tp-cart-quantity">
