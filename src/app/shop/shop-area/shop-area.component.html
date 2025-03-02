@@ -107,7 +107,7 @@
           </div>
 
 
-          <div class="tp-shop-items-wrapper tp-shop-item-primary">
+          <div class="tp-shop-items-wrapper tp-shop-item-primary" *ngIf="!isLoading">
 
             <!-- if no item in product  -->
             <div *ngIf="products.length === 0 && !isLoading" class="cartmini__empty text-center">
@@ -136,7 +136,7 @@
             </div>
           </div>
 
-          <div class="tp-shop-pagination mt-20">
+          <div class="tp-shop-pagination mt-20" *ngIf="!isLoading">
             <div class="tp-pagination">
               <app-pagination [products]="products" [paginate]="paginate" (setPage)="setPage($event)">
               </app-pagination>
