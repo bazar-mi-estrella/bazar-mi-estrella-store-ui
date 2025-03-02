@@ -78,7 +78,7 @@ const routes: Routes = [
   {
     path: 'shop-details',
     component: ProductDetailsComponent,
-    title: 'Shop Details Page',
+    title: 'Página de detalles de la tienda',
   },
   {
     path: 'shop-details/:id',

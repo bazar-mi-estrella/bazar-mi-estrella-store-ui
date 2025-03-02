@@ -21,84 +21,93 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent,
-    title: 'Pagina de contacto'
+    title: 'Pagina de contacto',
   },
   {
     path: 'blog',
     component: BlogComponent,
-    title: 'Nosotros'
+    title: 'Nosotros',
   },
   {
     path: 'blog-grid',
     component: BlogGridComponent,
-    title: 'Blog Grid Page'
+    title: 'Blog Grid Page',
   },
   {
     path: 'blog-list',
     component: BlogListComponent,
-    title: 'Blog List Page'
+    title: 'Blog List Page',
   },
   {
     path: 'blog-details',
     component: BlogDetailsComponent,
-    title: 'Blog Details Page'
+    title: 'Blog Details Page',
   },
   {
     path: 'blog-details/:id',
     component: DynamicBlogDetailsComponent,
-    title: 'Blog Details Page'
+    title: 'Blog Details Page',
   },
   {
     path: 'coupons',
     component: CouponComponent,
-    title: 'Coupon Page'
+    title: 'Coupon Page',
   },
   {
     path: 'about',
     component: AboutComponent,
-    title: 'About Page'
+    title: 'About Page',
   },
   {
     path: 'login',
     component: LoginComponent,
-    title: 'Login Page'
+    title: 'Login Page',
   },
   {
     path: 'register',
     component: RegisterComponent,
-    title: 'Register Page'
+    title: 'Register Page',
   },
   {
     path: 'forgot',
     component: ForgotPasswordComponent,
-    title: 'Forgot Page'
+    title: 'Forgot Page',
   },
   {
     path: 'checkout',
     component: CheckoutComponent,
     title: 'Checkout Page',
-    ...canActivate((route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-      return redirectUnauthorizedTo(['/pages/login', { returnUrl: state.url }])
-    })
-
+    ...canActivate(
+      (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+        return redirectUnauthorizedTo([
+          '/pages/login',
+          { returnUrl: state.url },
+        ]);
+      }
+    ),
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    title: 'Profile Page',
-    ...canActivate((route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-      return redirectUnauthorizedTo(['/pages/login', { returnUrl: state.url }])
-    })
+    title: 'Página de perfil',
+    ...canActivate(
+      (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+        return redirectUnauthorizedTo([
+          '/pages/login',
+          { returnUrl: state.url },
+        ]);
+      }
+    ),
   },
   {
     path: 'search',
     component: SearchComponent,
-    title: 'Search Page'
+    title: 'Search Page',
   },
   {
     path: 'refund-order',
     component: RefundOrderComponent,
-    title: 'Refund order Page'
+    title: 'Refund order Page',
   },
 ];
 

@@ -25,11 +25,12 @@ export class CheckoutComponent {
   isOpenLogin = false;
   isOpenCoupon = false;
   isLoading: boolean = true;//Loader para ver si esta cargando la data
-  shipCost: number = this.cartService.totalPriceQuantity().total >= 100 ? 0 : 20;//Costo de envio
+  // shipCost: number = this.cartService.totalPriceQuantity().total >= 100 ? 0 : 20;//Costo de envio
+  shipCost: number = 20;
   couponCode: string = '';
   payment_name: string = '';
-  sendFree: boolean = this.cartService.totalPriceQuantity().total >= 100;//Si el total es mayor a 100 el envio es gratis
-  // sendFree: boolean = false;//Si el total es mayor a 100 el envio es gratis
+  // sendFree: boolean = this.cartService.totalPriceQuantity().total >= 100;//Si el total es mayor a 100 el envio es gratis
+  sendFree: boolean = false;//Si el total es mayor a 100 el envio es gratis
 
   produts: IProduct[] = [];
   departamentosList: Departamento[] = []
@@ -107,11 +108,16 @@ export class CheckoutComponent {
     this.checkoutForm.patchValue({
       provinciaId: selectedOption.id
     });
-    // this.distritoId?.setValue(null)
+
+    //Limpiamos la lista de distritos
     this.distritoList = []
     this.checkoutForm.patchValue({
       distritoId: null
     });
+    //Reseteamos el costo de envio
+    this.sendFree = false;
+    if (!this.shipCost) this.shipCost = 20;
+
     this.ubigeoService.getDistritos(selectedOption.id).subscribe(res => {
       this.distritoList = res
     })
@@ -123,9 +129,14 @@ export class CheckoutComponent {
       distritoId: selectedOption.id
     });
 
-
+    if (Constants.LIST_DIST_SEND_FREE.includes(selectedOption.id)) {
+      this.sendFree = true;
+      this.shipCost = 0;
+    } else {
+      this.sendFree = false;
+      if (!this.shipCost) this.shipCost = 20;
+    }
   }
-
 
   handleCouponSubmit() {
     // Add coupon code handling logic here
@@ -152,8 +163,8 @@ export class CheckoutComponent {
       firstname: new FormControl(null, Validators.required),
       lastname: new FormControl(null, Validators.required),
       address: new FormControl(null, Validators.required),
-      phone: new FormControl(null, [Validators.required,Validators.pattern("^[0-9]*$")]),
-      numberdocument: new FormControl(null, [Validators.required,Validators.pattern("^[0-9]*$")]),
+      phone: new FormControl(null, [Validators.required, Validators.pattern("^[0-9]*$")]),
+      numberdocument: new FormControl(null, [Validators.required, Validators.pattern("^[0-9]*$")]),
       clientId: new FormControl(sessionStorage.getItem('client_id'), [Validators.required]),
       listdetails: new FormControl([]),
       // departamentoId: new FormControl(null, Validators.required),
