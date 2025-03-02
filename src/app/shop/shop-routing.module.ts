@@ -108,22 +108,22 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
-    title: 'Shop cart Page',
+    title: 'Carrito de compras',
   },
   {
     path: 'wishlist',
     component: WishlistComponent,
-    title: 'Shop Wishlist Page',
+    title: 'Lista de deseos',
   },
   {
     path: 'compare',
     component: CompareComponent,
-    title: 'Shop Compare Page',
+    title: 'Comparar',
   },
   {
     path: 'order',
     component: OrderComponent,
-    title: 'Shop Order Page',
+    title: 'Pedidos de la tienda',
   },
   {
     path: 'payment-order',
