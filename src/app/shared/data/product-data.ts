@@ -488,7 +488,7 @@ const product_data: IProduct[] = [
     ],
     parent: "Mobile Tablets",
     children: "Apple",
-    price: 9999,
+    price: 999999,
     discount: 15,
     quantity: 20,
     brand: {

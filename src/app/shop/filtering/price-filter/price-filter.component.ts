@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, Output, Input, EventEmitter, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Output, Input, EventEmitter, Inject, PLATFORM_ID, OnChanges, SimpleChanges } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ChangeContext, Options } from '@angular-slider/ngx-slider';
 import { ViewportScroller } from '@angular/common';
@@ -10,13 +10,14 @@ import { ProductService } from 'src/app/shared/services/product.service';
   templateUrl: './price-filter.component.html',
   styleUrls: ['./price-filter.component.scss'],
 })
-export class PriceFilterComponent {
+export class PriceFilterComponent implements OnChanges {
   // Using Output EventEmitter
   @Output() priceFilter: EventEmitter<any> = new EventEmitter<number>();
 
   // define min, max and range
   @Input() min!: number;
   @Input() max!: number;
+  @Input() range!: { min: number; max: number };
 
   public collapse: boolean = true;
   public isBrowser: boolean = false;
@@ -39,12 +40,21 @@ export class PriceFilterComponent {
     private router: Router,
     private viewScroller: ViewportScroller,
   ) {
+
     if (isPlatformBrowser(this.platformId)) {
       this.isBrowser = true; // for ssr
     }
   }
 
-  ngOnInit(): void { }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['range']) {
+      this.min = this.range.min;
+      this.max = this.range.max;
+    }
+  }
+
+  ngOnInit(): void {
+  }
 
   // Range Changed
   appliedFilter(event: ChangeContext) {
@@ -66,4 +76,5 @@ export class PriceFilterComponent {
         this.viewScroller.scrollToAnchor('products')
       });
   }
+
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -33,6 +33,7 @@ export class ShopAreaComponent {
   public paginate: any = {}; // Pagination use only
   public sortBy: string = 'asc'; // Sorting Order
   public mobileSidebar: boolean = false;
+  rangePriceFilter = { min: 0, max: this.productService.maxPrice };
 
 
   activeTab: string = this.listStyle ? 'list' : 'grid';
@@ -73,38 +74,38 @@ export class ShopAreaComponent {
         // Sorting Filter
         this.products = this.productService.sortProducts(response.content, this.sortBy);
         // Category Filter
-      /*   if (this.category){
-          this.products = this.products.filter(
-            (p) => p.parent.toLowerCase().split(' ').join('-') === this.category
-          );
-        }
-        if (this.subcategory){
-          this.products = this.products.filter(
-            (p) => p.children.toLowerCase().replace("&", "").split(" ").join("-") ===
-              this.subcategory
-          );
-        }
-        // status Filter
-        if (this.status) {
-          if (this.status === 'on-sale') {
-            this.products = this.products.filter((p) => p.discount > 0);
-          } else if (this.status === 'in-stock') {
-            this.products = this.products.filter((p) => p.status === 'in-stock');
+        /*   if (this.category){
+            this.products = this.products.filter(
+              (p) => p.parent.toLowerCase().split(' ').join('-') === this.category
+            );
           }
-          else if (this.status === 'out-of-stock') {
-            this.products = this.products.filter((p) => p.status === 'out-of-stock' || p.quantity === 0);
+          if (this.subcategory){
+            this.products = this.products.filter(
+              (p) => p.children.toLowerCase().replace("&", "").split(" ").join("-") ===
+                this.subcategory
+            );
           }
-        }
-        // brand filtering
-        if (this.brand) {
-          this.products = this.products.filter((p) => p.brand.name.toLowerCase() === this.brand);
-        } */
+          // status Filter
+          if (this.status) {
+            if (this.status === 'on-sale') {
+              this.products = this.products.filter((p) => p.discount > 0);
+            } else if (this.status === 'in-stock') {
+              this.products = this.products.filter((p) => p.status === 'in-stock');
+            }
+            else if (this.status === 'out-of-stock') {
+              this.products = this.products.filter((p) => p.status === 'out-of-stock' || p.quantity === 0);
+            }
+          }
+          // brand filtering
+          if (this.brand) {
+            this.products = this.products.filter((p) => p.brand.name.toLowerCase() === this.brand);
+          } */
         // Price Filter
         this.products = this.products.filter(
           (p) => p.price >= Number(this.minPrice) && p.price <= Number(this.maxPrice)
         );
         // Paginate Products
-        this.paginate = this.productService.getPager(response.totalElements,Number(+this.pageNo),this.pageSize);
+        this.paginate = this.productService.getPager(response.totalElements, Number(+this.pageNo), this.pageSize);
         // this.products = this.products.slice(this.paginate.startIndex,this.paginate.endIndex + 1);
         this.isLoading = false;
       });
@@ -120,10 +121,10 @@ export class ShopAreaComponent {
   }
 
   // SortBy Filter
-  sortByFilter(value:string) {
+  sortByFilter(value: string) {
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { sortBy: value ? value : null},
+      queryParams: { sortBy: value ? value : null },
       queryParamsHandling: 'merge', // preserve the existing query params in the route
       skipLocationChange: false  // do trigger navigation
     }).finally(() => {
@@ -145,10 +146,13 @@ export class ShopAreaComponent {
     });
   }
 
-  handleResetFilter () {
+  handleResetFilter() {
     this.minPrice = 0;
     this.maxPrice = this.productService.maxPrice;
     this.pageNo = 1;
+    this.rangePriceFilter = { min: 0, max: this.productService.maxPrice }; // Cambia el objeto (nueva referencia)
     this.router.navigate(['shop']);
   }
+
+
 }
