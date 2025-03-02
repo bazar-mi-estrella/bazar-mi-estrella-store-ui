@@ -25,7 +25,7 @@ export class ProductDetailsWrapperComponent {
   ) { }
 
   handleIsColorVariant(product: IProduct) {
-    if (product.images.some((item) => item?.codecolor && item?.namecolor)) {
+    if (product.images?.some((item) => item?.codecolor && item?.namecolor)) {
       return true;
     } else {
       return false;

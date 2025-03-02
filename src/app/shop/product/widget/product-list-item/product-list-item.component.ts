@@ -1,9 +1,10 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IProduct } from '@/types/product-type';
 import { CartService } from '@/shared/services/cart.service';
 import { CompareService } from '@/shared/services/compare.service';
 import { WishlistService } from '@/shared/services/wishlist.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UtilsService } from '@/shared/services/utils.service';
 
 @Component({
   selector: 'app-product-list-item',
@@ -11,14 +12,15 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./product-list-item.component.scss']
 })
 export class ProductListItemComponent {
-  @Input () product! : IProduct;
+  @Input() product!: IProduct;
 
   constructor(
     public cartService: CartService,
     public wishlistService: WishlistService,
     public compareService: CompareService,
-    private sanitizer: DomSanitizer
-  ) {}
+    private sanitizer: DomSanitizer,
+    public utilsService: UtilsService,
+  ) { }
   // add to cart
   addToCart(product: IProduct) {
     this.cartService.addCartProduct(product);
