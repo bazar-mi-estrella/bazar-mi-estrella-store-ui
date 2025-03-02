@@ -204,8 +204,9 @@ export class CheckoutComponent {
 
 
   formatProductsSave(product: IProduct): OrderDetailPost {
+
     return {
-      unitprice: product.price,
+      unitprice: product.discount ? product.price - product.discount : product.price,
       productId: product.id,
       quantity: product.orderQuantity ?? 0,
       description: '',
