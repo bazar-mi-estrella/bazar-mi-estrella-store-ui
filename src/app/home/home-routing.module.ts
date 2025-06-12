@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path:'electronic',
     component:ElectronicsComponent,
-    title:'CIX TECH MART - Ecommerce'
+    title:'Bazar Mi Estrella - Ecommerce'
   },
   
 ];

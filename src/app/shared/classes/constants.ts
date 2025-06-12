@@ -19,7 +19,7 @@ export class Constants {
 
     public static HTTP_STATUS_CORRECT:number = 1;
     public static HTTP_STATUS_VALIDATE:number = 0;
-    public static EMAIL_COMPANY:string = 'cixtechmart@gmail.com';
+    public static EMAIL_COMPANY:string = '';
 
 
     public static UUID_DEPARTAMENT_LAMBAYEQUE:string = '5de76549-55f8-48fb-91c2-900c2db4fed1';

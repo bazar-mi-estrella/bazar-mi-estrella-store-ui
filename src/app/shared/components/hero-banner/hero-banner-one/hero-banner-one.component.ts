@@ -16,38 +16,38 @@ export class HeroBannerOneComponent {
   public HomeSliderData = [
     {
       id: 1,
-      pre_title: { text: 'A partir de', price: 509 },
-      title: 'La mejor colección de tablets',
+      pre_title: { text: 'A partir de', price: 70 },
+      title: 'La mejor colección de sorpresas',
       subtitle: {
         text_1: 'Exclusive offer ',
         percent: 35,
         text_2: 'off this week',
       },
-      img: '/assets/img/slider/tablet.png',
+      img: '/assets/img/slider/peluche_alianza.png',
       green_bg: true,
     },
     {
       id: 2,
-      pre_title: { text: 'A partir de', price: 89 },
-      title: 'La mejor colección de mouse gamer',
+      pre_title: { text: 'A partir de', price: 40 },
+      title: 'Billeteras para damas al mejor precio',
       subtitle: {
         text_1: 'Exclusive offer ',
         percent: 10,
         text_2: 'off this week',
       },
-      img: '/assets/img/slider/mouse.png',
+      img: '/assets/img/slider/billetera.png',
       is_light: true,
     },
     {
       id: 3,
-      pre_title: { text: 'A partir de', price: 559 },
-      title: 'La mejor colección de celulares',
+      pre_title: { text: 'A partir de', price: 60 },
+      title: 'La mejor colección para la casa',
       subtitle: {
         text_1: 'Exclusive offer ',
         percent: 10,
         text_2: 'off this week',
       },
-      img: '/assets/img/slider/a.png',
+      img: '/assets/img/slider/set_jarras.png',
       green_bg: true,
     },
   ];
